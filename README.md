@@ -1,1 +1,3 @@
 # Women-in-Chemistry-Initiative-WICI
+[![Maintainability](https://api.codeclimate.com/v1/badges/d4030c116da7eb269862/maintainability)](https://codeclimate.com/github/walkerspence/Women-in-Chemistry-Initiative-WICI/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/d4030c116da7eb269862/test_coverage)](https://codeclimate.com/github/walkerspence/Women-in-Chemistry-Initiative-WICI/test_coverage)
