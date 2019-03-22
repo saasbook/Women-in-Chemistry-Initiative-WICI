@@ -1,0 +1,127 @@
+{
+  "Cucumber Features": {
+    "coverage": {
+      "/Users/Walker/cs169/women-in-chemistry-initiative/app/mailers/application_mailer.rb": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "/Users/Walker/cs169/women-in-chemistry-initiative/app/models/application_record.rb": [
+        0,
+        0,
+        0
+      ],
+      "/Users/Walker/cs169/women-in-chemistry-initiative/app/models/event.rb": [
+        0,
+        0
+      ],
+      "/Users/Walker/cs169/women-in-chemistry-initiative/app/jobs/application_job.rb": [
+        0,
+        0
+      ],
+      "/Users/Walker/cs169/women-in-chemistry-initiative/app/controllers/application_controller.rb": [
+        0,
+        0,
+        0
+      ],
+      "/Users/Walker/cs169/women-in-chemistry-initiative/app/controllers/events_controller.rb": [
+        0,
+        0,
+        null,
+        null,
+        null,
+        0,
+        0,
+        0,
+        null,
+        null,
+        null,
+        0,
+        0,
+        null,
+        null,
+        0,
+        0,
+        0,
+        null,
+        null,
+        0,
+        0,
+        null,
+        null,
+        null,
+        0,
+        0,
+        null,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        null,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        null,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        0,
+        null,
+        0,
+        0,
+        0,
+        null,
+        null,
+        0,
+        0,
+        0,
+        0
+      ],
+      "/Users/Walker/cs169/women-in-chemistry-initiative/app/helpers/events_helper.rb": [
+        0,
+        0
+      ],
+      "/Users/Walker/cs169/women-in-chemistry-initiative/app/helpers/application_helper.rb": [
+        0,
+        0
+      ],
+      "/Users/Walker/cs169/women-in-chemistry-initiative/app/channels/application_cable/connection.rb": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "/Users/Walker/cs169/women-in-chemistry-initiative/app/channels/application_cable/channel.rb": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "timestamp": 1553218072
+  }
+}
