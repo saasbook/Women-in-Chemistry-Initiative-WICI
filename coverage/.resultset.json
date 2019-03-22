@@ -122,6 +122,199 @@
         0
       ]
     },
-    "timestamp": 1553218072
+    "timestamp": 1553219077
+  },
+  "RSpec": {
+    "coverage": {
+      "/Users/Walker/cs169/women-in-chemistry-initiative/config/environment.rb": [
+        null,
+        1,
+        null,
+        null,
+        1
+      ],
+      "/Users/Walker/cs169/women-in-chemistry-initiative/config/application.rb": [
+        1,
+        null,
+        1,
+        null,
+        null,
+        null,
+        1,
+        null,
+        1,
+        1,
+        null,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/Walker/cs169/women-in-chemistry-initiative/config/boot.rb": [
+        1,
+        null,
+        1
+      ],
+      "/Users/Walker/cs169/women-in-chemistry-initiative/config/environments/test.rb": [
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        null,
+        null,
+        null,
+        null,
+        1,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null,
+        1,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null,
+        null,
+        null,
+        1,
+        null,
+        null,
+        1,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/Walker/cs169/women-in-chemistry-initiative/config/initializers/application_controller_renderer.rb": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/Walker/cs169/women-in-chemistry-initiative/config/initializers/assets.rb": [
+        null,
+        null,
+        null,
+        1,
+        null,
+        null,
+        null,
+        null,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/Walker/cs169/women-in-chemistry-initiative/config/initializers/backtrace_silencers.rb": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/Walker/cs169/women-in-chemistry-initiative/config/initializers/cookies_serializer.rb": [
+        null,
+        null,
+        null,
+        null,
+        1
+      ],
+      "/Users/Walker/cs169/women-in-chemistry-initiative/config/initializers/filter_parameter_logging.rb": [
+        null,
+        null,
+        null,
+        1
+      ],
+      "/Users/Walker/cs169/women-in-chemistry-initiative/config/initializers/inflections.rb": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/Walker/cs169/women-in-chemistry-initiative/config/initializers/mime_types.rb": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/Walker/cs169/women-in-chemistry-initiative/config/initializers/wrap_parameters.rb": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        2,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/Walker/cs169/women-in-chemistry-initiative/config/routes.rb": [
+        1,
+        1,
+        1,
+        null,
+        null
+      ],
+      "/Users/Walker/cs169/women-in-chemistry-initiative/app/helpers/application_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/Walker/cs169/women-in-chemistry-initiative/app/helpers/events_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/Walker/cs169/women-in-chemistry-initiative/app/models/event.rb": [
+        1,
+        null
+      ],
+      "/Users/Walker/cs169/women-in-chemistry-initiative/app/models/application_record.rb": [
+        1,
+        1,
+        null
+      ]
+    },
+    "timestamp": 1553219052
   }
 }
