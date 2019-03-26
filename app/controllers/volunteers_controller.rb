@@ -18,7 +18,7 @@ class VolunteersController < ApplicationController
 
     respond_to do |format|
       if @volunteer.save
-        format.html { redirect_to @event, notice: 'You are now a volunteer.' }
+        format.html { redirect_to event_volunteers_path(@event), notice: 'You are now a volunteer.' }
         format.json { render :show, status: :created, location: @volunteer.event }
       else
         format.html { render :new }

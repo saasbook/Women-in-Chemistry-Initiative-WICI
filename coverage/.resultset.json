@@ -3,6 +3,7 @@
     "coverage": {
       "/mnt/c/Users/danto/cs169/Women-in-Chemistry-Initiative-WICI/app/models/event.rb": [
         1,
+        1,
         null
       ],
       "/mnt/c/Users/danto/cs169/Women-in-Chemistry-Initiative-WICI/app/models/application_record.rb": [
@@ -77,7 +78,7 @@
         1,
         null,
         1,
-        0,
+        7,
         null,
         null,
         null,
@@ -100,6 +101,66 @@
         null,
         1,
         null,
+        null,
+        null
+      ],
+      "/mnt/c/Users/danto/cs169/Women-in-Chemistry-Initiative-WICI/app/models/volunteer.rb": [
+        1,
+        1,
+        1,
+        null
+      ],
+      "/mnt/c/Users/danto/cs169/Women-in-Chemistry-Initiative-WICI/app/controllers/volunteers_controller.rb": [
+        1,
+        1,
+        null,
+        1,
+        8,
+        8,
+        null,
+        null,
+        1,
+        4,
+        null,
+        null,
+        null,
+        null,
+        1,
+        null,
+        4,
+        null,
+        4,
+        4,
+        2,
+        1,
+        null,
+        6,
+        3,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        null,
+        1,
+        null,
+        null,
+        null,
+        1,
+        16,
+        null,
+        null,
+        null,
+        1,
+        4,
         null,
         null
       ],
@@ -126,7 +187,7 @@
         0
       ]
     },
-    "timestamp": 1553549053
+    "timestamp": 1553587524
   },
   "RSpec": {
     "coverage": {
