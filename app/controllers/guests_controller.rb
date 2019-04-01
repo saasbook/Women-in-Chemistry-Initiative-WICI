@@ -10,4 +10,10 @@ class GuestsController < ApplicationController
 			redirect_to new_guest_path
 		end
 	end
+
+	def show
+		@guests = Guest.all
+		render "guests/show"
+	end
+
 end
