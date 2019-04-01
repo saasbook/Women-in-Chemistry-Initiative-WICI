@@ -22,6 +22,11 @@
   </div>
 
   <div class="field">
+    <%= form.label :speaker %>
+    <%= form.text_area :speaker, id: :event_speaker %>
+  </div>
+
+  <div class="field">
     <%= form.label :date %>
     <%= form.datetime_select :date, id: :event_date %>
   </div>

@@ -7,6 +7,10 @@ class EventsController < ApplicationController
     @events = Event.all.order(:date)
   end
 
+  def past_speakers
+    @events = Event.where("date < ?", Date.current).all
+  end
+
   # GET /events/1
   # GET /events/1.json
   def show
@@ -69,6 +73,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:name, :description, :date, :location, :tickets)
+      params.require(:event).permit(:name, :description, :speaker, :date, :location, :tickets)
     end
 end
