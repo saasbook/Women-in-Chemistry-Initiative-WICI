@@ -1,0 +1,23 @@
+Enter New Guest Information
+<hr>
+<%= form_for @guest do |f| -%>
+	FirstName: <%= f.text_field :firstname%><br />
+	Last Name: <%= f.text_field :lastname%><br />
+	Email: <%= f.text_field :email%><br />
+	Event: <%= f.text_field :event%><br />
+	<%= f.submit %>
+ <% end -%>
+ 
+Display All Guests <br />
+<hr>
+<% if !@guests.blank? %>
+	<% for item in @guests %>
+		<%= item.firstname %> <%= item.lastname %> <%= item.email %> <%= item.event %> <br />
+	<% end %>
+<% else %>
+	
+<% end %>
+
+
+
+ <%= link_to 'Back', root_path %>	
