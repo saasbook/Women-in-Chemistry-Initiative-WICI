@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :events
+  resources :events, :about
   root 'home#home'
 
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
