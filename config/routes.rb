@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :events
-  get '/home/past_speakers', to: 'events#past_speakers', as: "past_speakers"
+  get '/home/past_events', to: 'events#past_events', as: "past_events"
   root 'home#home'
 
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
