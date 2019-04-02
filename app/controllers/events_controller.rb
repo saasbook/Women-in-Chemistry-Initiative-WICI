@@ -5,6 +5,9 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     @events = Event.all.order(:date)
+    @events.each do |event|
+      puts event.name
+    end
   end
 
   # GET /events/1
