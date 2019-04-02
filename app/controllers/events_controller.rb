@@ -10,10 +10,6 @@ class EventsController < ApplicationController
     end
   end
 
-  def past_events
-    @events = Event.where(:date < Date.current)
-  end
-
   # GET /events/1
   # GET /events/1.json
   def show
