@@ -15,7 +15,6 @@ ActiveRecord::Schema.define(version: 20190322003742) do
   create_table "events", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.text "speaker"
     t.datetime "date"
     t.string "location"
     t.string "tickets"
