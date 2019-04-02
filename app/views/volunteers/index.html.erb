@@ -1,0 +1,28 @@
+<p id="notice"><%= @info %></p>
+<p id="notice"><%= notice %></p>
+
+<h1>Volunteers for <%= @event.name %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @volunteers.each do |volunteer| %>
+      <tr>
+        <td><%= volunteer.name %></td>
+        <td><%= volunteer.email %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Sign up as a Volunteer', new_event_volunteer_path(event_id: @event) %>
+<br>
+<%= link_to 'Back', @event %>

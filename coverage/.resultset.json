@@ -1,16 +1,17 @@
 {
   "Cucumber Features": {
     "coverage": {
-      "/Users/Walker/cs169/women-in-chemistry-initiative/app/models/event.rb": [
-        1,
-        null
-      ],
-      "/Users/Walker/cs169/women-in-chemistry-initiative/app/models/application_record.rb": [
+      "/mnt/c/Users/danto/cs169/Women-in-Chemistry-Initiative-WICI/app/models/event.rb": [
         1,
         1,
         null
       ],
-      "/Users/Walker/cs169/women-in-chemistry-initiative/app/controllers/events_controller.rb": [
+      "/mnt/c/Users/danto/cs169/Women-in-Chemistry-Initiative-WICI/app/models/application_record.rb": [
+        1,
+        1,
+        null
+      ],
+      "/mnt/c/Users/danto/cs169/Women-in-Chemistry-Initiative-WICI/app/controllers/events_controller.rb": [
         1,
         1,
         null,
@@ -77,7 +78,7 @@
         1,
         null,
         1,
-        0,
+        7,
         null,
         null,
         null,
@@ -86,16 +87,16 @@
         null,
         null
       ],
-      "/Users/Walker/cs169/women-in-chemistry-initiative/app/controllers/application_controller.rb": [
+      "/mnt/c/Users/danto/cs169/Women-in-Chemistry-Initiative-WICI/app/controllers/application_controller.rb": [
         1,
         1,
         null
       ],
-      "/Users/Walker/cs169/women-in-chemistry-initiative/app/helpers/application_helper.rb": [
+      "/mnt/c/Users/danto/cs169/Women-in-Chemistry-Initiative-WICI/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/Users/Walker/cs169/women-in-chemistry-initiative/app/controllers/home_controller.rb": [
+      "/mnt/c/Users/danto/cs169/Women-in-Chemistry-Initiative-WICI/app/controllers/home_controller.rb": [
         1,
         null,
         1,
@@ -103,30 +104,90 @@
         null,
         null
       ],
-      "/Users/Walker/cs169/women-in-chemistry-initiative/app/mailers/application_mailer.rb": [
+      "/mnt/c/Users/danto/cs169/Women-in-Chemistry-Initiative-WICI/app/models/volunteer.rb": [
+        1,
+        1,
+        1,
+        null
+      ],
+      "/mnt/c/Users/danto/cs169/Women-in-Chemistry-Initiative-WICI/app/controllers/volunteers_controller.rb": [
+        1,
+        1,
+        null,
+        1,
+        8,
+        8,
+        null,
+        null,
+        1,
+        4,
+        null,
+        null,
+        null,
+        null,
+        1,
+        null,
+        4,
+        null,
+        4,
+        4,
+        2,
+        1,
+        null,
+        6,
+        3,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        null,
+        1,
+        null,
+        null,
+        null,
+        1,
+        16,
+        null,
+        null,
+        null,
+        1,
+        4,
+        null,
+        null
+      ],
+      "/mnt/c/Users/danto/cs169/Women-in-Chemistry-Initiative-WICI/app/channels/application_cable/channel.rb": [
         0,
         0,
         0,
         0
       ],
-      "/Users/Walker/cs169/women-in-chemistry-initiative/app/jobs/application_job.rb": [
-        0,
-        0
-      ],
-      "/Users/Walker/cs169/women-in-chemistry-initiative/app/channels/application_cable/connection.rb": [
+      "/mnt/c/Users/danto/cs169/Women-in-Chemistry-Initiative-WICI/app/channels/application_cable/connection.rb": [
         0,
         0,
         0,
         0
       ],
-      "/Users/Walker/cs169/women-in-chemistry-initiative/app/channels/application_cable/channel.rb": [
+      "/mnt/c/Users/danto/cs169/Women-in-Chemistry-Initiative-WICI/app/jobs/application_job.rb": [
+        0,
+        0
+      ],
+      "/mnt/c/Users/danto/cs169/Women-in-Chemistry-Initiative-WICI/app/mailers/application_mailer.rb": [
         0,
         0,
         0,
         0
       ]
     },
-    "timestamp": 1553224965
+    "timestamp": 1553587524
   },
   "RSpec": {
     "coverage": {

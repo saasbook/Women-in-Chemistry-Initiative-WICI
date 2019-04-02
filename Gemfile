@@ -4,7 +4,7 @@ git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
- 
+
 ruby '2.4.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6'
@@ -38,12 +38,12 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-group :production do 
+group :production do
   gem 'pg'
   gem 'rails_12factor'
 end
 
-group :test do 
+group :test do
   gem 'rspec-rails'
   gem 'cucumber-rails', :require => false
   gem 'cucumber-rails-training-wheels'
@@ -56,9 +56,9 @@ end
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'capybara', '2.4.4'
+  gem 'capybara', '> 2.7.0'
   gem 'sqlite3', '1.3.11'
-  gem 'jasmine-rails' 
+  gem 'jasmine-rails'
   gem 'guard'
   gem 'guard-rspec', require: false
   gem 'guard-cucumber'
