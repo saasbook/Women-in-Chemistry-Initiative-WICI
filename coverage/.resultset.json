@@ -18,6 +18,9 @@
         null,
         1,
         2,
+        2,
+        5,
+        null,
         null,
         null,
         null,
@@ -103,6 +106,13 @@
         null,
         null
       ],
+      "/Users/Walker/cs169/women-in-chemistry-initiative/app/controllers/about_controller.rb": [
+        1,
+        1,
+        null,
+        null,
+        null
+      ],
       "/Users/Walker/cs169/women-in-chemistry-initiative/app/mailers/application_mailer.rb": [
         0,
         0,
@@ -126,7 +136,7 @@
         0
       ]
     },
-    "timestamp": 1553224965
+    "timestamp": 1554243813
   },
   "RSpec": {
     "coverage": {
@@ -309,6 +319,7 @@
         1,
         1,
         1,
+        1,
         null,
         1,
         null,
@@ -326,6 +337,9 @@
         null,
         1,
         0,
+        0,
+        0,
+        null,
         null,
         null,
         null,
@@ -418,6 +432,6 @@
         null
       ]
     },
-    "timestamp": 1553282278
+    "timestamp": 1554243828
   }
 }
