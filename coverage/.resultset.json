@@ -110,10 +110,7 @@
         null,
         null
       ],
-<<<<<<< HEAD
       "/Users/danielstephens/cs169/group/Women-in-Chemistry-Initiative-WICI/app/mailers/application_mailer.rb": [
-=======
-      "/Users/Walker/cs169/women-in-chemistry-initiative/app/controllers/about_controller.rb": [
         1,
         1,
         null,
@@ -121,7 +118,6 @@
         null
       ],
       "/Users/Walker/cs169/women-in-chemistry-initiative/app/mailers/application_mailer.rb": [
->>>>>>> cc225cf1366313ea1fa1a5950386c6292318cacd
         0,
         0,
         0,
@@ -144,11 +140,7 @@
         0
       ]
     },
-<<<<<<< HEAD
     "timestamp": 1554252191
-=======
-    "timestamp": 1554243813
->>>>>>> cc225cf1366313ea1fa1a5950386c6292318cacd
   },
   "RSpec": {
     "coverage": {
