@@ -4,14 +4,14 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all.order(:date)
+    @events = Event.where("date > ?", Date.current).order(:date)
     @events.each do |event|
       puts event.name
     end
   end
 
   def past_events
-    @events = Event.where("date < ?", Date.current).order(:date)
+    @events = Event.where("date < ?", Date.current).order(date: :desc)
   end
 
   # GET /events/1

@@ -11,10 +11,10 @@ Feature: Use the past events page
       | Heisenberg Talk   | Is this reference dated yet | 26-Mar-2019 | 456 Wantabo Blvd, New Mexico, AZ 94704 | amc.com/breakingbad   |
       | Beakers Quarterly | To beak or not to beak      | 20-Apr-3019 | 8888 Haste St, Berkeley, CA 94704      | beakers.com/wici      |
       | Meet and greet    | Meet your favorite chemists | 26-Feb-2019 | 123 Treeside Way, Berkeley, CA 94704   | stubhub.com/chemistry |
-      | Pouring liquid    | Look, it changes colors     | 22-Apr-2019 | 422 Treeside Way, Berkeley, CA 94704   | stubhub.com/liquid    |
+      | Pouring liquid    | Look, it changes colors     | 01-Apr-2019 | 422 Treeside Way, Berkeley, CA 94704   | stubhub.com/liquid    |
     And I am on the past events page
 
   Scenario: ensure there is only past events
     Then I should see "Drinking"
-    And I should see "Heisenberg Talk"
+    And I should see "Heisenberg Talk" before "Meet and greet"
     But I should not see "Beakers Quarterly"

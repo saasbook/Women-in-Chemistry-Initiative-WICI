@@ -14,7 +14,7 @@
       <img src="./assets/0.10.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2019-04-02T19:40:36-07:00">2019-04-02T19:40:36-07:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2019-04-02T19:58:59-07:00">2019-04-02T19:58:59-07:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -770,7 +770,7 @@
         <li class="covered" data-hits="2" data-linenumber="7">
           <span class="hits">2</span>
           
-          <code class="ruby">    @events = Event.all.order(:date)</code>
+          <code class="ruby">    @events = Event.where(&quot;date &gt; ?&quot;, Date.current).order(:date)</code>
         </li>
       
         <li class="covered" data-hits="2" data-linenumber="8">
@@ -779,8 +779,8 @@
           <code class="ruby">    @events.each do |event|</code>
         </li>
       
-        <li class="covered" data-hits="5" data-linenumber="9">
-          <span class="hits">5</span>
+        <li class="covered" data-hits="4" data-linenumber="9">
+          <span class="hits">4</span>
           
           <code class="ruby">      puts event.name</code>
         </li>
@@ -812,7 +812,7 @@
         <li class="covered" data-hits="1" data-linenumber="14">
           <span class="hits">1</span>
           
-          <code class="ruby">    @events = Event.where(&quot;date &lt; ?&quot;, Date.current).order(:date)</code>
+          <code class="ruby">    @events = Event.where(&quot;date &lt; ?&quot;, Date.current).order(date: :desc)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="15">
