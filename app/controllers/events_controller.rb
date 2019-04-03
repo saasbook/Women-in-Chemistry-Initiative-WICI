@@ -8,7 +8,7 @@ class EventsController < ApplicationController
   end
 
   def past_events
-    @events = Event.where(:date < Date.current)
+    @events = Event.where("date < ?", Date.current).order(:date)
   end
 
   # GET /events/1
