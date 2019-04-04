@@ -58,7 +58,9 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara', '2.4.4'
   gem 'sqlite3', '1.3.11'
-  gem 'jasmine-rails' 
+  gem 'jasmine-rails'
+  #allows for "save_and_open_page" in capy and "Then show me the page" in cuc
+  gem 'launchy' 
   gem 'guard'
   gem 'guard-rspec', require: false
   gem 'guard-cucumber'
