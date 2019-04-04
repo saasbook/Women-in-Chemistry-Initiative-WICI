@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :events
+  resources :guests
   resources :about, only: [:index]
 
   get 'past_events', to: 'events#past_events', as: 'past_events'
