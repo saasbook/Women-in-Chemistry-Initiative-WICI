@@ -4,6 +4,7 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
+    puts "goodbye"
     @events = Event.future_events
   end
 
