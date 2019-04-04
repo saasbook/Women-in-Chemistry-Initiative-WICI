@@ -1,11 +1,16 @@
 Enter New Guest Information
+<% if flash[:notice] %>
+    <div class="notice"><%= flash[:notice] %></div>
+  <% end %>
 <hr>
 <%= form_for @guest do |f| -%>
 	FirstName: <%= f.text_field :firstname%><br />
 	Last Name: <%= f.text_field :lastname%><br />
 	Email: <%= f.text_field :email%><br />
-	Event: <%= f.text_field :event%><br />
-	<%= f.submit %>
+	Event: <%= f.collection_select :event, @all_events, :name, :name %><br />
+	<%= if flash[:notice] == "you're on the list" ||  flash[:notice].blank?
+		f.submit
+		end %>
  <% end -%>
 <%= link_to 'All Guests',  guest_path(@guests) %>
 <%= link_to 'Back', root_path %>	
