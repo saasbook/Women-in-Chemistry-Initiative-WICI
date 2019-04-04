@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   resources :events
+  resources :about, only: [:index]
+
+  get 'past_events', to: 'events#past_events', as: 'past_events'
   root 'home#home'
 
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
