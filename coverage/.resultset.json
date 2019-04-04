@@ -3,6 +3,13 @@
     "coverage": {
       "/Users/Walker/cs169/women-in-chemistry-initiative/app/models/event.rb": [
         1,
+        null,
+        1,
+        1,
+        null,
+        1,
+        2,
+        null,
         null
       ],
       "/Users/Walker/cs169/women-in-chemistry-initiative/app/models/application_record.rb": [
@@ -18,9 +25,6 @@
         null,
         1,
         2,
-        2,
-        4,
-        null,
         null,
         null,
         1,
@@ -140,7 +144,7 @@
         0
       ]
     },
-    "timestamp": 1554260339
+    "timestamp": 1554416084
   },
   "RSpec": {
     "coverage": {
