@@ -60,7 +60,9 @@ group :development, :test do
   gem 'sqlite3', '1.3.11'
   gem 'jasmine-rails'
   #allows for "save_and_open_page" in capy and "Then show me the page" in cuc
-  gem 'launchy' 
+  gem 'launchy'
+  #allows for use of "assigns" in rspec
+  gem 'rails-controller-testing'
   gem 'guard'
   gem 'guard-rspec', require: false
   gem 'guard-cucumber'
