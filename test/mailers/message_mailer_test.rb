@@ -14,7 +14,7 @@ class MessageMailerTest < ActionMailer::TestCase
     end
 
     assert_equal 'Message from WICI', email.subject
-    assert_equal ['nicole.perezbertolotto@gmail.com'], email.to
+    assert_equal ['wiciberkeley@gmail.com'], email.to
     assert_equal ['anna@example.org'], email.from
     assert_match /hello, how are you doing?/, email.body.encoded
   end
