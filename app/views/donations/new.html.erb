@@ -1,0 +1,11 @@
+<%= form_tag donations_path(amount_dollars: @donation.amount_dollars) do %>
+  <label class="amount">
+    <span>Amount: $<%= number_with_precision(@donation.amount_dollars, precision: 2) %></span>
+  </label>
+
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="A donation"
+          data-amount="<%= @donation.amount_cents %>"
+          data-locale="auto"></script>
+<% end %>

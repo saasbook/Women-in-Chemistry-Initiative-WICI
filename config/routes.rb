@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :events
   resources :about, only: [:index]
+  resources :donations, only: [:index, :new, :create]
 
   get 'past_events', to: 'events#past_events', as: 'past_events'
   root 'home#home'
