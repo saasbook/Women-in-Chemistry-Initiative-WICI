@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :events
+  resources :guests
   resources :about, only: [:index]
   resources :donations, only: [:index, :new, :create]
 

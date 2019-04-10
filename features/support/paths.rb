@@ -18,6 +18,7 @@ module NavigationHelpers
     when /^the past events page$/ then '/past-events'
     when /^the donate page$/ then '/donations'
     when /^the new donation page$/ then '/donations/new'
+    when /^the guests page$/ then '/guests'
 
 
       # Add more mappings here.
