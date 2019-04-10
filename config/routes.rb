@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :volunteers
+  devise_for :admins
   resources :events
   resources :about, only: [:index]
   resources :donations, only: [:index, :new, :create]
