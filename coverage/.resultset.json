@@ -183,31 +183,9 @@
         null,
         null,
         null
-      ],
-      "/Users/Walker/cs169/women-in-chemistry-initiative/app/mailers/application_mailer.rb": [
-        0,
-        0,
-        0,
-        0
-      ],
-      "/Users/Walker/cs169/women-in-chemistry-initiative/app/jobs/application_job.rb": [
-        0,
-        0
-      ],
-      "/Users/Walker/cs169/women-in-chemistry-initiative/app/channels/application_cable/connection.rb": [
-        0,
-        0,
-        0,
-        0
-      ],
-      "/Users/Walker/cs169/women-in-chemistry-initiative/app/channels/application_cable/channel.rb": [
-        0,
-        0,
-        0,
-        0
       ]
     },
-    "timestamp": 1554856016
+    "timestamp": 1554860072
   },
   "RSpec": {
     "coverage": {
@@ -644,8 +622,8 @@
         1,
         null,
         1,
-        null,
-        null,
+        1,
+        1,
         null,
         null
       ],
@@ -684,6 +662,6 @@
         null
       ]
     },
-    "timestamp": 1554859314
+    "timestamp": 1554859907
   }
 }
