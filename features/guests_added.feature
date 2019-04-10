@@ -6,6 +6,14 @@ I want to be able to click to see who is going to an event
 
 Background:
 
+Given I am on the guests page
+And I fill out the form with the following attributes:
+        | guest[firstname]    | Albert                    |
+        | guest[lastname]     | Einstein                  |
+        | guest[email]        | physicsgoat299@space.gov  | 
+And I press "Create Guest"
+Then I should see "Must select an event!"
+
 
 Given the following guests exist:
 
@@ -46,6 +54,37 @@ And I press "Create Guest"
 Then I should see "You're on the list!"
 And I follow "All Guests"
 Then I should see "Albert Einstein physicsgoat299@space.gov"
+
+Given I am on the guests page
+And I fill out the form with the following attributes:
+        | guest[firstname]    |                           |
+        | guest[lastname]     | Einstein                  |
+        | guest[email]        | physicsgoat299@space.gov  |
+And I select "Is Newton Overrated?" from "guest[event]" 
+And I press "Create Guest"
+Then I should see "Must enter your first name!"
+
+Given I am on the guests page
+And I fill out the form with the following attributes:
+        | guest[firstname]    | Albert                    |
+        | guest[lastname]     |                           |
+        | guest[email]        | physicsgoat299@space.gov  |
+And I select "Is Newton Overrated?" from "guest[event]" 
+And I press "Create Guest"
+Then I should see "Must enter your last name!"
+
+Given I am on the guests page
+And I fill out the form with the following attributes:
+        | guest[firstname]    | Albert                    |
+        | guest[lastname]     | Einstein                  |
+        | guest[email]        |                           |
+And I select "Is Newton Overrated?" from "guest[event]" 
+And I press "Create Guest"
+Then I should see "Must enter your email!"
+
+
+
+
         
 
 
