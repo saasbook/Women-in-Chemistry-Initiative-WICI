@@ -26,9 +26,10 @@ ActiveRecord::Schema.define(version: 20190401024406) do
     t.string "firstname"
     t.string "lastname"
     t.string "email"
-    t.string "event"
+    t.integer "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_guests_on_event_id"
   end
 
 end
