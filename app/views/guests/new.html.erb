@@ -1,10 +1,7 @@
 Enter New Guest Information
-<% if flash[:notice] %>
-    <div class="notice"><%= flash[:notice] %></div>
-  <% end %>
 <hr>
 <%= form_for @guest do |f| -%>
-	FirstName: <%= f.text_field :firstname%><br />
+	First Name: <%= f.text_field :firstname%><br />
 	Last Name: <%= f.text_field :lastname%><br />
 	Email: <%= f.text_field :email%><br />
 	Event: <%= f.collection_select :event, @all_events, :name, :name %><br />

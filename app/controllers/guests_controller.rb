@@ -13,6 +13,8 @@ class GuestsController < ApplicationController
 			flash[:notice] = "Must enter your last name!"
 		elsif @guest.email.blank?
 			flash[:notice] = "Must enter your email!"
+		elsif @guest.event.blank?
+			flash[:notice] = "Must select an event!"
 		elsif @guest.save
 			flash[:notice] = "You're on the list!"
 		end
