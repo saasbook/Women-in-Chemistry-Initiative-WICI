@@ -4,7 +4,7 @@
 <p>
   Please send us feedback, comments, or any questions below.
 </p>
-<%= form_for @message, url: create_message_url do |f| %>
+<%= form_for @message, url: create_message_path do |f| %>
 
   <%= @message.errors.full_messages.join(', ') %>
 

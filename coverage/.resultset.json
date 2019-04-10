@@ -148,14 +148,14 @@
   },
   "RSpec": {
     "coverage": {
-      "/Users/Walker/cs169/women-in-chemistry-initiative/config/environment.rb": [
+      "/Users/nicolepb/Desktop/wici/Women-in-Chemistry-Initiative-WICI/config/environment.rb": [
         null,
         1,
         null,
         null,
         1
       ],
-      "/Users/Walker/cs169/women-in-chemistry-initiative/config/application.rb": [
+      "/Users/nicolepb/Desktop/wici/Women-in-Chemistry-Initiative-WICI/config/application.rb": [
         1,
         null,
         1,
@@ -175,12 +175,12 @@
         null,
         null
       ],
-      "/Users/Walker/cs169/women-in-chemistry-initiative/config/boot.rb": [
+      "/Users/nicolepb/Desktop/wici/Women-in-Chemistry-Initiative-WICI/config/boot.rb": [
         1,
         null,
         1
       ],
-      "/Users/Walker/cs169/women-in-chemistry-initiative/config/environments/test.rb": [
+      "/Users/nicolepb/Desktop/wici/Women-in-Chemistry-Initiative-WICI/config/environments/test.rb": [
         1,
         null,
         null,
@@ -224,7 +224,7 @@
         null,
         null
       ],
-      "/Users/Walker/cs169/women-in-chemistry-initiative/config/initializers/application_controller_renderer.rb": [
+      "/Users/nicolepb/Desktop/wici/Women-in-Chemistry-Initiative-WICI/config/initializers/application_controller_renderer.rb": [
         null,
         null,
         null,
@@ -234,7 +234,7 @@
         null,
         null
       ],
-      "/Users/Walker/cs169/women-in-chemistry-initiative/config/initializers/assets.rb": [
+      "/Users/nicolepb/Desktop/wici/Women-in-Chemistry-Initiative-WICI/config/initializers/assets.rb": [
         null,
         null,
         null,
@@ -250,7 +250,7 @@
         null,
         null
       ],
-      "/Users/Walker/cs169/women-in-chemistry-initiative/config/initializers/backtrace_silencers.rb": [
+      "/Users/nicolepb/Desktop/wici/Women-in-Chemistry-Initiative-WICI/config/initializers/backtrace_silencers.rb": [
         null,
         null,
         null,
@@ -259,20 +259,20 @@
         null,
         null
       ],
-      "/Users/Walker/cs169/women-in-chemistry-initiative/config/initializers/cookies_serializer.rb": [
+      "/Users/nicolepb/Desktop/wici/Women-in-Chemistry-Initiative-WICI/config/initializers/cookies_serializer.rb": [
         null,
-        null,
-        null,
-        null,
-        1
-      ],
-      "/Users/Walker/cs169/women-in-chemistry-initiative/config/initializers/filter_parameter_logging.rb": [
         null,
         null,
         null,
         1
       ],
-      "/Users/Walker/cs169/women-in-chemistry-initiative/config/initializers/inflections.rb": [
+      "/Users/nicolepb/Desktop/wici/Women-in-Chemistry-Initiative-WICI/config/initializers/filter_parameter_logging.rb": [
+        null,
+        null,
+        null,
+        1
+      ],
+      "/Users/nicolepb/Desktop/wici/Women-in-Chemistry-Initiative-WICI/config/initializers/inflections.rb": [
         null,
         null,
         null,
@@ -290,13 +290,13 @@
         null,
         null
       ],
-      "/Users/Walker/cs169/women-in-chemistry-initiative/config/initializers/mime_types.rb": [
+      "/Users/nicolepb/Desktop/wici/Women-in-Chemistry-Initiative-WICI/config/initializers/mime_types.rb": [
         null,
         null,
         null,
         null
       ],
-      "/Users/Walker/cs169/women-in-chemistry-initiative/config/initializers/wrap_parameters.rb": [
+      "/Users/nicolepb/Desktop/wici/Women-in-Chemistry-Initiative-WICI/config/initializers/wrap_parameters.rb": [
         null,
         null,
         null,
@@ -312,7 +312,7 @@
         null,
         null
       ],
-      "/Users/Walker/cs169/women-in-chemistry-initiative/spec/factories/event.rb": [
+      "/Users/nicolepb/Desktop/wici/Women-in-Chemistry-Initiative-WICI/spec/factories/event.rb": [
         1,
         1,
         1,
@@ -323,133 +323,92 @@
         null,
         null
       ],
-      "/Users/Walker/cs169/women-in-chemistry-initiative/config/routes.rb": [
+      "/Users/nicolepb/Desktop/wici/Women-in-Chemistry-Initiative-WICI/config/routes.rb": [
         1,
         1,
         1,
         null,
         1,
+        1,
+        null,
+        1,
+        null,
+        1,
+        null,
+        null,
+        1,
+        null,
+        null,
+        null
+      ],
+      "/Users/nicolepb/Desktop/wici/Women-in-Chemistry-Initiative-WICI/app/helpers/application_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/nicolepb/Desktop/wici/Women-in-Chemistry-Initiative-WICI/app/controllers/messages_controller.rb": [
+        1,
+        null,
+        1,
+        0,
+        null,
+        null,
+        1,
+        null,
+        null,
+        1,
+        null,
+        1,
+        1,
+        1,
+        null,
+        0,
+        null,
+        null,
+        null,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null,
+        null
+      ],
+      "/Users/nicolepb/Desktop/wici/Women-in-Chemistry-Initiative-WICI/app/controllers/application_controller.rb": [
+        1,
+        1,
+        null
+      ],
+      "/Users/nicolepb/Desktop/wici/Women-in-Chemistry-Initiative-WICI/app/models/message.rb": [
+        1,
+        1,
+        1,
+        1,
+        null
+      ],
+      "/Users/nicolepb/Desktop/wici/Women-in-Chemistry-Initiative-WICI/app/mailers/message_mailer.rb": [
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        1,
+        null,
         1,
         null,
         1,
         null,
         null
       ],
-      "/Users/Walker/cs169/women-in-chemistry-initiative/app/helpers/application_helper.rb": [
+      "/Users/nicolepb/Desktop/wici/Women-in-Chemistry-Initiative-WICI/app/mailers/application_mailer.rb": [
         1,
-        null
-      ],
-      "/Users/Walker/cs169/women-in-chemistry-initiative/app/controllers/events_controller.rb": [
-        1,
-        1,
-        null,
-        null,
-        null,
-        1,
-        0,
-        null,
-        null,
-        1,
-        0,
-        null,
-        null,
-        null,
-        null,
-        1,
-        null,
-        null,
-        null,
-        1,
-        0,
-        null,
-        null,
-        null,
-        1,
-        null,
-        null,
-        null,
-        null,
-        1,
-        1,
-        null,
-        1,
-        1,
-        2,
-        1,
-        null,
-        0,
-        0,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        1,
-        1,
-        1,
-        2,
-        1,
-        null,
-        0,
-        0,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        1,
-        2,
-        2,
-        4,
-        2,
-        null,
-        null,
-        null,
-        1,
-        null,
-        1,
-        3,
-        null,
-        null,
-        null,
-        1,
-        2,
-        null,
-        null
-      ],
-      "/Users/Walker/cs169/women-in-chemistry-initiative/app/controllers/application_controller.rb": [
-        1,
-        1,
-        null
-      ],
-      "/Users/Walker/cs169/women-in-chemistry-initiative/spec/model/events_spec.rb": [
-        1,
-        null,
-        1,
-        1,
-        1,
-        null,
-        null
-      ],
-      "/Users/Walker/cs169/women-in-chemistry-initiative/app/models/event.rb": [
-        1,
-        null,
-        1,
-        0,
-        null,
-        1,
-        0,
-        null,
-        null
-      ],
-      "/Users/Walker/cs169/women-in-chemistry-initiative/app/models/application_record.rb": [
         1,
         1,
         null
       ]
     },
-    "timestamp": 1554416748
+    "timestamp": 1554873039
   }
 }
