@@ -15,7 +15,7 @@ module NavigationHelpers
 
     when /^the home\s?page$/ then '/'
     when /^the events page$/ then '/events'
-    when /^the past events page$/ then '/past_events'
+    when /^the past events page$/ then '/past-events'
     when /^the donate page$/ then '/donations'
     when /^the new donation page$/ then '/donations/new'
 
