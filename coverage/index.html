@@ -14,14 +14,14 @@
       <img src="./assets/0.10.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2019-04-09T20:33:01-07:00">2019-04-09T20:33:01-07:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2019-04-09T21:38:36-07:00">2019-04-09T21:38:36-07:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="red">30.63%</span></span>
+    (<span class="covered_percent"><span class="red">29.36%</span></span>
      covered at
      <span class="covered_strength">
        <span class="red">
@@ -32,8 +32,8 @@
   <a name="AllFiles"></a>
   <div>
     <b>14</b> files in total.
-    <b>111</b> relevant lines. 
-    <span class="green"><b>34</b> lines covered</span> and
+    <b>109</b> relevant lines. 
+    <span class="green"><b>32</b> lines covered</span> and
     <span class="red"><b>77</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -172,20 +172,20 @@
       
       <tr>
         <td class="strong"><a href="#a1f3f4e153436f7f79d196ded2e652914cfbcf34" class="src_link" title="app/models/event.rb">app/models/event.rb</a></td>
-        <td class="red strong">66.67 %</td>
-        <td>10</td>
-        <td>6</td>
-        <td>4</td>
+        <td class="red strong">60.0 %</td>
+        <td>9</td>
+        <td>5</td>
+        <td>3</td>
         <td>2</td>
-        <td>0.7</td>
+        <td>0.6</td>
       </tr>
       
       <tr>
         <td class="strong"><a href="#39a06a5105203eee50ab79ed8c884c438a65b22a" class="src_link" title="app/models/guest.rb">app/models/guest.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>3</td>
         <td>2</td>
-        <td>2</td>
+        <td>1</td>
+        <td>1</td>
         <td>0</td>
         <td>1.0</td>
       </tr>
@@ -286,19 +286,19 @@
           <div class="file_list_container" id="Models">
   <h2>
     <span class="group_name">Models</span>
-    (<span class="covered_percent"><span class="red">80.0%</span></span>
+    (<span class="covered_percent"><span class="red">75.0%</span></span>
      covered at
      <span class="covered_strength">
        <span class="red">
-         0.82
+         0.75
        </span>
     </span> hits/line)
   </h2>
   <a name="Models"></a>
   <div>
     <b>3</b> files in total.
-    <b>10</b> relevant lines. 
-    <span class="green"><b>8</b> lines covered</span> and
+    <b>8</b> relevant lines. 
+    <span class="green"><b>6</b> lines covered</span> and
     <span class="red"><b>2</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -327,20 +327,20 @@
       
       <tr>
         <td class="strong"><a href="#a1f3f4e153436f7f79d196ded2e652914cfbcf34" class="src_link" title="app/models/event.rb">app/models/event.rb</a></td>
-        <td class="red strong">66.67 %</td>
-        <td>10</td>
-        <td>6</td>
-        <td>4</td>
+        <td class="red strong">60.0 %</td>
+        <td>9</td>
+        <td>5</td>
+        <td>3</td>
         <td>2</td>
-        <td>0.7</td>
+        <td>0.6</td>
       </tr>
       
       <tr>
         <td class="strong"><a href="#39a06a5105203eee50ab79ed8c884c438a65b22a" class="src_link" title="app/models/guest.rb">app/models/guest.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>3</td>
         <td>2</td>
-        <td>2</td>
+        <td>1</td>
+        <td>1</td>
         <td>0</td>
         <td>1.0</td>
       </tr>
@@ -1688,10 +1688,10 @@
         <div class="source_table" id="a1f3f4e153436f7f79d196ded2e652914cfbcf34">
   <div class="header">
     <h3>app/models/event.rb</h3>
-    <h4><span class="red">66.67 %</span> covered</h4>
+    <h4><span class="red">60.0 %</span> covered</h4>
     <div>
-      <b>6</b> relevant lines. 
-      <span class="green"><b>4</b> lines covered</span> and
+      <b>5</b> relevant lines. 
+      <span class="green"><b>3</b> lines covered</span> and
       <span class="red"><b>2</b> lines missed.</span>
     </div>
   </div>
@@ -1705,55 +1705,49 @@
           <code class="ruby">class Event &lt; ApplicationRecord</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="2">
-          <span class="hits">1</span>
-          
-          <code class="ruby">  has_many :guests, dependent: :destroy</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="3">
+        <li class="never" data-hits="" data-linenumber="2">
           
           
           <code class="ruby">  # attr_accessor :name, :description, :date, :location, :tickets</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="4">
+        <li class="covered" data-hits="1" data-linenumber="3">
           <span class="hits">1</span>
           
           <code class="ruby">  def self.past_events</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="5">
+        <li class="missed" data-hits="0" data-linenumber="4">
           
           
           <code class="ruby">    Event.where(&quot;date &lt; ?&quot;, Date.current).order(date: :desc)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="6">
+        <li class="never" data-hits="" data-linenumber="5">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="7">
+        <li class="covered" data-hits="1" data-linenumber="6">
           <span class="hits">1</span>
           
           <code class="ruby">  def self.future_events</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="8">
+        <li class="missed" data-hits="0" data-linenumber="7">
           
           
           <code class="ruby">    Event.where(&quot;date &gt; ?&quot;, Date.current).order(:date)</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="9">
+        <li class="never" data-hits="" data-linenumber="8">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="10">
+        <li class="never" data-hits="" data-linenumber="9">
           
           
           <code class="ruby">end</code>
@@ -1769,8 +1763,8 @@
     <h3>app/models/guest.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>2</b> relevant lines. 
-      <span class="green"><b>2</b> lines covered</span> and
+      <b>1</b> relevant lines. 
+      <span class="green"><b>1</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -1784,13 +1778,7 @@
           <code class="ruby">class Guest &lt; ApplicationRecord</code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="2">
-          <span class="hits">1</span>
-          
-          <code class="ruby">	has_many :events</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="3">
+        <li class="never" data-hits="" data-linenumber="2">
           
           
           <code class="ruby">end</code>

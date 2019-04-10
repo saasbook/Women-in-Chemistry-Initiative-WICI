@@ -47,7 +47,6 @@
       ],
       "/Users/townsendsaunders3/cs169/Women-in-Chemistry-Initiative-WICI/app/models/guest.rb": [
         1,
-        1,
         null
       ],
       "/Users/townsendsaunders3/cs169/Women-in-Chemistry-Initiative-WICI/app/models/application_record.rb": [
@@ -56,7 +55,6 @@
         null
       ],
       "/Users/townsendsaunders3/cs169/Women-in-Chemistry-Initiative-WICI/app/models/event.rb": [
-        1,
         1,
         null,
         1,
@@ -185,7 +183,7 @@
         0
       ]
     },
-    "timestamp": 1554867181
+    "timestamp": 1554871116
   },
   "RSpec": {
     "coverage": {
