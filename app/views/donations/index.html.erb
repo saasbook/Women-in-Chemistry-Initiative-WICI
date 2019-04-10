@@ -1,8 +1,8 @@
 Put in some info here about why you should donate!<br>
 
-<%= form_tag('/donations/new', method: :get) do %>
+<%= form_tag(new_donation_path, method: :get) do %>
   <%= text_field_tag :amount_dollars, 0 %>
-  <%= submit_tag :donate %>
+  <%= submit_tag "Donate", id: :donate %>
 <% end %>
 
 <%= link_to "Donate $5", new_donation_path(amount_dollars: 5), id: "donate_5" %>

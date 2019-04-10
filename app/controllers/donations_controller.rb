@@ -26,7 +26,7 @@ class DonationsController < ApplicationController
                                      })
 
       flash[:notice] = "Payment successfully processed! Check your email for a receipt."
-      redirect_to donations_path
+      redirect_to root_path
     else
       flash[:alert] = "Please enter a valid amount in USD to donate!"
       redirect_to donations_path
@@ -37,9 +37,9 @@ class DonationsController < ApplicationController
   end
 
   private
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def donation_params
-      params.permit(:amount_dollars)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def donation_params
+    params.permit(:amount_dollars)
+  end
 end
 

@@ -4,7 +4,6 @@ class Donation
   attr_accessor(:amount_dollars)
 
   # validates_format_of :amount_dollars, :with => /\A\d*\.?\d{0,2}\z/, :on => :new
-  #
   validates :amount_dollars, presence: true, format: /\A\d*\.?\d{0,2}\z/
 
   def initialize(params)

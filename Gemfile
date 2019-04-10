@@ -58,13 +58,17 @@ end
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'capybara', '2.4.4'
+  gem 'capybara', '~> 2.8'
   gem 'sqlite3', '1.3.11'
   gem 'jasmine-rails'
   #allows for "save_and_open_page" in capy and "Then show me the page" in cuc
   gem 'launchy'
   #allows for use of "assigns" in rspec
   gem 'rails-controller-testing'
+  # JS driver for capy
+  gem 'poltergeist'
+  #allows creation of stripe mocks
+  gem 'stripe-ruby-mock', '~> 2.5.0', :require => 'stripe_mock'
   gem 'guard'
   gem 'guard-rspec', require: false
   gem 'guard-cucumber'
