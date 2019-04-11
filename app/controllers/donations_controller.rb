@@ -4,7 +4,6 @@ class DonationsController < ApplicationController
 
   def new
     @donation = Donation.new(donation_params)
-    puts @donation.amount_dollars
     unless @donation.valid?
       flash[:alert] = "Please enter a valid amount in USD to donate!"
       redirect_to donations_path
@@ -13,9 +12,6 @@ class DonationsController < ApplicationController
 
   def create
     @donation = Donation.new(donation_params)
-    puts @donation.amount_dollars
-    puts @donation.amount_cents
-    puts params[:amount_dollars]
     if @donation.valid?
       customer = Stripe::Customer.create({
                                              email: params[:stripeEmail],
