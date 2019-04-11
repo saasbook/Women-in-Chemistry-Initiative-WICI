@@ -1,4 +1,4 @@
-Feature: See if you are attening an event
+Feature: See if you are attending an event
 
 As a visitor to the website
 So that I can see if my name was registered to an event

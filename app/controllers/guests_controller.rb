@@ -1,29 +1,43 @@
 class GuestsController < ApplicationController
-	def new
-		@guest = Guest.new
-		@guests = Guest.all
-		@all_events = Event.all
-	end
-	def create
-		params.permit!
-		@guest = Guest.new(params[:guest])
-		if @guest.firstname.blank?
-			flash[:notice] = "Must enter your first name!"
-		elsif @guest.lastname.blank?
-			flash[:notice] = "Must enter your last name!"
-		elsif @guest.email.blank?
-			flash[:notice] = "Must enter your email!"
-		elsif @guest.event.blank?
-			flash[:notice] = "Must select an event!"
-		elsif @guest.save
-			flash[:notice] = "You're on the list!"
-		end
-		redirect_to new_guest_path
-	end
+  before_action :set_guest, only: [:destroy]
+  before_action :set_event
 
-	def show
-		@guests = Guest.all
-		render "guests/show"
-	end
+
+  def new
+		@guest = Guest.new
+  end
+
+	def create
+		@guest = Guest.new(guest_params)
+    @guest.event = @event
+
+    if @guest.save
+      flash[:notice] = 'You have successfully registered!'
+      redirect_to event_path(@event)
+    else
+      flash[:alert] = 'Your registration failed, please make sure your information is correct.'
+      render "new"
+    end
+  end
+
+  def destroy
+    @guest.destroy
+    respond_to do |format|
+      format.html { redirect_to events_url, notice: 'Guest was successfully removed.' }
+      format.json { head :no_content }
+    end
+  end
+
+	private
+	def guest_params
+    params.require(:guest).permit(:firstname, :lastname, :email)
+  end
+  def set_guest
+    @guest = Guest.find(params[:id])
+  end
+
+  def set_event
+    @event = Event.find(params[:event_id])
+  end
 
 end
