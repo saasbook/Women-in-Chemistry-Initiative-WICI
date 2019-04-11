@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
+  resources :events do
+    resources :guests, only: [:new, :create, :destroy]
+  end
+
   devise_for :volunteers
   devise_for :admins
-  resources :events
   resources :about, only: [:index]
   resources :donations, only: [:index, :new, :create]
 

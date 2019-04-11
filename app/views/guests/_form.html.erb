@@ -1,0 +1,11 @@
+<%= form_with(model: guest, url: [event, guest], local: true) do |form| %>
+
+  <% guest.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+  Event: <%= event.name %><br>
+  First Name: <%= form.text_field :firstname, id: :firstname %><br>
+  Last Name: <%= form.text_field :lastname, id: :lastname %><br>
+  Email: <%= form.text_field :email, id: :email %><br>
+  <%= form.submit "Submit", id: :submit  %>
+<% end %>

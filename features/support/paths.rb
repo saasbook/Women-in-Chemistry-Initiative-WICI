@@ -19,7 +19,6 @@ module NavigationHelpers
     when /^the donate page$/ then '/donations'
     when /^the new donation page$/ then '/donations/new'
 
-
       # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

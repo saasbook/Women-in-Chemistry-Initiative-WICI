@@ -14,3 +14,7 @@ Feature: navigate the website with links on homepage
   Scenario: click on about
     When I follow "about"
     Then I should see "About"
+
+  Scenario: click on donate
+    When I follow "donate"
+    Then I should see "donate"

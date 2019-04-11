@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 describe EventsController do
-  let!(:test_event) { FactoryGirl.create(:event) }
-  let!(:test_event_two) { FactoryGirl.create(:future_event) }
-
+  let!(:test_event) { FactoryGirl.create(:event, id: 1) }
+  let!(:fut_event) { FactoryGirl.create(:future_event, id: 2) }
+  let!(:test_guest) { FactoryGirl.create(:guest, event_id: test_event.id) }
 
   describe "#index" do
     it "gets a list of all future events" do
@@ -46,7 +46,15 @@ describe EventsController do
     end
   end
 
-  describe "#delete" do
+  describe "show" do
+    it "shows an event and it's associated guests" do
+      get :show, params: { id: test_event.id }
+      expect(assigns(:guests)).not_to be_nil
+      expect(assigns(:guests).length).to eq 1
+    end
+  end
+
+  describe "#destroy" do
     it "deletes an event" do
       expect { delete :destroy, params: { id: test_event.id }
       }.to change { Event.count }.by(-1)
@@ -57,6 +65,7 @@ describe EventsController do
       expect(response).to redirect_to(events_path)
     end
   end
+
   describe "#update" do
     it "updates an existing movie" do
       put :update, params: {id: test_event.id, event: FactoryGirl.attributes_for(:event, name: "modified")}
