@@ -2,13 +2,12 @@ class GuestsController < ApplicationController
   before_action :set_guest, only: [:destroy]
   before_action :set_event
 
-
   def new
-		@guest = Guest.new
+    @guest = Guest.new
   end
 
-	def create
-		@guest = Guest.new(guest_params)
+  def create
+    @guest = Guest.new(guest_params)
     @guest.event = @event
 
 
@@ -29,16 +28,15 @@ class GuestsController < ApplicationController
     end
   end
 
-	private
-	def guest_params
-    params.require(:guest).permit(:firstname, :lastname, :email)
-  end
-  def set_guest
-    @guest = Guest.find(params[:id])
-  end
+  private
+    def guest_params
+      params.require(:guest).permit(:firstname, :lastname, :email)
+    end
+    def set_guest
+      @guest = Guest.find(params[:id])
+    end
 
-  def set_event
-    @event = Event.find(params[:event_id])
-  end
-
+    def set_event
+      @event = Event.find(params[:event_id])
+    end
 end
