@@ -1,5 +1,7 @@
 class Event < ApplicationRecord
-  # attr_accessor :name, :description, :date, :location, :tickets
+  has_many :guests, dependent: :destroy
+  validates :name, :date, :location, :tickets, presence: true
+
   def self.past_events
     Event.where("date < ?", Date.current).order(date: :desc)
   end
