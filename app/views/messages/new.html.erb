@@ -1,0 +1,19 @@
+<h1>Contact Form</h1>
+<%= link_to 'Home', root_path %>
+<div align="center">
+<p>
+  Please send us feedback, comments, or any questions below.
+</p>
+<%= form_for @message, url: create_message_path do |f| %>
+
+  <%= @message.errors.full_messages.join(', ') %>
+
+  <%= f.text_field :name, placeholder: 'Name' %>
+
+  <%= f.email_field :email, placeholder: 'email' %>
+
+  <%= f.text_area :body, placeholder: 'body' %>
+
+  <%= f.submit 'Send' %>
+<% end %>
+<div>
