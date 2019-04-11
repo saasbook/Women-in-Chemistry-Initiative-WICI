@@ -11,6 +11,7 @@ class GuestsController < ApplicationController
 		@guest = Guest.new(guest_params)
     @guest.event = @event
 
+
     if @guest.save
       flash[:notice] = 'You have successfully registered!'
       redirect_to event_path(@event)

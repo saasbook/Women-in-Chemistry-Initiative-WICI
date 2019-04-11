@@ -4,8 +4,8 @@
     <li><%= message %></li>
   <% end %>
   Event: <%= event.name %><br>
-  First Name: <%= form.text_field :firstname%><br>
-  Last Name: <%= form.text_field :lastname%><br>
-  Email: <%= form.text_field :email%><br>
-  <%= form.submit %>
+  First Name: <%= form.text_field :firstname, id: :firstname %><br>
+  Last Name: <%= form.text_field :lastname, id: :lastname %><br>
+  Email: <%= form.text_field :email, id: :email %><br>
+  <%= form.submit "Submit", id: :submit  %>
 <% end %>

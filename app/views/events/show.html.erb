@@ -24,6 +24,11 @@
 </p>
 
 <p>
+  <strong>Capacity:</strong>
+  <%= @event.capacity %>
+</p>
+
+<p>
   <strong>Guests:</strong><br>
   <% @guests.each do |guest| %>
     <%= guest.firstname %> <%= guest.lastname %> <%= link_to 'Delete', event_guest_path(@event, guest), method: :delete, data: { confirm: 'Are you sure?' } %><br>

@@ -12,6 +12,7 @@ Feature: See upcoming events
       | Beakers Quarterly | To beak or not to beak      | 20-Feb-2019 | 8888 Haste St, Berkeley, CA 94704      | beakers.com/wici      | 50       |
       | Meet and greet    | Meet your favorite chemists | 26-Feb-3019 | 123 Treeside Way, Berkeley, CA 94704   | stubhub.com/chemistry | 45       |
       | Pouring liquid    | Look, it changes colors     | 22-Apr-3019 | 422 Treeside Way, Berkeley, CA 94704   | stubhub.com/liquid    | 10       |
+    And I am on the events page
 
 
   Scenario: browsing the events page in order
