@@ -11,6 +11,9 @@ describe DonationsController do
   describe "#new" do
     it "validates a good donation amount" do
       get :new, params: { amount_dollars: 10 }
+      expect(assigns[:donation]).not_to be_nil
+      expect(assigns[:donation].amount_dollars).to eq 10
+      expect(assigns[:donation].amount_cents).to eq 1000
       expect(response).to render_template("new")
     end
 
@@ -27,6 +30,9 @@ describe DonationsController do
     it "creates a charge given valid information" do
       card_token = StripeMock.generate_card_token(last4: "4242", exp_year: 3001)
       post :create, params: { stripeEmail: "someone@fake.com", stripeToken: card_token, amount_dollars: 10 }
+      expect(assigns[:donation]).not_to be_nil
+      expect(assigns[:donation].amount_dollars).to eq 10
+      expect(assigns[:donation].amount_cents).to eq 1000
       expect(response).to redirect_to(root_path)
       expect(flash[:notice]).to eq "Payment successfully processed! Check your email for a receipt."
     end
