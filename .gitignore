@@ -22,9 +22,9 @@
 
 .byebug_history
 
-#ignore coverage
-/coverage/*
-
 # Ignore application configuration
 /config/application.yml
 .idea
+
+# Ignore coverage
+coverage
