@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Name:</strong>
   <%= @event.name %>
@@ -25,8 +23,18 @@
   <%= @event.tickets %>
 </p>
 
-<%= link_to 'Volunteers', event_volunteers_path(@event) %>
-<br>
-<%= link_to 'Back', events_path %> |
-<%= link_to 'Edit', edit_event_path(@event) %>
+<p>
+  <strong>Capacity:</strong>
+  <%= @event.capacity %>
+</p>
 
+<p>
+  <strong>Guests:</strong><br>
+  <% @guests.each do |guest| %>
+    <%= guest.firstname %> <%= guest.lastname %> <%= link_to 'Delete', event_guest_path(@event, guest), method: :delete, data: { confirm: 'Are you sure?' } %><br>
+  <% end %>
+</p>
+
+<%= link_to 'RSVP for this event', new_event_guest_path(@event) %>
+<%= link_to 'Edit', edit_event_path(@event) %> |
+<%= link_to 'Back', events_path %>

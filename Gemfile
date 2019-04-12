@@ -4,7 +4,7 @@ git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
-
+ 
 ruby '2.4.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.6'
@@ -29,6 +29,8 @@ gem 'devise'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
+# payments
+gem 'stripe'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
@@ -38,12 +40,12 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-group :production do
+group :production do 
   gem 'pg'
   gem 'rails_12factor'
 end
 
-group :test do
+group :test do 
   gem 'rspec-rails'
   gem 'cucumber-rails', :require => false
   gem 'cucumber-rails-training-wheels'
@@ -56,9 +58,17 @@ end
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'capybara', '> 2.7.0'
+  gem 'capybara', '~> 2.8'
   gem 'sqlite3', '1.3.11'
   gem 'jasmine-rails'
+  #allows for "save_and_open_page" in capy and "Then show me the page" in cuc
+  gem 'launchy'
+  #allows for use of "assigns" in rspec
+  gem 'rails-controller-testing'
+  # JS driver for capy
+  gem 'poltergeist'
+  #allows creation of stripe mocks
+  gem 'stripe-ruby-mock', '~> 2.5.0', :require => 'stripe_mock'
   gem 'guard'
   gem 'guard-rspec', require: false
   gem 'guard-cucumber'
