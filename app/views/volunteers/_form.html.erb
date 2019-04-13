@@ -1,0 +1,29 @@
+<%= form_for @volunteer, url: {action: "create"}, html: {class: "volunteer_form"} do |form| %>
+  <% if @volunteer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@volunteer.errors.count, "error") %> prohibited volunteer
+      from being saved: </h2>
+
+      <ul>
+      <% @volunteer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= form.hidden_field :event_id, value: @event.id %>
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :volunteer_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email, id: :volunteer_email %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Submit" %>
+  </div>
+
+<% end %>
