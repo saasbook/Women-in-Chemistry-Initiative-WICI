@@ -13,6 +13,7 @@
       <tr>
         <td><%= assignment.volunteer.firstname %></td>
         <td><%= assignment.volunteer.lastname %></td>
+        <td><%= link_to 'Unassign', event_assignment_path(id: assignment.id),:action => 'destroy', method: :delete, data: { confirm: 'Are you sure?' } %></td>
 
       </tr>
     <% end %>

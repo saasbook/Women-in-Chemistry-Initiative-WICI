@@ -4,6 +4,7 @@ describe AssignmentsController do
   let!(:test_event) { FactoryGirl.create(:event, id: 1) }
   let!(:test_volunteer) { FactoryGirl.create(:test_volunteer, id: 1)}
   let!(:test_task) { FactoryGirl.create(:task, event_id: 1, id: 1)}
+  let!(:test_create_task) { FactoryGirl.create(:create_task, event_id: 1, id: 2)}
   let!(:test_assignment) { FactoryGirl.create(:assignment, task_id: 1, volunteer_id: 1)}
   login_volunteer
 
@@ -17,8 +18,12 @@ describe AssignmentsController do
 
   describe "#create" do
     it "adds an assignment" do
-      expect { post :create, params: { assignment: FactoryGirl.attributes_for(:assignment), task_id: test_task.id, event_id: test_event.id }
+      expect { post :create, params: { assignment: FactoryGirl.attributes_for(:create_assignment), event_id: test_event.id }
       }.to change { Assignment.count }.by(1)
+    end
+    it "adds an invalid assignment" do
+      expect { post :create, params: { assignment: FactoryGirl.attributes_for(:assignment), event_id: test_event.id }
+      }.to change { Assignment.count }.by(0)
     end
   end
 

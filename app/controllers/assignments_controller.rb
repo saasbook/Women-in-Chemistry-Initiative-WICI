@@ -11,14 +11,21 @@ class AssignmentsController < ApplicationController
     end
   end
 
-
+  # event_assignments
   def index
     @assignments = @event.assignments
     @info = @assignments.empty? ? "#{@event.name} has no volunteers." : ''
   end
-  # GET /events/new
+  # new_event_assignment
   def new
-    @assignment = Assignment.new
+    if !Assignment.new(task_id: @task.id, volunteer_id: @user.id).valid?
+      respond_to do |format|
+        format.html { redirect_to event_assignments_path(@event), notice: 'You are already a volunteer.' }
+        format.json { render :index, status: :conflict, location: @assignment.event }
+      end
+    else
+      @assignment = Assignment.new
+    end
   end
 
   # POST /events
@@ -43,7 +50,7 @@ class AssignmentsController < ApplicationController
   def destroy
     @assignment.destroy
     respond_to do |format|
-      format.html { redirect_to @event, notice: 'Volunteer was successfully unassigned.' }
+      format.html { redirect_to event_assignments_path(@event), notice: 'Volunteer was successfully unassigned.' }
       format.json { head :no_content }
     end
   end
