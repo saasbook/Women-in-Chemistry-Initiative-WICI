@@ -7,14 +7,13 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Email</th>
     </tr>
   </thead>
 
   <tbody>
     <% @assignments.each do |assignment| %>
       <tr>
-        <td><%= assignment.name %></td>
+        <td><%= assignment.volunteer.email %></td>
 
       </tr>
     <% end %>

@@ -13,7 +13,7 @@ class AssignmentsController < ApplicationController
 
   def index
     @assignments = @event.assignments
-    @info = @assignments.empty? ? "#{@event.name} has no volunteers." : ''
+    @info = @assignments.empty? ? "#{@event.name} has no volunteers #{@task.id}." : ''
   end
   # GET /events/new
   def new
@@ -53,7 +53,7 @@ class AssignmentsController < ApplicationController
 
     def set_event_and_task
       @event = Event.find(params[:event_id])
-      @task = Task.find_by_id(params[:task_id]) || Task.get_none_task(@event)
+      @task = Task.get_none_task(@event)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
