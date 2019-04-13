@@ -24,9 +24,7 @@ class AssignmentsController < ApplicationController
   # POST /events.json
   def create
 
-
-
-    @assignment = assignment.new()
+    @assignment = Assignment.new(assignment_params)
 
     respond_to do |format|
       if @assignment.save

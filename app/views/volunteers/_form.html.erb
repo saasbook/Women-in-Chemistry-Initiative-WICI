@@ -11,16 +11,8 @@
       </ul>
     </div>
   <% end %>
-  <%= form.hidden_field :event_id, value: @event.id %>
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :assignment_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email, id: :assignment_email %>
-  </div>
+  <%= form.hidden_field :task_id, value: @task.id %>
+  <%= form.hidden_field :volunteer_id, value: @user.id %>
 
   <div class="actions">
     <%= form.submit "Submit" %>
