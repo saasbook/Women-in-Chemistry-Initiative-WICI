@@ -1,19 +1,18 @@
-<p id="notice"><%= @info %></p>
-<p id="notice"><%= notice %></p>
-
 <h1>Volunteer assignments for <%= @event.name %></h1>
 
 <table>
   <thead>
     <tr>
-      <th>Name</th>
+      <th>Firstname</th>
+      <th>Lastname</th>
     </tr>
   </thead>
 
   <tbody>
     <% @assignments.each do |assignment| %>
       <tr>
-        <td><%= assignment.volunteer.email %></td>
+        <td><%= assignment.volunteer.firstname %></td>
+        <td><%= assignment.volunteer.lastname %></td>
 
       </tr>
     <% end %>

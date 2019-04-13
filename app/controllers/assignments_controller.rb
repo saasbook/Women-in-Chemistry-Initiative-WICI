@@ -1,5 +1,6 @@
 class AssignmentsController < ApplicationController
-  before_action :set_event_and_task, only: [:index, :create, :new, :destroy]
+  before_action :set_event_and_task
+  before_action :set_assignment, only: [:destroy]
   before_action do
     if !current_admin.nil?
       authenticate_admin!
@@ -13,7 +14,7 @@ class AssignmentsController < ApplicationController
 
   def index
     @assignments = @event.assignments
-    @info = @assignments.empty? ? "#{@event.name} has no volunteers #{@task.id}." : ''
+    @info = @assignments.empty? ? "#{@event.name} has no volunteers." : ''
   end
   # GET /events/new
   def new
@@ -53,7 +54,11 @@ class AssignmentsController < ApplicationController
 
     def set_event_and_task
       @event = Event.find(params[:event_id])
-      @task = Task.get_none_task(@event)
+      @task = Task.find_by_id(params[:task_id]) || Task.get_none_task(@event)
+    end
+
+    def set_assignment
+      @assignment = Assignment.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

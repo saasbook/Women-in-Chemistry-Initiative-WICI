@@ -6,5 +6,10 @@ class Volunteer < ApplicationRecord
   has_many :assignments
   has_many :tasks, :through => :assignments
   has_many :events, :through => :tasks
+  before_destroy :destroy_assignments
+
+  def destroy_assignments
+    self.assignments.destroy_all
+  end
 
 end
