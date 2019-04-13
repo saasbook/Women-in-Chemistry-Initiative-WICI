@@ -1,0 +1,27 @@
+<p id="notice"><%= @info %></p>
+<p id="notice"><%= notice %></p>
+
+<h1>Volunteer assignments for <%= @event.name %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @assignments.each do |assignment| %>
+      <tr>
+        <td><%= assignment.name %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<br>
+<%= link_to 'Back', @event %>
