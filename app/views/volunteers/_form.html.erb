@@ -1,11 +1,11 @@
-<%= form_for @volunteer, url: {action: "create"}, html: {class: "volunteer_form"} do |form| %>
-  <% if @volunteer.errors.any? %>
+<%= form_for @assignment, url: {action: "create"}, html: {class: "assignment_form"} do |form| %>
+  <% if @assignment.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@volunteer.errors.count, "error") %> prohibited volunteer
+      <h2><%= pluralize(@assignment.errors.count, "error") %> prohibited assignment
       from being saved: </h2>
 
       <ul>
-      <% @volunteer.errors.full_messages.each do |message| %>
+      <% @assignment.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -14,12 +14,12 @@
   <%= form.hidden_field :event_id, value: @event.id %>
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name, id: :volunteer_name %>
+    <%= form.text_field :name, id: :assignment_name %>
   </div>
 
   <div class="field">
     <%= form.label :email %>
-    <%= form.text_field :email, id: :volunteer_email %>
+    <%= form.text_field :email, id: :assignment_email %>
   </div>
 
   <div class="actions">
