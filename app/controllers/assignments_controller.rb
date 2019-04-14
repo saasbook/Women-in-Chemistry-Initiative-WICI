@@ -21,7 +21,7 @@ class AssignmentsController < ApplicationController
   end
   # new_event_assignment
   def new
-    if !Assignment.new(task_id: @task.id, volunteer_id: @user.id).valid?
+    if Assignment.exists?(task_id: @task.id, volunteer_id: @user.id)
       respond_to do |format|
         format.html { redirect_to event_assignments_path(@event), notice: 'You are already a volunteer.' }
         format.json { render :index, status: :conflict, location: @assignment.event }
