@@ -36,5 +36,7 @@
 </p>
 
 <%= link_to 'RSVP for this event', new_event_guest_path(@event) %>
+<%= link_to 'Add Task', new_event_task_url(@event) %>
+<%= link_to 'Tasks', event_task_url(@event) %>
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
