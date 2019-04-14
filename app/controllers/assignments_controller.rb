@@ -3,17 +3,6 @@ class AssignmentsController < ApplicationController
   before_action :set_assignment, only: [:destroy]
   before_action :authenticate
 
-
-  def authenticate
-    if !current_admin.nil?
-      authenticate_admin!
-      @user = current_admin
-    else
-      authenticate_volunteer!
-      @user = current_volunteer
-    end
-  end
-
   # event_assignments
   def index
     @assignments = @event.assignments
@@ -81,5 +70,15 @@ class AssignmentsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def assignment_params
       params.require(:assignment).permit(:task_id, :volunteer_id)
+    end
+
+    def authenticate
+      if !current_admin.nil?
+        authenticate_admin!
+        @user = current_admin
+      else
+        authenticate_volunteer!
+        @user = current_volunteer
+      end
     end
 end
