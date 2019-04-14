@@ -18,8 +18,8 @@ describe AssignmentsController do
         expect(assigns(:assignment)).to be_a_new(Assignment)
       end
       it "does not allow duplicate assignments" do
-        post :create, params: { assignment: FactoryGirl.attributes_for(:create_assignment), event_id: test_event.id }
-        get :new, params: { event_id: test_event.id }
+        post :create, params: { assignment: FactoryGirl.attributes_for(:dupe_assignment), event_id: test_event.id }
+        get :new, params: { event_id: test_event.id, task_id: test_task.id}
         expect(assigns(:assignment)).not_to be_nil
         expect(assigns(:assignment)).not_to be_a_new(Assignment)
       end
@@ -30,8 +30,21 @@ describe AssignmentsController do
         expect { post :create, params: { assignment: FactoryGirl.attributes_for(:create_assignment), event_id: test_event.id }
         }.to change { Assignment.count }.by(1)
       end
-      it "adds an invalid assignment" do
+      it "adds a existing assignment" do
         expect { post :create, params: { assignment: FactoryGirl.attributes_for(:assignment), event_id: test_event.id }
+        }.to change { Assignment.count }.by(0)
+      end
+    end
+
+    describe "#destroy" do
+      it "can delete their own assignment" do
+        another = FactoryGirl.create(:create_assignment)
+        expect { delete :destroy, params: { id: another.id, event_id: test_event.id, task_id: test_task.id}
+        }.to change { Assignment.count }.by(-1)
+      end
+
+      it "cannot delete another assignment" do
+        expect { delete :destroy, params: { id: test_assignment.id, event_id: test_event.id, task_id: test_task.id}
         }.to change { Assignment.count }.by(0)
       end
     end

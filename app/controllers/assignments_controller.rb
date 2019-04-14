@@ -48,10 +48,17 @@ class AssignmentsController < ApplicationController
   # DELETE /events/1
   # DELETE /events/1.json
   def destroy
-    @assignment.destroy
-    respond_to do |format|
-      format.html { redirect_to event_assignments_path(@event), notice: 'Volunteer was successfully unassigned.' }
-      format.json { head :no_content }
+    if current_admin || @assignment.volunteer == @user
+      @assignment.destroy
+      respond_to do |format|
+        format.html { redirect_to event_assignments_path(@event), notice: 'Volunteer was successfully unassigned.' }
+        format.json { head :no_content }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to event_assignments_path(@event)}
+        format.json { render :index, status: :unauthorized, location: @assignment.event }
+      end
     end
   end
 
