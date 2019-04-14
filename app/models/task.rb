@@ -1,8 +1,7 @@
 class Task < ApplicationRecord
-  has_many :assignments
+  has_many :assignments, dependent: :destroy
   has_many :volunteers, :through => :assignments
   has_one :event
-  before_destroy :destroy_assignments
 
   # This allows volunteers to sign up for events without a specific task.
   # We may decide to remove this later, as we can stub tasks once they are done.
@@ -15,7 +14,4 @@ class Task < ApplicationRecord
     task
   end
 
-  def destroy_assignments
-    self.assignments.destroy_all
-  end
 end

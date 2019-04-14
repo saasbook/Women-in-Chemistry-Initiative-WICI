@@ -1,7 +1,10 @@
 class AssignmentsController < ApplicationController
   before_action :set_event_and_task
   before_action :set_assignment, only: [:destroy]
-  before_action do
+  before_action :authenticate
+
+
+  def authenticate
     if !current_admin.nil?
       authenticate_admin!
       @user = current_admin

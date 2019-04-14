@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190413044706) do
+ActiveRecord::Schema.define(version: 20190414202908) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 20190413044706) do
     t.integer "volunteer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["task_id"], name: "index_assignments_on_task_id"
+    t.index ["volunteer_id"], name: "index_assignments_on_volunteer_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -57,6 +59,7 @@ ActiveRecord::Schema.define(version: 20190413044706) do
     t.integer "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_tasks_on_event_id"
   end
 
   create_table "volunteers", force: :cascade do |t|
@@ -67,7 +70,6 @@ ActiveRecord::Schema.define(version: 20190413044706) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name"
     t.string "firstname"
     t.string "lastname"
     t.index ["email"], name: "index_volunteers_on_email", unique: true
