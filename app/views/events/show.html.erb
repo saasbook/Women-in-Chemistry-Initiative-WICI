@@ -36,6 +36,6 @@
 </p>
 
 <%= link_to 'RSVP for this event', new_event_guest_path(@event) %>
-<%= link_to 'Volunteers', event_assignments_path(@event) %>
+<%= link_to 'Volunteers', event_assignments_path(@event) if current_volunteer || current_admin %>
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
