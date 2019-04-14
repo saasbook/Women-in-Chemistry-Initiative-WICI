@@ -24,3 +24,5 @@
 a:hover {
 	background-color: transparent;
 }
+ input, textarea { display: block; }
+
