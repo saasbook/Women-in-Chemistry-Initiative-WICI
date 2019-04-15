@@ -24,6 +24,7 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
+    @task.event = @event
     if @task.save
       flash[:notice] = 'You have successfully added a new task!'
       redirect_to event_tasks_url(@event)
@@ -53,7 +54,7 @@ class TasksController < ApplicationController
 
   private
     def task_params
-      params.require(:task).permit(:name, :description, :deadline, :event_id)
+      params.require(:task).permit(:name, :description, :deadline)
     end
     def set_task
       @task = Task.find(params[:id])
