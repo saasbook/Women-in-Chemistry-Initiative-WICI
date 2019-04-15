@@ -1,7 +1,8 @@
 class Task < ApplicationRecord
-  belongs_to :event
   has_many :assignments, dependent: :destroy
   has_many :volunteers, :through => :assignments
+  has_one :event
+
   validates :name, presence: true
 
   def self.all_tasks(id)

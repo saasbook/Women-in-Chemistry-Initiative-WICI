@@ -18,7 +18,7 @@
         <%= volunteer.email %>
         <% end %>
       </td>
-      <td><%= link_to 'Edit', edit_event_task_path(@task, :event_id => @task.event_id) %></td>
+      <td><%= link_to 'Edit', edit_event_task_path(@task, :event_id => params[:event_id]) %></td>
       <td><%= link_to 'Destroy', event_task_url, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
   </tbody>

@@ -16,7 +16,7 @@
         <td><%= task.name %></td>
         <td><%= task.description %></td>
         <td><%= task.deadline %></td>
-        <td><%= link_to 'Show', event_task_path(task, :id => task.id, :event_id => task.event_id) %></td>
+        <td><%= link_to 'Show', event_task_path(task, :id => task.id, :event_id => params[:event_id]) %></td>
       </tr>
     <% end %>
   </tbody>
