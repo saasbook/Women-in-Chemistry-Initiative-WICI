@@ -28,8 +28,8 @@
               <% end %>
           <%= link_to 'RSVP', new_event_guest_path(event), id: "rsvp_#{event.id}" %>
           <%= link_to 'Show', event, id: "event_#{event.id}" %>
-          <%= link_to 'Edit', edit_event_path(event) %>
-          <%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to 'Edit', edit_event_path(event) if admin_signed_in? %>
+          <%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } if admin_signed_in? %>
           </td>
         </tr>
       <% end %>
@@ -38,5 +38,5 @@
 
   <br>
 
-  <%= link_to 'New Event', new_event_path, class: "btn btn-primary text-white"%> <%= link_to 'Past Events', past_events_path, class: "btn btn-primary text-white" %> <%= link_to 'Back', root_path, class: "btn btn-primary text-white" %>
+  <%= link_to 'New Event', new_event_path, class: "btn btn-primary text-white" if admin_signed_in? %> <%= link_to 'Past Events', past_events_path, class: "btn btn-primary text-white" %> <%= link_to 'Back', root_path, class: "btn btn-primary text-white" %>
 </div>

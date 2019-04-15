@@ -73,7 +73,7 @@ class AssignmentsController < ApplicationController
     end
 
     def authenticate
-      if !current_admin.nil?
+      if admin_signed_in?
         authenticate_admin!
         @user = current_admin
       else
