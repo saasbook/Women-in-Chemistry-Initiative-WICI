@@ -1,11 +1,11 @@
 FactoryGirl.define do
   factory :task do
-    title "Work"
+    name "Work"
     id 1
   end
 
   factory :create_task, parent: :task do
-    title "Other"
+    name "Other"
     id 2
   end
 end
