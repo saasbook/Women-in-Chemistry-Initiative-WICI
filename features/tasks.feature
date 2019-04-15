@@ -13,18 +13,23 @@ Feature: Add and view tasks
 
   Scenario: I add a task:
     When I follow "Add Task"
-    And I fill out the form with the following attributes:
-      | name    | Test           |
+    When I fill out the form with the following attributes:
+      | name   | Test           |
       | description     | a chore     |
     Then I should see "You have successfully added a new task!"
-    When I follow "Tasks"
     Then I should see "Test"
     When I follow "Show"
     When I follow "Edit"
     And I fill out the form with the following attributes:
       | name    | New           |
-      | description     | a chore          |
+      | description     | a chore  |
     Then I should see "a chore"
     When I follow "Show"
     And I follow "Destroy"
     Then I should not see "a chore"
+
+  Scenario: Incorrectly add a task:
+  When I follow "Add Task"
+  And I fill out the form with the following attributes:
+    | description     | a chore  |
+  Then I should see "Your Task creation failed."

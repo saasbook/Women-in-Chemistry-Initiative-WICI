@@ -7,7 +7,7 @@ class TasksController < ApplicationController
   end
 
   def index
-    @task = Task.where(:event_id => @event.id)
+    @task = Task.all_tasks(@event.id)
     if !@task
       redirect_to new_event_task_url
     end
@@ -24,14 +24,13 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
-    puts task_params
     @task.event = @event
 
     if @task.save
       flash[:notice] = 'You have successfully added a new task!'
-      redirect_to event_path(@event)
+      redirect_to event_tasks_url(@event)
     else
-      flash[:alert] = 'Your Task edit failed.'
+      flash[:alert] = 'Your Task creation failed.'
       render "edit"
     end
   end
@@ -41,7 +40,7 @@ class TasksController < ApplicationController
       flash[:notice] = 'You have successfully edited the task!'
       redirect_to event_tasks_url(@event)
     else
-      flash[:alert] = 'Your Task creation failed.'
+      flash[:alert] = 'Your Task edit failed.'
       render "edit"
     end
   end
@@ -49,7 +48,7 @@ class TasksController < ApplicationController
   def destroy
     @task.destroy
     respond_to do |format|
-      format.html { redirect_to events_url, notice: 'Task was successfully removed.' }
+      format.html { redirect_to event_tasks_url(@event), notice: 'Task was successfully removed.' }
       format.json { head :no_content }
     end
   end
@@ -65,4 +64,5 @@ class TasksController < ApplicationController
     def set_event
       @event = Event.find(params[:event_id])
     end
+
 end

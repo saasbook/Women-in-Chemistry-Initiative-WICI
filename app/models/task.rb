@@ -4,8 +4,8 @@ class Task < ApplicationRecord
   has_many :volunteers, :through => :assignments
   validates :name, presence: true
 
-  def self.all_tasks(event)
-    Task.where(:event_id => event).order(deadline: :desc)
+  def self.all_tasks(id)
+    Task.where(:event_id => id).order(deadline: :desc)
   end
 
 
