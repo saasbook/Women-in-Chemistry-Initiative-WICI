@@ -12,16 +12,19 @@ Feature: Add and view tasks
     And I follow "Show"
 
   Scenario: I add a task:
-    When I follow "Add_Task"
+    When I follow "Add Task"
     And I fill out the form with the following attributes:
       | name    | Test           |
-      | description     | a chore          |
-      | deadline        | 22-Apr-3019 |
+      | description     | a chore     |
     Then I should see "You have successfully added a new task!"
     When I follow "Tasks"
     Then I should see "Test"
+    When I follow "Show"
     When I follow "Edit"
     And I fill out the form with the following attributes:
       | name    | New           |
       | description     | a chore          |
-      | deadline        | 22-Apr-3019 |
+    Then I should see "a chore"
+    When I follow "Show"
+    And I follow "Destroy"
+    Then I should not see "a chore"

@@ -1,15 +1,19 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: [:destroy]
+  before_action :set_task, only: [:destroy, :update, :show, :edit]
   before_action :set_event
 
   def new
     @task = Task.new
   end
 
-  def show
-    puts @event
+  def index
     @task = Task.where(:event_id => @event.id)
-    puts @task
+    if !@task
+      redirect_to new_event_task_url
+    end
+  end
+
+  def show
     if !@task
       redirect_to new_event_task_url
     end
@@ -20,15 +24,25 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
+    puts task_params
     @task.event = @event
-
 
     if @task.save
       flash[:notice] = 'You have successfully added a new task!'
       redirect_to event_path(@event)
     else
-      flash[:alert] = 'Your registration failed, please make sure your information is correct.'
-      render "new"
+      flash[:alert] = 'Your Task edit failed.'
+      render "edit"
+    end
+  end
+
+  def update
+    if @task.update(task_params)
+      flash[:notice] = 'You have successfully edited the task!'
+      redirect_to event_tasks_url(@event)
+    else
+      flash[:alert] = 'Your Task creation failed.'
+      render "edit"
     end
   end
 

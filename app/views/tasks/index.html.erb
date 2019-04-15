@@ -1,0 +1,30 @@
+<h1>All Tasks for <%= @event.name %></h1>
+
+<table>
+  Click event to add your name to the guest list.
+  <thead>
+    <tr>
+      <th>Task</th>
+      <th>Description</th>
+      <th>Deadline</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @task.each do |task| %>
+      <tr>
+        <td><%= task.name %></td>
+        <td><%= task.description %></td>
+        <td><%= task.deadline %></td>
+        <td><%= link_to 'Show', event_task_path(task, :id => task.id, :event_id => task.event_id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Add Task', new_event_task_url(@event) %>
+<%= link_to 'Event', event_url(@event) %><br>
+<%= link_to 'All Events', events_url %><br>
