@@ -27,6 +27,14 @@
   <strong>Capacity:</strong>
   <%= @event.capacity %>
 </p>
+<% if current_admin == @user  %>
+<p>
+  <strong>Demographics:</strong>
+  <%= pie_chart @event.guests.group(:occupation).count, colors: ["#00e5ff", "#c33c54", "#070268", "#ffd2a0"], donut: true, title: "Occupation Statistics", messages: {empty: "No data"} %>
+  <%= pie_chart @event.guests.group(:gender).count, colors: ["#00e5ff", "#c33c54", "#070268"], donut: true, title: "Gender Statistics", messages: {empty: "No data"} %>
+  <%= pie_chart @event.guests.group(:department).count, colors: ["#00e5ff", "#c33c54", "#070268"], donut: true, title: "Department Statistics", messages: {empty: "No data"} %>
+</p>
+<%end %>
 
 <p>
   <strong>Guests:</strong><br>
