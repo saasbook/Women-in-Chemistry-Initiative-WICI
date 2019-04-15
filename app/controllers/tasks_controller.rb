@@ -7,7 +7,7 @@ class TasksController < ApplicationController
   end
 
   def index
-    @task = Task.all_tasks(@event.id)
+    @task = @event.tasks
     if !@task
       redirect_to new_event_task_url
     end
@@ -23,9 +23,6 @@ class TasksController < ApplicationController
   end
 
   def create
-    some = params["task"]
-    some["event_id"] = @event.id
-    params["task"] = some
     @task = Task.new(task_params)
     if @task.save
       flash[:notice] = 'You have successfully added a new task!'
@@ -37,9 +34,6 @@ class TasksController < ApplicationController
   end
 
   def update
-    some = params["task"]
-    some["event_id"] = @event.id
-    params["task"] = some
     if @task.update(task_params)
       flash[:notice] = 'You have successfully edited the task!'
       redirect_to event_tasks_url(@event)
