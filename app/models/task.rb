@@ -5,10 +5,6 @@ class Task < ApplicationRecord
 
   validates :name, presence: true
 
-  def self.all_tasks(id)
-    Task.where(:event_id => id).order(deadline: :desc)
-  end
-
 
   # This allows volunteers to sign up for events without a specific task.
   # We may decide to remove this later, as we can stub tasks once they are done.

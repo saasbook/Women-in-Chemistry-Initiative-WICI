@@ -8,15 +8,9 @@ class TasksController < ApplicationController
 
   def index
     @task = @event.tasks
-    if !@task
-      redirect_to new_event_task_url
-    end
   end
 
   def show
-    if !@task
-      redirect_to new_event_task_url
-    end
   end
 
   def edit

@@ -28,6 +28,20 @@ Feature: Add and view tasks
     And I follow "Show"
     Then I should see "new liquid"
 
+  Scenario: Edit as user:
+    Given I am on the first task edit page
+    And I fill out the form with the following attributes:
+      | name    | whatever  |
+      | description     | a chore  |
+    Then I should see "whatever"
+
+  Scenario: Add task as user:
+    Given I am on the add task page
+    And I fill out the form with the following attributes:
+      | name    | whatever  |
+      | description     | a chore  |
+    Then I should see "You have successfully added a new task!"
+
   Scenario: I can delete a task
     When I follow "Show"
     And I follow "Destroy"
