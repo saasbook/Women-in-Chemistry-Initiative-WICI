@@ -7,5 +7,9 @@
   First Name: <%= form.text_field :firstname, id: :firstname %><br>
   Last Name: <%= form.text_field :lastname, id: :lastname %><br>
   Email: <%= form.text_field :email, id: :email %><br>
+  Optional <br>
+  Occupation: <%= form.select :occupation, [['Undergrad','undergrad'],['Graduate','graduate'], ['Postdoc','postdoc'], ['Faculty Staff','faculty staff'], ['Other','other']], :selected => ['Other','other'] %>
+  Gender: <%= form.select :gender, [['Male','male'],['Female','female'],['Other','other'],['Prefer not to say','prefer not to say']], :selected => ['Other','other'] %>
+  Department: <%= form.select :department, [['Chemistry', 'chemistry'], ['Chemical Engineering', 'chemical Engineering'], ['Stem non-chemistry', 'stem non-chemistry'], ['Other','other']], :selected => ['Other','other'] %><br>
   <%= form.submit "Submit", id: :submit  %>
 <% end %>

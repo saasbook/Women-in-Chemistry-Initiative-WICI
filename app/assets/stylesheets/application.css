@@ -13,4 +13,16 @@
  *= require_tree .
  *= require_self
  */
+
+.container-fluid{
+	padding-left: 5%;
+	padding-top: 2.5%;
+}
+.nav-link:hover {
+	color: inherit;
+}
+a:hover {
+	background-color: transparent;
+}
  input, textarea { display: block; }
+

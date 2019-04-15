@@ -1,0 +1,29 @@
+<h1>Volunteer assignments for <%= @event.name %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @assignments.each do |assignment| %>
+      <tr>
+        <td><%= assignment.volunteer.firstname %></td>
+        <td><%= assignment.volunteer.lastname %></td>
+        <td><%= assignment.volunteer.email %></td>
+        <td><%= link_to 'Unassign', event_assignment_path(id: assignment.id),:action => 'destroy', method: :delete, data: { confirm: 'Are you sure?' } if current_admin || assignment.volunteer == @user  %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<br>
+<%= link_to 'Back', @event %>
+<%= link_to 'Sign up for this event', new_event_assignment_path %>
