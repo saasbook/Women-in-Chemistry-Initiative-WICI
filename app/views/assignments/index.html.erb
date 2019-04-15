@@ -1,29 +1,37 @@
-<h1>Volunteer assignments for <%= @event.name %></h1>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-6">
+      <h1>Volunteer assignments for <%= @event.name %></h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Firstname</th>
-      <th>Lastname</th>
-      <th>Email</th>
-    </tr>
-  </thead>
+      <table class="table table-borderless table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Firstname</th>
+            <th scope="col">Lastname</th>
+            <th scope="col">Email</th>
+          </tr>
+        </thead>
 
-  <tbody>
-    <% @assignments.each do |assignment| %>
-      <tr>
-        <td><%= assignment.volunteer.firstname %></td>
-        <td><%= assignment.volunteer.lastname %></td>
-        <td><%= assignment.volunteer.email %></td>
-        <td><%= link_to 'Unassign', event_assignment_path(id: assignment.id),:action => 'destroy', method: :delete, data: { confirm: 'Are you sure?' } if current_admin || assignment.volunteer == @user  %></td>
+        <tbody>
+          <% @assignments.each do |assignment| %>
+            <tr>
+              <td><%= assignment.volunteer.firstname %></td>
+              <td><%= assignment.volunteer.lastname %></td>
+              <td>
+                <%= assignment.volunteer.email %>
+                &nbsp; <%= link_to 'Unassign', event_assignment_path(id: assignment.id),:action => 'destroy', method: :delete, data: { confirm: 'Are you sure?' } if current_admin || assignment.volunteer == @user  %>
+              </td>
 
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
 
-<br>
+      <br>
 
-<br>
-<%= link_to 'Back', @event %>
-<%= link_to 'Sign up for this event', new_event_assignment_path %>
+      <br>
+      <%= link_to 'Back', @event, class: "btn btn-primary text-white" %>
+      <%= link_to 'Sign up for this event', new_event_assignment_path, class: "btn btn-primary text-white" %>
+    </div>
+  </div>
+</div>
