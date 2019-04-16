@@ -7,17 +7,13 @@ describe RemindersMailer  do
   describe "remind" do
     context "headers" do
       it "renders the subject" do
-
         mail = described_class.remind_guest(test_guest, test_event)
-
         expect(mail.subject).to eq ("WICI Event Reminder")
       end
-
       it "sends to the right email" do
         mail = described_class.remind_guest(test_guest, test_event)
         expect(mail.to).to eq [test_guest.email]
       end
-
       it "renders the from email" do
         mail = described_class.remind_guest(test_guest, test_event)
         expect(mail.from).to eq ["wiciberkeley@gmail.com"]

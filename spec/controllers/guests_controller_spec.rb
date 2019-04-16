@@ -1,3 +1,4 @@
+require "rails_helper"
 describe GuestsController do
   let!(:test_event) { FactoryGirl.create(:event, id: 1) }
   let!(:test_guest) { FactoryGirl.create(:guest, event_id: test_event.id)}
@@ -17,7 +18,12 @@ describe GuestsController do
     it "adds a guest" do
       expect { post :create, params: { guest: FactoryGirl.attributes_for(:guest), event_id: test_event.id }
       }.to change { Guest.count }.by(1)
-      expect(RemindersMailer).to receive(:deliver_later).once
+    end
+    it 'job is created' do
+        ActiveJob::Base.queue_adapter = :test
+        expect {
+            RemindersMailer.remind_guest(test_guest, test_event).deliver_later
+        }.to have_enqueued_job.on_queue('mailers')
     end
     context "invalid attributes" do
       it "re-renders new template" do
