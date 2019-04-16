@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20190414225122) do
   create_table "events", force: :cascade do |t|
     t.string "name"
     t.text "description"
+    t.text "speaker"
     t.datetime "date"
     t.string "location"
     t.string "tickets"
@@ -58,7 +59,9 @@ ActiveRecord::Schema.define(version: 20190414225122) do
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.string "title"
+    t.string "name"
+    t.string "description"
+    t.datetime "deadline"
     t.integer "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
