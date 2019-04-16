@@ -27,15 +27,15 @@ Feature: Add and view tasks
     Then I should see "new liquid"
 
   Scenario: Edit as user:
-    Given I am on the first task edit page
-    And I fill out the form with the following attributes:
+    Given I am on the edit page of the first task of the first event
+    And I submit the form with the following attributes:
       | name    | whatever  |
       | description     | a chore  |
     Then I should see "whatever"
 
   Scenario: Add task as user:
     Given I am on the add task page for the first event
-    And I fill out the form with the following attributes:
+    And I submit the form with the following attributes:
       | name    | whatever  |
       | description     | a chore  |
     Then I should see "You have successfully added a new task!"
@@ -48,6 +48,6 @@ Feature: Add and view tasks
 
   Scenario: Incorrectly add a task:
   When I follow "Add Task"
-  And I fill out the form with the following attributes:
+  And I submit the form with the following attributes:
     | description     | a chore  |
   Then I should see "Your Task creation failed."

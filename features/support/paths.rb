@@ -18,9 +18,11 @@ module NavigationHelpers
     when /^the past events page$/ then '/past-events'
     when /^the donate page$/ then '/donations'
     when /^the new donation page$/ then '/donations/new'
-    when /^the first task edit page$/ then '/events/1/tasks/1/edit'
+    when /^the edit page of the first task of the first event$/ then '/events/1/tasks/1/edit'
     when /^the add task page for the first event$/ then '/events/1/tasks/new'
     when /^the tasks page for the first event$/ then '/events/1/tasks'
+    when /^the first event rsvp page$/ then '/events/1/guests/new'
+    when /^the first event page$/ then '/events/1'
 
       # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
