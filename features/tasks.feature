@@ -11,9 +11,7 @@ Feature: Add and view tasks
     And for Pouring liquid the following tasks exist:
       | name              | description                 | deadline        |
       | get liquid   | Look, it changes colors     | 28-Apr-3019 |
-    And I am on the events page
-    And I follow "Show"
-    And I follow "Tasks"
+    And I am on the tasks page
 
   Scenario: Correctly stores tasks
     Then 1 tasks should exist

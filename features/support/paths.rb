@@ -20,6 +20,7 @@ module NavigationHelpers
     when /^the new donation page$/ then '/donations/new'
     when /^the first task edit page$/ then '/events/1/tasks/1/edit'
     when /^the add task page$/ then '/events/1/tasks/new'
+    when /^the tasks page$/ then '/events/1/tasks'
 
       # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

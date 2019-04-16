@@ -1,6 +1,5 @@
 <%= form_with(model: task, url: [event, task], local: true) do |form| %>
 
-
   Event: <%= event.name %><br>
   Title: <%= form.text_field :name, id: :name %><br>
   Description: <%= form.text_field :description, id: :description %><br>

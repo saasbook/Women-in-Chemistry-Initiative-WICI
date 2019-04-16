@@ -10,12 +10,6 @@ class TasksController < ApplicationController
     @task = @event.tasks
   end
 
-  def show
-  end
-
-  def edit
-  end
-
   def create
     @task = Task.new(task_params)
     @task.event = @event
