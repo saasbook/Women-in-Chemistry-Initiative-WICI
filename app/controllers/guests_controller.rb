@@ -13,6 +13,7 @@ class GuestsController < ApplicationController
 
     if @guest.save
       flash[:notice] = 'You have successfully registered!'
+      RemindersMailer.remind_guest(@guest, @event).deliver_later(wait_until: @event.date - 1)
       redirect_to event_path(@event)
     else
       flash[:alert] = 'Your registration failed, please make sure your information is correct.'
