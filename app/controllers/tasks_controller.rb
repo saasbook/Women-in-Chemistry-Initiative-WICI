@@ -17,7 +17,7 @@ class TasksController < ApplicationController
       flash[:notice] = 'You have successfully added a new task!'
       redirect_to event_tasks_url(@event)
     else
-      flash[:alert] = 'Your Task creation failed.'
+      flash[:alert] = 'Your task creation failed.'
       render "edit"
     end
   end
@@ -27,7 +27,7 @@ class TasksController < ApplicationController
       flash[:notice] = 'You have successfully edited the task!'
       redirect_to event_tasks_url(@event)
     else
-      flash[:alert] = 'Your Task edit failed.'
+      flash[:alert] = 'Your task edit failed.'
       render "edit"
     end
   end

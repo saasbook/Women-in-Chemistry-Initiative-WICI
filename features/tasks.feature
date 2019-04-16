@@ -33,6 +33,13 @@ Feature: Add and view tasks
       | description     | a chore  |
     Then I should see "whatever"
 
+  Scenario: Incorrectly edit a task:
+    Given I am on the edit page of the first task of the first event
+    And I submit the form with the following attributes:
+      | name    |  |
+      | description        |           |
+    Then I should see "Your task edit failed."
+
   Scenario: Add task as user:
     Given I am on the add task page for the first event
     And I submit the form with the following attributes:
@@ -50,4 +57,4 @@ Feature: Add and view tasks
   When I follow "Add Task"
   And I submit the form with the following attributes:
     | description     | a chore  |
-  Then I should see "Your Task creation failed."
+  Then I should see "Your task creation failed."
