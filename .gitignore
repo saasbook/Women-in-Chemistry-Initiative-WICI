@@ -29,3 +29,6 @@
 # Ignore coverage
 coverage
 .DS_Store
+
+# Ignore redis cache
+dump.rdb
