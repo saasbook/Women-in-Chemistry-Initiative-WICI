@@ -35,6 +35,17 @@
         <li>
           <%= link_to "Contact", new_message_path, id: "new_message", class: "nav-item nav-link" %>
         </li>
+        <% if volunteer_signed_in? %>
+        <li>
+         <%= link_to "Sign Out", destroy_volunteer_session_path, :method => 'delete', id: "Sign Out", class: "nav-item nav-link"  %>
+        </li>
+        <% end %>
+        <% if admin_signed_in? %>
+        <li>
+         <%= link_to "Admin Sign Out", destroy_admin_session_path, :method => 'delete', id: "Sign Out", class: "nav-item nav-link"  %>
+        </li>
+        <% end %>
+
       </ul>
     </div>
   </nav>

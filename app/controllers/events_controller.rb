@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-
+  # Uncomment the below to integrate admin auth
+  # before_action :authenticate_admin!, only: [:new, :create, :edit, :update, :destroy]
   # GET /events
   # GET /events.json
   def index
