@@ -38,7 +38,9 @@ gem "chartkick"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem 'sidekiq'
-
+gem 'redis-rails'
+gem 'redis'
+gem 'hiredis'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

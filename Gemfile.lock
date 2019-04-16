@@ -169,6 +169,7 @@ GEM
       guard-compat (~> 1.0)
     hashie (3.6.0)
     hirb (0.7.3)
+    hiredis (0.6.3)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     i18n (1.6.0)
@@ -315,6 +316,22 @@ GEM
     rb-readline (0.5.5)
     redcard (1.1.0)
     redis (4.1.0)
+    redis-actionpack (5.0.2)
+      actionpack (>= 4.0, < 6)
+      redis-rack (>= 1, < 3)
+      redis-store (>= 1.1.0, < 2)
+    redis-activesupport (5.0.7)
+      activesupport (>= 3, < 6)
+      redis-store (>= 1.3, < 2)
+    redis-rack (2.0.5)
+      rack (>= 1.5, < 3)
+      redis-store (>= 1.2, < 2)
+    redis-rails (5.0.2)
+      redis-actionpack (>= 5.0, < 6)
+      redis-activesupport (>= 5.0, < 6)
+      redis-store (>= 1.2, < 2)
+    redis-store (1.6.0)
+      redis (>= 2.2, < 5)
     reek (2.2.1)
       parser (~> 2.2)
       rainbow (~> 2.0)
@@ -448,6 +465,7 @@ DEPENDENCIES
   guard-cucumber
   guard-rspec
   guard-shell
+  hiredis
   jasmine-rails
   jbuilder (~> 2.5)
   launchy
@@ -462,6 +480,8 @@ DEPENDENCIES
   rails-controller-testing
   rails_12factor
   rb-readline
+  redis
+  redis-rails
   rspec-rails
   sass-rails (~> 5.0)
   sidekiq

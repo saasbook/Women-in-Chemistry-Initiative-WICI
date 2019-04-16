@@ -4,6 +4,7 @@ describe GuestsController do
   let!(:full_event) { FactoryGirl.create(:full_event, id: 2)}
 
 
+
   describe "#new" do
     it "creates a new guest called @guest" do
       get :new, params: { event_id: test_event.id }
@@ -16,6 +17,7 @@ describe GuestsController do
     it "adds a guest" do
       expect { post :create, params: { guest: FactoryGirl.attributes_for(:guest), event_id: test_event.id }
       }.to change { Guest.count }.by(1)
+      expect(RemindersMailer).to receive(:deliver_later).once
     end
     context "invalid attributes" do
       it "re-renders new template" do
