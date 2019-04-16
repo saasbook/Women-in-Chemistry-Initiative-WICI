@@ -1,5 +1,7 @@
-<h1>Are you sure you want to sign up for <%= @event.name %>?</h1>
+<div class="container-fluid">
+  <h1>Are you sure you want to sign up for <%= @event.name %>?</h1>
+  <br>
+  <%= render 'form', volunteer: @volunteer %>
 
-<%= render 'form', volunteer: @volunteer %>
-
-<%= link_to 'Back', event_assignments_path(@event) %>
+  <%= link_to 'Back', event_assignments_path(@event), class: "btn btn-secondary text-white" %>
+</div>
