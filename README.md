@@ -4,3 +4,22 @@
 [![Build Status](https://travis-ci.org/walkerspence/Women-in-Chemistry-Initiative-WICI.svg?branch=master)](https://travis-ci.org/walkerspence/Women-in-Chemistry-Initiative-WICI)
 
 http://women-in-chemistry-initiative.herokuapp.com
+
+To run this project locally:
+  Decrypt `application.yml` if you have access to the key, or add your own API keys to `secrets.yml`. Then run
+  ```bash
+  bundle install --without production
+  ```
+  Once you have installed the gems, run:
+  ```bash
+  brew install redis 
+  ```
+  Once Redis has been installed, run:
+  ```bash
+  redis-server
+  ```
+  Finally, run 
+  ```bash
+  rails s
+  ```
+  and open http://localhost:3000/ in your browser.
