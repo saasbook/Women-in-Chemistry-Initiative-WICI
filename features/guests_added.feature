@@ -13,9 +13,8 @@ Feature: See if you are attending an event
     And I am on the events page
 
   Scenario: I register for an event with no demographics:
-    When I follow "rsvp_1"
-    Then I should see "Gender"
-    And I fill out the form with the following attributes:
+    Given I am on the first event rsvp page
+    And I submit the form with the following attributes:
       | firstname    | Test           |
       | lastname     | Guest          |
       | email        | test@guest.com |
@@ -23,31 +22,30 @@ Feature: See if you are attending an event
     And I should see "Test Guest"
 
   Scenario: Delete a guest
-    When I follow "rsvp_1"
-    And I fill out the form with the following attributes:
+    Given I am on the first event rsvp page
+    And I submit the form with the following attributes:
       | firstname    | Test           |
       | lastname     | Guest          |
       | email        | test@guest.com |
-    And I am on the events page
-    When I follow "event_1"
+    And I am on the first event page
     And I follow "Delete"
     Then I should see "Guest was successfully removed."
 
   Scenario: I register for an event with demographics:
     When I follow "rsvp_1"
-    And I select "Undergrad" from "guest[occupation]"
-    And I select "male" from "guest[gender]"
-    And I select "chemistry" from "guest[department]"
-    And I fill out the form with the following attributes:
-      | firstname    | Test           |
-      | lastname     | Guest          |
-      | email        | test@guest.com |
+    And I submit the form with the following attributes:
+      | firstname         | Test           |
+      | lastname          | Guest          |
+      | email             | test@guest.com |
+      | guest[occupation] | Undergrad      | 
+      | guest[gender]     | male           |
+      | guest[department] | chemistry      |
     Then I should see "You have successfully registered!"
     And I should see "Test Guest"
 
   Scenario: Capacity is reached
     When I follow "rsvp_2"
-    And I fill out the form with the following attributes:
+    And I submit the form with the following attributes:
       | firstname    | Test           |
       | lastname     | Guest          |
       | email        | test@guest.com |
@@ -55,7 +53,7 @@ Feature: See if you are attending an event
 
   Scenario: Bad email
     When I follow "rsvp_1"
-    And I fill out the form with the following attributes:
+    And I submit the form with the following attributes:
       | firstname    | Test           |
       | lastname     | Guest          |
       | email        | test           |

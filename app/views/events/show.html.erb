@@ -44,6 +44,10 @@
 </p>
 
 <%= link_to 'RSVP for this event', new_event_guest_path(@event) %>
+
+<%= link_to 'Add Task', new_event_task_url(@event) if admin_signed_in? %>
+<%= link_to 'Tasks', event_tasks_url(@event) if admin_signed_in? %>
 <%= link_to 'Volunteers', event_assignments_path(@event) if admin_signed_in? || volunteer_signed_in? %>
+
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
