@@ -11,7 +11,7 @@ Feature: Add and view tasks
     And for Pouring liquid the following tasks exist:
       | name              | description                 | deadline        |
       | get liquid   | Look, it changes colors     | 28-Apr-3019 |
-    And I am on the tasks page
+    And I am on the tasks page for the first event
 
   Scenario: Correctly stores tasks
     Then 1 tasks should exist
@@ -34,7 +34,7 @@ Feature: Add and view tasks
     Then I should see "whatever"
 
   Scenario: Add task as user:
-    Given I am on the add task page
+    Given I am on the add task page for the first event
     And I fill out the form with the following attributes:
       | name    | whatever  |
       | description     | a chore  |
