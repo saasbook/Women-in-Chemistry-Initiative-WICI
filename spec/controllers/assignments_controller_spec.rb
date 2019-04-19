@@ -13,12 +13,12 @@ describe AssignmentsController do
 
     describe "#new" do
       it "creates a new assignment called @assignment" do
-        get :new, params: { event_id: test_event.id }
+        get :new, params: { event_id: test_event.id, task_id: test_task.id }
         expect(assigns(:assignment)).not_to be_nil
         expect(assigns(:assignment)).to be_a_new(Assignment)
       end
       it "does not allow duplicate assignments" do
-        post :create, params: { assignment: FactoryGirl.attributes_for(:dupe_assignment), event_id: test_event.id }
+        post :create, params: { assignment: FactoryGirl.attributes_for(:dupe_assignment), event_id: test_event.id, task_id: test_task.id }
         get :new, params: { event_id: test_event.id, task_id: test_task.id}
         expect(assigns(:assignment)).not_to be_nil
         expect(assigns(:assignment)).not_to be_a_new(Assignment)
@@ -27,11 +27,11 @@ describe AssignmentsController do
 
     describe "#create" do
       it "adds an assignment" do
-        expect { post :create, params: { assignment: FactoryGirl.attributes_for(:create_assignment), event_id: test_event.id }
+        expect { post :create, params: { assignment: FactoryGirl.attributes_for(:create_assignment), event_id: test_event.id, task_id: test_task.id }
         }.to change { Assignment.count }.by(1)
       end
       it "adds a existing assignment" do
-        expect { post :create, params: { assignment: FactoryGirl.attributes_for(:assignment), event_id: test_event.id }
+        expect { post :create, params: { assignment: FactoryGirl.attributes_for(:assignment), event_id: test_event.id, task_id: test_task.id }
         }.to change { Assignment.count }.by(0)
       end
     end
@@ -55,7 +55,7 @@ describe AssignmentsController do
     login_admin
     describe "#index" do
       it "returns http sucess" do
-        get :index, params: {event_id: test_event.id}
+        get :index, params: {event_id: test_event.id, task_id: test_task.id}
         expect(response).to have_http_status(:success)
       end
     end

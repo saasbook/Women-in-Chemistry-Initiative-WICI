@@ -4,6 +4,7 @@ class Task < ApplicationRecord
   belongs_to :event
 
   validates :name, presence: true
+  validates_uniqueness_of :name, :scope => :event_id
 
 
   # This allows volunteers to sign up for events without a specific task.

@@ -2,17 +2,19 @@ class AssignmentsController < ApplicationController
   before_action :set_event_and_task
   before_action :set_assignment, only: [:destroy]
   before_action :authenticate
+  before_action :check_assignment
 
   # event_assignments
   def index
     @assignments = @event.assignments
     @info = @assignments.empty? ? "#{@event.name} has no volunteers." : ''
+    render "assignments/_index"
   end
   # new_event_assignment
   def new
-    if Assignment.exists?(task_id: @task.id, volunteer_id: @user.id)
+    if @assignment_exists
       respond_to do |format|
-        format.html { redirect_to event_assignments_path(@event), notice: 'You are already a volunteer.' }
+        format.html { redirect_to event_task_path(@event, @task), notice: 'You are already a volunteer.' }
         format.json { render :index, status: :conflict, location: @assignment.event }
       end
     else
@@ -28,11 +30,11 @@ class AssignmentsController < ApplicationController
 
     respond_to do |format|
       if @assignment.save
-        format.html { redirect_to event_assignments_path(@event), notice: 'You are now a volunteer.' }
+        format.html { redirect_to event_task_path(@event, @task), notice: 'You are now a volunteer.' }
         format.json { render :show, status: :created, location: @assignment.event }
       else
         format.html { render :new }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
+        format.json { render json: @assignment.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -43,12 +45,12 @@ class AssignmentsController < ApplicationController
     if current_admin || @assignment.volunteer == @user
       @assignment.destroy
       respond_to do |format|
-        format.html { redirect_to event_assignments_path(@event), notice: 'Volunteer was successfully unassigned.' }
+        format.html { redirect_to event_task_path(@event, @task), notice: 'Volunteer was successfully unassigned.' }
         format.json { head :no_content }
       end
     else
       respond_to do |format|
-        format.html { redirect_to event_assignments_path(@event)}
+        format.html { redirect_to event_task_path(@event, @task)}
         format.json { render :index, status: :unauthorized, location: @assignment.event }
       end
     end
@@ -65,6 +67,10 @@ class AssignmentsController < ApplicationController
 
     def set_assignment
       @assignment = Assignment.find(params[:id])
+    end
+
+    def check_assignment
+      @assignment_exists = Assignment.exists?(task_id: @task.id, volunteer_id: @user.id)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
