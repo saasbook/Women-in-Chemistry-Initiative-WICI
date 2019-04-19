@@ -62,7 +62,7 @@ class AssignmentsController < ApplicationController
 
     def set_event_and_task
       @event = Event.find(params[:event_id])
-      @task = Task.find_by_id(params[:task_id]) || Task.get_none_task(@event)
+      @task = Task.find_by_id(params[:task_id])
     end
 
     def set_assignment
