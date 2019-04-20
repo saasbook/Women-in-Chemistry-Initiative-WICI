@@ -5,8 +5,7 @@ Feature: See if you are attending an event
   I want to be able to click to see who is going to an event
 
   Background:
-    Given I am logged in as admin
-    And the following events exist:
+    Given the following events exist:
       | name              | description                 | date        | location                               | tickets               | capacity |
       | Pouring liquid    | Look, it changes colors     | 22-Apr-3019 | 422 Treeside Way, Berkeley, CA 94704   | stubhub.com/liquid    | 10       |
       | Other event       | Look, it changes colors     | 22-Apr-3019 | 422 Treeside Way, Berkeley, CA 94704   | stubhub.com/liquid    | 0        |
@@ -22,7 +21,8 @@ Feature: See if you are attending an event
     And I should see "Test Guest"
 
   Scenario: Delete a guest
-    Given I am on the first event rsvp page
+    Given I am logged in as an admin
+    And I am on the first event rsvp page
     And I submit the form with the following attributes:
       | firstname    | Test           |
       | lastname     | Guest          |
@@ -37,7 +37,7 @@ Feature: See if you are attending an event
       | firstname         | Test           |
       | lastname          | Guest          |
       | email             | test@guest.com |
-      | guest[occupation] | Undergrad      | 
+      | guest[occupation] | Undergrad      |
       | guest[gender]     | male           |
       | guest[department] | chemistry      |
     Then I should see "You have successfully registered!"
@@ -60,7 +60,9 @@ Feature: See if you are attending an event
     Then I should see "Your registration failed, please make sure your information is correct."
 
   Scenario: Testing Pie charts
-    Given the following guests exist:
+    Given I am logged in as an admin
+    And I am on the events page
+    And the following guests exist:
         | firstname      | lastname         | email        | occupation           | gender             | department          | event_id|
         | John           | Doe              | jd@gmail.com | Undergrad            | Male               | Chemistry           | 1       |
         | Sara           | Sen              | ss@gmail.com | Graduate             | Female             | Chemical Engineering| 1       |

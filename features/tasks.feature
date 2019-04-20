@@ -48,13 +48,16 @@ Feature: Add and view tasks
     Then I should see "You have successfully added a new task!"
 
   Scenario: I can delete a task
-    When I follow "Show"
-    And I follow "Destroy"
+    Given I am logged in as an admin
+    And I am on the tasks page for the first event
+    When I follow "Delete"
     Then I should not see "get liquid"
     And 0 tasks should exist
 
   Scenario: Incorrectly add a task:
-  When I follow "Add Task"
-  And I submit the form with the following attributes:
-    | description     | a chore  |
-  Then I should see "Your task creation failed."
+    Given I am logged in as an admin
+    And I am on the tasks page for the first event
+    When I follow "Add Task"
+    And I submit the form with the following attributes:
+      | description     | a chore  |
+    Then I should see "Your task creation failed."

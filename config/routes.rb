@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   resources :events do
     resources :guests, only: [:new, :create, :destroy]
-    resources :tasks
-    resources :assignments, except: [:show, :update]
+    resources :tasks do
+      resources :assignments, except: [:show, :update]
+    end
   end
 
   devise_for :volunteers

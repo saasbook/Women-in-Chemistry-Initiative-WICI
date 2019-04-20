@@ -1,13 +1,14 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:destroy, :update, :show, :edit]
   before_action :set_event
+  before_action :set_assignments, only: [:destroy, :update, :show, :edit]
 
   def new
     @task = Task.new
   end
 
   def index
-    @task = @event.tasks
+    @tasks = @event.tasks
   end
 
   def create
@@ -46,6 +47,10 @@ class TasksController < ApplicationController
     end
     def set_task
       @task = Task.find(params[:id])
+    end
+
+    def set_assignments
+      @assignments = @task.assignments
     end
 
     def set_event

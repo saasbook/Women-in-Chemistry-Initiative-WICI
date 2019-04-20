@@ -4,17 +4,10 @@ class Task < ApplicationRecord
   belongs_to :event
 
   validates :name, presence: true
+  validates_uniqueness_of :name, :scope => :event_id
 
 
   # This allows volunteers to sign up for events without a specific task.
   # We may decide to remove this later, as we can stub tasks once they are done.
-  def self.get_none_task(event)
-    task = Task.find_by_name_and_event_id("Nothing", event.id)
-    if task.nil?
-      task = Task.new(name: "Nothing", event_id: event.id)
-      task.save!
-    end
-    task
-  end
 
 end

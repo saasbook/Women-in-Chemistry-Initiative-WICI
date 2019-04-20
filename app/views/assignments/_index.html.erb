@@ -1,0 +1,24 @@
+<table class="table table-borderless table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Firstname</th>
+            <th scope="col">Lastname</th>
+            <th scope="col">Email</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @assignments.each do |assignment| %>
+            <tr>
+              <td><%= assignment.volunteer.firstname %></td>
+              <td><%= assignment.volunteer.lastname %></td>
+              <td><%= assignment.volunteer.email %></td>
+              <td><%= link_to 'Delete', event_task_assignment_path(task_id: @task.id, id: assignment.id),:action => 'destroy', method: :delete, data: { confirm: 'Are you sure?' }, id:"delete" if admin_signed_in? || assignment.volunteer == current_volunteer %>
+              </td>
+
+
+            </tr>
+          <% end %>
+        </tbody>
+</table>
