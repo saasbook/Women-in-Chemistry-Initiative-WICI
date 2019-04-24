@@ -10,7 +10,8 @@ class GuestsController < ApplicationController
     @guest = @event.guests.new(guest_params)
 
     if @event.save
-      flash[:notice] = 'You have successfully registered!'
+      flash[:notice] = 'You have successfully registered! Check your email for confirmation.'
+      RemindersMailer.confirm_guest(@guest, @event).deliver
       RemindersMailer.remind_guest(@guest, @event).deliver_later(wait_until: @event.date - 1)
       redirect_to event_path(@event)
     else

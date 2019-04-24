@@ -4,7 +4,6 @@ FactoryBot.define do
     description { "asdlkfjas;ldkfjasdf" }
     date { "25-Nov-3018" }
     location { "someplace" }
-    tickets { false }
     capacity { 10 }
   end
 
@@ -13,7 +12,6 @@ FactoryBot.define do
     description { "asdlkfjas;ldkfjasdf" }
     date { "25-Nov-2018" }
     location { "someplace" }
-    tickets { false }
     capacity { 200 }
   end
 
@@ -22,7 +20,6 @@ FactoryBot.define do
     description { "" }
     date { "" }
     location { "" }
-    tickets { "" }
     capacity { "" }
   end
 
@@ -31,7 +28,6 @@ FactoryBot.define do
     description { "asdlkfjas;ldkfjasdf" }
     date { "25-Nov-3018" }
     location { "someplace" }
-    tickets { false }
     capacity { 0 }
   end
 end

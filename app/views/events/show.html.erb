@@ -43,7 +43,7 @@
   <% end %>
 </p>
 
-<%= link_to 'RSVP for this event', new_event_guest_path(@event) %>
+<%= link_to 'Attend', new_event_guest_path(@event) %>
 
 <%= link_to 'Tasks', event_tasks_url(@event) if admin_signed_in? || volunteer_signed_in? %>
 

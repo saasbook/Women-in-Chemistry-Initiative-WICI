@@ -15,12 +15,13 @@ describe GuestsController do
       expect { post :create, params: { guest: FactoryBot.attributes_for(:guest), event_id: event.id }
       }.to change { Guest.count }.by(1)
     end
+    it "sends a confirmation email" do
+      expect { post :create, params: { guest: FactoryBot.attributes_for(:guest), event_id: event.id }
+      }.to change { ActionMailer::Base.deliveries.count }.by(1)
+    end
     it "creates a mailer job" do
-      guest = FactoryBot.build_stubbed(:guest)
-
       ActiveJob::Base.queue_adapter = :test
-      expect {
-          RemindersMailer.remind_guest(guest, event).deliver_later
+      expect { post :create, params: { guest: FactoryBot.attributes_for(:guest), event_id: event.id }
       }.to have_enqueued_job.on_queue('mailers')
     end
     context "invalid attributes" do

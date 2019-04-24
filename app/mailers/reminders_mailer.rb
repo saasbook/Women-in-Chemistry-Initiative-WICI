@@ -4,4 +4,10 @@ class RemindersMailer < ApplicationMailer
     @body = "You have the WICI #{event.name}, on #{event.date}, at #{event.location}"
     mail to: guest.email, from: "wiciberkeley@gmail.com", subject: "WICI Event Reminder"
   end
+
+  def confirm_guest(guest, event)
+    @greeting = "Hello"
+    @body = "You are registered for the WICI #{event.name}, on #{event.date}, at #{event.location}"
+    mail to: guest.email, from: "wiciberkeley@gmail.com", subject: "WICI Event Reminder"
+  end
 end
