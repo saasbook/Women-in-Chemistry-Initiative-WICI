@@ -13,7 +13,6 @@ describe AssignmentsController do
         expect(assigns(:assignment)).to be_a_new(Assignment)
       end
       it "does not allow duplicate assignments" do
-        puts @volunteer
         FactoryBot.create(:assignment, volunteer_id: @volunteer.id )
         get :new, params: { event_id: event.id, task_id: event.id}
         expect(assigns(:assignment)).not_to be_a_new(Assignment)
@@ -47,7 +46,6 @@ describe AssignmentsController do
         }.to change { Assignment.count }.by(0)
       end
     end
-
   end
 
   context "as an admin" do

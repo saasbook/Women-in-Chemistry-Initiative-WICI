@@ -7,11 +7,9 @@ class GuestsController < ApplicationController
   end
 
   def create
-    @guest = Guest.new(guest_params)
-    @guest.event = @event
+    @guest = @event.guests.new(guest_params)
 
-
-    if @guest.save
+    if @event.save
       flash[:notice] = 'You have successfully registered!'
       RemindersMailer.remind_guest(@guest, @event).deliver_later(wait_until: @event.date - 1)
       redirect_to event_path(@event)

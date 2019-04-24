@@ -41,6 +41,7 @@ gem 'sidekiq'
 gem 'redis-rails'
 gem 'redis'
 gem 'hiredis'
+gem 'rqrcode'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
