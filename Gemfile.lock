@@ -51,6 +51,9 @@ GEM
     bcrypt (3.1.12)
     bindex (0.5.0)
     builder (3.2.3)
+    bullet (5.9.0)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.11)
     byebug (11.0.1)
     cane (2.6.2)
       parallel
@@ -192,6 +195,10 @@ GEM
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
       ruby_dep (~> 1.2)
+    lol_dba (2.1.8)
+      actionpack (>= 3.0, < 6.0)
+      activerecord (>= 3.0, < 6.0)
+      railties (>= 3.0, < 6.0)
     loofah (2.2.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -427,6 +434,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.5)
+    uniform_notifier (1.12.1)
     unparser (0.2.8)
       abstract_type (~> 0.0.7)
       adamantium (~> 0.2.0)
@@ -452,6 +460,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bullet
   byebug
   capybara (~> 2.8)
   chartkick
@@ -470,6 +479,7 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   launchy
   listen (>= 3.0.5, < 3.2)
+  lol_dba
   metric_fu
   omniauth
   pg
