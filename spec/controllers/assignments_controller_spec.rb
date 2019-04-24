@@ -34,6 +34,12 @@ describe AssignmentsController do
         expect { post :create, params: { assignment: FactoryGirl.attributes_for(:assignment), event_id: test_event.id, task_id: test_task.id }
         }.to change { Assignment.count }.by(0)
       end
+      it 'creates reminder job' do
+          ActiveJob::Base.queue_adapter = :test
+          expect {
+              RemindersMailer.remind_task(test_assignment.volunteer, test_task).deliver_later
+          }.to have_enqueued_job.on_queue('mailers')
+      end
     end
 
     describe "#destroy" do
