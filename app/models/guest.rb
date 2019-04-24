@@ -1,4 +1,6 @@
 class Guest < ApplicationRecord
+  include Rails.application.routes.url_helpers
+
   belongs_to :event
   has_one :ticket, dependent: :destroy
 
@@ -10,5 +12,14 @@ class Guest < ApplicationRecord
     unless event.guests.count < event.capacity
       errors.add(:capacity, "Event is full.")
     end
+  end
+
+  def generate_qr_code(url)
+
+    RQRCode::QRCode.new(url).as_png
+  end
+
+  def generate_code
+    ticket.generate_code
   end
 end

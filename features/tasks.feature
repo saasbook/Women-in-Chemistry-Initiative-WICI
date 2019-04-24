@@ -6,8 +6,8 @@ Feature: Add and view tasks
 
   Background:
     Given the following events exist:
-      | name              | description                 | date        | location                               | capacity |
-      | Pouring liquid    | Look, it changes colors     | 22-Apr-3019 | 422 Treeside Way, Berkeley, CA 94704   | 10       |
+      | name              | description                 | date        | location                               | capacity | price |
+      | Pouring liquid    | Look, it changes colors     | 22-Apr-3019 | 422 Treeside Way, Berkeley, CA 94704   | 10       | 0     |
     And for Pouring liquid the following tasks exist:
       | name              | description                 | deadline        |
       | get liquid   | Look, it changes colors     | 28-Apr-3019 |

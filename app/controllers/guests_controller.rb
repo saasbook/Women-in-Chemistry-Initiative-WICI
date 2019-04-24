@@ -8,10 +8,13 @@ class GuestsController < ApplicationController
 
   def create
     @guest = @event.guests.new(guest_params)
+    @guest.ticket = Ticket.new
 
     if @event.save
+      qr_code = @guest.generate_qr_code(event_guest_check_ticket_url(@event, @guest, code: @guest.generate_code))
+
       flash[:notice] = 'You have successfully registered! Check your email for confirmation.'
-      RemindersMailer.confirm_guest(@guest, @event).deliver
+      RemindersMailer.confirm_guest(@guest, @event, qr_code).deliver
       RemindersMailer.remind_guest(@guest, @event).deliver_later(wait_until: @event.date - 1)
       redirect_to event_path(@event)
     else

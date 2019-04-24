@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   get 'tickets/check'
 
   resources :events do
-    resources :guests, only: [:new, :create, :destroy]
+    resources :guests, only: [:new, :create, :destroy] do
+      get 'ticket/check', to: 'tickets#check', as: 'check_ticket'
+    end
 
     resources :tasks do
       resources :assignments, except: [:show, :update]

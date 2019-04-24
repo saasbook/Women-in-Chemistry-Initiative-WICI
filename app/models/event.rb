@@ -3,6 +3,7 @@ class Event < ApplicationRecord
   has_many :tasks, dependent: :destroy
   has_many :assignments, through: :tasks, dependent: :destroy
   has_many :tickets, through: :guests, dependent: :destroy
+
   validates :name, :date, :location, :capacity, presence: true
 
   def self.past_events

@@ -6,9 +6,9 @@ Feature: See if you are attending an event
 
   Background:
     Given the following events exist:
-      | name              | description                 | date        | location                               | capacity |
-      | Pouring liquid    | Look, it changes colors     | 22-Apr-3019 | 422 Treeside Way, Berkeley, CA 94704   | 10       |
-      | Other event       | Look, it changes colors     | 22-Apr-3019 | 422 Treeside Way, Berkeley, CA 94704   | 0        |
+      | name              | description                 | date        | location                               | capacity | price |
+      | Pouring liquid    | Look, it changes colors     | 22-Apr-3019 | 422 Treeside Way, Berkeley, CA 94704   | 10       | 0     |
+      | Other event       | Look, it changes colors     | 22-Apr-3019 | 422 Treeside Way, Berkeley, CA 94704   | 0        | 10    |
     And I am on the events page
 
   Scenario: I register for an event with no demographics:

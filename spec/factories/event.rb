@@ -4,6 +4,7 @@ FactoryBot.define do
     description { "asdlkfjas;ldkfjasdf" }
     date { "25-Nov-3018" }
     location { "someplace" }
+    price { 10.25 }
     capacity { 10 }
   end
 
@@ -20,6 +21,7 @@ FactoryBot.define do
     description { "" }
     date { "" }
     location { "" }
+    price { 10.51234 }
     capacity { "" }
   end
 
@@ -28,6 +30,7 @@ FactoryBot.define do
     description { "asdlkfjas;ldkfjasdf" }
     date { "25-Nov-3018" }
     location { "someplace" }
+    price { 10 }
     capacity { 0 }
   end
 end
