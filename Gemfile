@@ -55,7 +55,7 @@ group :test do
   gem 'cucumber-rails-training-wheels'
   gem 'simplecov', :require => false
   gem 'database_cleaner' # required by Cucumber
-  gem 'factory_girl_rails' # if using FactoryGirl
+  gem 'factory_bot_rails' # factory bot 
   gem 'metric_fu'        # collect code metrics
 end
 

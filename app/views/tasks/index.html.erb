@@ -1,36 +1,36 @@
 <div class="container-fluid" style="padding-top: 20px; padding-left: 30px">
-<% if !@tasks.empty? %>
-<h1>Tasks for <%= @event.name %></h1>
+  <% if !@tasks.empty? %>
+  <h1>Tasks for <%= @event.name %></h1>
 
-<table class="table table-borderless table-hover">
-  <thead>
-    <tr>
-      <th>Task</th>
-      <th>Description</th>
-      <th>Deadline</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @tasks.each do |task| %>
+  <table class="table table-borderless table-hover">
+    <thead>
       <tr>
-        <td><%= task.name %></td>
-        <td><%= task.description %></td>
-        <td><%= task.deadline %></td>
-        <td><%= link_to 'Show', event_task_path(task, :id => task.id, :event_id => params[:event_id]) %>  <%= link_to 'Delete', event_task_path(id: task.id,event_id: @event.id), :action => 'destroy', method: :delete, data: { confirm: 'Are you sure?' }, id:"destroy" if admin_signed_in?%>
-        </td>
+        <th>Task</th>
+        <th>Description</th>
+        <th>Deadline</th>
+        <th colspan="2"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-<% end %>
-<% if @tasks.empty? %>
-<h1>There are no tasks for <%= @event.name %></h1>
-<% end %>
+    </thead>
 
-<br>
+    <tbody>
+      <% @tasks.each do |task| %>
+        <tr>
+          <td><%= task.name %></td>
+          <td><%= task.description %></td>
+          <td><%= task.deadline %></td>
+          <td><%= link_to 'Show', event_task_path(task, :id => task.id, :event_id => params[:event_id]) %>  <%= link_to 'Delete', event_task_path(id: task.id,event_id: @event.id), :action => 'destroy', method: :delete, data: { confirm: 'Are you sure?' }, id:"destroy" if admin_signed_in?%>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% end %>
+  <% if @tasks.empty? %>
+  <h1>There are no tasks for <%= @event.name %></h1>
+  <% end %>
 
-<%= link_to 'Add Task', new_event_task_url(@event), class: "btn btn-primary text-white" if admin_signed_in?  %>
-<%= link_to 'Back', event_url(@event), class: "btn btn-primary text-white"%><br>
-<div>
+  <br>
+
+  <%= link_to 'Add Task', new_event_task_url(@event), class: "btn btn-primary text-white" if admin_signed_in?  %>
+  <%= link_to 'Back', event_url(@event), class: "btn btn-primary text-white"%><br>
+</div>

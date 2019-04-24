@@ -1,9 +1,9 @@
 require "rails_helper"
 
 describe RemindersMailer  do
-  let!(:test_event) { FactoryGirl.create(:event, id: 10, name: "Event Test", description: "Great", date: "2019-04-14 20:22:21",
+  let!(:test_event) { FactoryBot.create(:event, id: 10, name: "Event Test", description: "Great", date: "2019-04-14 20:22:21",
      location: "Here", tickets: 10, capacity: 10) }
-  let!(:test_guest) { FactoryGirl.create(:guest, event_id: test_event.id, firstname: "Andy", lastname: "P", email: "a@gmail.com") }
+  let!(:test_guest) { FactoryBot.create(:guest, event_id: test_event.id, firstname: "Andy", lastname: "P", email: "a@gmail.com") }
   describe "remind" do
     context "headers" do
       it "renders the subject" do
