@@ -1,6 +1,8 @@
 require "rails_helper"
 
 describe RemindersMailer  do
+  let!(:test_event) { FactoryGirl.create(:event, id: 10, name: "Event Test", description: "Great", date: "2019-04-14 20:22:21",
+     location: "Here", tickets: 10, capacity: 10) }
   let!(:test_event) { FactoryGirl.create(:event, id: 1) }
   describe "remind guest" do
     context "headers" do
