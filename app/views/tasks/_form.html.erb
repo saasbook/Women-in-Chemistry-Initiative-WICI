@@ -3,6 +3,6 @@
   Event: <%= event.name %><br>
   Title: <%= form.text_field :name, id: :name %><br>
   Description: <%= form.text_field :description, id: :description %><br>
-  Deadline: <%= form.datetime_select :deadline, id: :deadline  %><br>
+  Deadline: <%= form.datetime_select :deadline, id: :deadline, selected: event.date %><br>
   <%= form.submit "Submit", id: :submit  %>
 <% end %>

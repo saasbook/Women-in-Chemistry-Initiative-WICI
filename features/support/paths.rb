@@ -23,6 +23,10 @@ module NavigationHelpers
     when /^the tasks page for the first event$/ then '/events/1/tasks'
     when /^the first event rsvp page$/ then '/events/1/guests/new'
     when /^the first event page$/ then '/events/1'
+    when /^the sign in page for admins$/ then '/admins/sign_in'
+    when /^the sign in page for volunteers$/ then '/volunteers/sign_in'
+    when /^the sign up page for admins$/ then '/admins/sign_up'
+    when /^the sign up page for volunteers$/ then '/volunteers/sign_up'
 
       # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

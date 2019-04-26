@@ -53,12 +53,6 @@ describe AssignmentsController do
 
   context "as an admin" do
     login_admin
-    describe "#index" do
-      it "returns http sucess" do
-        get :index, params: {event_id: test_event.id, task_id: test_task.id}
-        expect(response).to have_http_status(:success)
-      end
-    end
 
     describe "#destroy" do
       it "deletes an assignment" do

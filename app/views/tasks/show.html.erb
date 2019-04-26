@@ -20,6 +20,6 @@
 <% end %>
 
 <br>
-  <%= link_to 'Sign up for this task', new_event_task_assignment_path(@event, @task), class: "btn btn-primary text-white", id:"sign up" %>  <%= link_to 'Back', event_tasks_url(@event), class: "btn btn-primary text-white"  %><br>
+  <%= link_to 'Sign up for this task', new_event_task_assignment_path(@event, @task), class: "btn btn-primary text-white", id:"sign up" if @user.can_signup?(@task) %>  <%= link_to 'Back', event_tasks_url(@event), class: "btn btn-primary text-white" %><br>
 
 </div>
