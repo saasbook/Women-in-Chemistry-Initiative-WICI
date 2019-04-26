@@ -36,8 +36,7 @@ describe AssignmentsController do
       end
       it 'creates reminder job' do
           ActiveJob::Base.queue_adapter = :test
-          expect {
-              RemindersMailer.remind_task(test_assignment.volunteer, test_task).deliver_later
+          expect { RemindersMailer.remind_task(test_assignment.volunteer, test_task).deliver_later
           }.to have_enqueued_job.on_queue('mailers')
       end
     end
