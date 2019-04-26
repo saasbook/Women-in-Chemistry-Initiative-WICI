@@ -40,8 +40,8 @@
 
 <%= link_to 'Tasks', event_tasks_url(@event), class: "btn btn-primary text-white"  if admin_signed_in? || volunteer_signed_in? %>
 
-<%= link_to 'Back', events_path, class: "btn btn-primary text-white" if @event.date > Date.current %>
-<%= link_to 'Back', past_events_path, class: "btn btn-primary text-white" if @event.date < Date.current %>
+<%= link_to 'Back', events_path, class: "btn btn-secondary text-white" if @event.date > Date.current %>
+<%= link_to 'Back', past_events_path, class: "btn btn-secondary text-white" if @event.date < Date.current %>
 
 <% if admin_signed_in? %>
 <br>
