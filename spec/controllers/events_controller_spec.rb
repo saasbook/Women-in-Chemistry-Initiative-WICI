@@ -3,13 +3,14 @@ require 'rails_helper'
 describe EventsController do
   let!(:test_event) { FactoryGirl.create(:event, id: 1) }
   let!(:fut_event) { FactoryGirl.create(:future_event, id: 2) }
+  let!(:g_pho_event) { FactoryGirl.create(:good_photo_event, id: 3) }
   let!(:test_guest) { FactoryGirl.create(:guest, event_id: test_event.id) }
 
   describe "#index" do
     it "gets a list of all future events" do
       get :index
       expect(assigns(:events)).not_to be_nil
-      expect(assigns(:events).length).to eq 1
+      expect(assigns(:events).length).to eq 2
     end
   end
 
@@ -34,6 +35,7 @@ describe EventsController do
       expect { post :create, params: { event: FactoryGirl.attributes_for(:event) }
       }.to change { Event.count }.by(1)
     end
+
     context "invalid attributes" do
       it "re-renders new template" do
         post :create, params: { event: FactoryGirl.attributes_for(:invalid_event) }
@@ -54,6 +56,7 @@ describe EventsController do
     end
   end
 
+
   describe "#destroy" do
     it "deletes an event" do
       expect { delete :destroy, params: { id: test_event.id }
@@ -73,9 +76,25 @@ describe EventsController do
       expect(test_event.name).to eql("modified")
     end
 
+    it "updates an event with a good picture" do
+      put :update, params: {id: test_event.id, event: FactoryGirl.attributes_for(:event, image: Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/fixtures/myfiles/goodfile.png'))))}
+      test_event.reload
+      expect(test_event.image).not_to be_nil
+    end
+
     context "invalid attributes" do
       it "re-renders the edit template" do
         put :update, params: { id: test_event.id, event: FactoryGirl.attributes_for(:invalid_event) }
+        expect(response).to render_template("edit")
+      end
+
+      it "re-renders the edit template for bad file type" do
+        put :update, params: { id: test_event.id, event: FactoryGirl.attributes_for(:bad_photo_event) }
+        expect(response).to render_template("edit")
+      end
+
+      it "re-renders the edit template for to large file type" do
+        put :update, params: { id: test_event.id, event: FactoryGirl.attributes_for(:large_photo_event) }
         expect(response).to render_template("edit")
       end
 
