@@ -4,6 +4,7 @@
   <table class="table table-borderless table-hover">
     <thead>
       <tr>
+        <th scope="col"></th>
         <th scope="col">Name</th>
         <th scope="col">Description</th>
         <th scope="col">Date</th>
@@ -16,6 +17,7 @@
     <tbody>
       <% @events.each do |event| %>
         <tr>
+          <td><%= image_tag event.image.thumb if event.image? %></td>
           <td><%= event.name %></td>
           <td><%= event.description %></td>
           <td><%= event.date %></td>
