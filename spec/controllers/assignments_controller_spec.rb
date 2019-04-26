@@ -9,6 +9,11 @@ describe AssignmentsController do
 
   context "as a volunteer" do
 
+    before :each do
+      setup_controller_for_warden
+      request.env['devise.mapping'] = Devise.mappings[:volunteer]
+    end
+
     login_volunteer
 
     describe "#new" do
@@ -57,13 +62,13 @@ describe AssignmentsController do
   end
 
   context "as an admin" do
-    login_admin
-    describe "#index" do
-      it "returns http sucess" do
-        get :index, params: {event_id: test_event.id, task_id: test_task.id}
-        expect(response).to have_http_status(:success)
-      end
+
+    before :each do
+      setup_controller_for_warden
+      request.env['devise.mapping'] = Devise.mappings[:admin]
     end
+
+    login_admin
 
     describe "#destroy" do
       it "deletes an assignment" do
