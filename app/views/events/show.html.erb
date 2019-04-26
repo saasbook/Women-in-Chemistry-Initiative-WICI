@@ -1,7 +1,6 @@
-<p>
-  <strong>Name:</strong>
-  <%= @event.name %>
-</p>
+<div class="container-fluid" style="padding-top: 20px; padding-left: 30px">
+<h1><%= @event.name %></h1>
+<br>
 
 <p>
   <strong>Description:</strong>
@@ -27,25 +26,29 @@
   <strong>Capacity:</strong>
   <%= @event.capacity %>
 </p>
-<% if admin_signed_in? %>
-<p>
-  <strong>Demographics:</strong>
-  <%= pie_chart @event.guests.group(:occupation).count, colors: ["#00e5ff", "#c33c54", "#070268", "#ffd2a0"], donut: true, title: "Occupation Statistics", messages: {empty: "No data"} %>
-  <%= pie_chart @event.guests.group(:gender).count, colors: ["#00e5ff", "#c33c54", "#070268"], donut: true, title: "Gender Statistics", messages: {empty: "No data"} %>
-  <%= pie_chart @event.guests.group(:department).count, colors: ["#00e5ff", "#c33c54", "#070268"], donut: true, title: "Department Statistics", messages: {empty: "No data"} %>
-</p>
-<%end %>
 
 <p>
   <strong>Guests:</strong><br>
   <% @guests.each do |guest| %>
-    <%= guest.firstname %> <%= guest.lastname %> <%= link_to 'Delete', event_guest_path(@event, guest), method: :delete, data: { confirm: 'Are you sure?' } %><br>
+    <%= guest.firstname %> <%= guest.lastname %> <% if admin_signed_in? %> <%= guest.email %> | <%= link_to 'Delete', event_guest_path(@event, guest), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
+    <br>
   <% end %>
 </p>
 
-<%= link_to 'RSVP for this event', new_event_guest_path(@event) %>
+<%= link_to 'RSVP', new_event_guest_path(@event), class: "btn btn-primary text-white"  %>
 
-<%= link_to 'Tasks', event_tasks_url(@event) if admin_signed_in? || volunteer_signed_in? %>
+<%= link_to 'Tasks', event_tasks_url(@event), class: "btn btn-primary text-white"  if admin_signed_in? || volunteer_signed_in? %>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<%= link_to 'Back', events_path, class: "btn btn-primary text-white"%>
+
+<% if admin_signed_in? %>
+<br>
+<p>
+  <h4>Event Demographics:</h4>
+  <%= pie_chart @event.guests.group(:occupation).count, colors: ["#00e5ff", "#c33c54", "#070268", "#ffd2a0"], donut: true, title: "Occupation Statistics", messages: {empty: "No data"} %>
+  <%= pie_chart @event.guests.group(:gender).count, colors: ["#00e5ff", "#c33c54", "#070268"], donut: true, title: "Gender Statistics", messages: {empty: "No data"} %>
+  <%= pie_chart @event.guests.group(:department).count, colors: ["#00e5ff", "#c33c54", "#070268"], donut: true, title: "Department Statistics", messages: {empty: "No data"} %>
+</p>
+<% end %>
+</div>

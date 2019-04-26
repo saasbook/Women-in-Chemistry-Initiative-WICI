@@ -27,7 +27,7 @@
       <% end %>
       <% if admin_signed_in? %>
         <li>
-          <%= link_to "Admin Sign Out", destroy_admin_session_path, :method => 'delete', id: "Sign Out", class: "nav-link"  %>
+          <%= link_to "Sign Out", destroy_admin_session_path, :method => 'delete', id: "Sign Out", class: "nav-link"  %>
         </li>
       <% end %>
 

@@ -1,5 +1,7 @@
-<h1>Edit Task</h1>
+<div class="container-fluid" style="padding-top: 20px; padding-left: 30px">
+<h1>Edit Task for <%= @event.name %></h1>
 
 <%= render 'form', event: @event, task: @task %>
 
-<%= link_to 'Back', event_tasks_path(@event) %><br>
+<%= link_to 'Back', event_tasks_path(@event), class: "btn btn-primary text-white" %><br><br>
+</div>
