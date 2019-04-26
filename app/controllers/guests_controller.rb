@@ -1,6 +1,8 @@
 class GuestsController < ApplicationController
   before_action :set_guest, only: [:destroy]
   before_action :set_event
+  before_action :authenticate_admin!, only: [:destroy]
+
 
   def new
     @guest = Guest.new

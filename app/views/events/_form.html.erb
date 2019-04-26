@@ -11,37 +11,37 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :name %>
-    <%= form.text_field :name, id: :event_name %>
+    <%= form.text_field :name, id: :event_name, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :description %>
-    <%= form.text_area :description, id: :event_description %>
+    <%= form.text_area :description, id: :event_description, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :date %>
-    <%= form.datetime_select :date, id: :event_date %>
+    <%= form.datetime_select :date, id: :event_date, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :location %>
-    <%= form.text_field :location, id: :event_location %>
+    <%= form.text_field :location, id: :event_location, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :tickets %>
-    <%= form.text_field :tickets, id: :event_tickets %>
+    <%= form.text_field :tickets, id: :event_tickets, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :capacity %>
-    <%= form.text_field :capacity, id: :capacity %>
+    <%= form.text_field :capacity, id: :capacity, class: 'form-control'%>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-group">
+    <%= form.submit :Submit, class: 'btn btn-primary' %>
   </div>
 <% end %>

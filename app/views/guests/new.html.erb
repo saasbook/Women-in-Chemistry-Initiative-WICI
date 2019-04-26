@@ -1,5 +1,6 @@
-Enter New Guest Information
-<hr>
+<div class="container-fluid" style="padding-top: 20px; padding-left: 30px">
+<h1>New Guest for <%= @event.name %></h1>
 <%= render 'form', event: @event, guest: @guest %>
 
-<%= link_to 'Back', events_path %>
+<%= link_to 'Back', events_path, class: 'btn btn-secondary text-white' %>
+</div>

@@ -2,12 +2,16 @@ Rails.application.routes.draw do
   resources :events do
     resources :guests, only: [:new, :create, :destroy]
     resources :tasks do
-      resources :assignments, except: [:show, :update]
+      resources :assignments, except: [:update]
     end
   end
 
-  devise_for :volunteers
-  devise_for :admins
+  devise_for :volunteers, controllers: {
+    sessions: 'volunteers/sessions'
+  }
+  devise_for :admins, controllers: {
+      sessions: 'admins/sessions'
+  }
   resources :about, only: [:index]
   resources :donations, only: [:index, :new, :create]
 
