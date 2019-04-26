@@ -3,14 +3,13 @@ require 'rails_helper'
 describe EventsController do
   let!(:test_event) { FactoryGirl.create(:event, id: 1) }
   let!(:fut_event) { FactoryGirl.create(:future_event, id: 2) }
-  let!(:g_pho_event) { FactoryGirl.create(:good_photo_event, id: 3) }
   let!(:test_guest) { FactoryGirl.create(:guest, event_id: test_event.id) }
 
   describe "#index" do
     it "gets a list of all future events" do
       get :index
       expect(assigns(:events)).not_to be_nil
-      expect(assigns(:events).length).to eq 2
+      expect(assigns(:events).length).to eq 1
     end
   end
 
