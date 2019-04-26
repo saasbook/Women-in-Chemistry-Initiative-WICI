@@ -8,6 +8,7 @@
       <th scope="col">Task</th>
       <th scope="col">Description</th>
       <th scope="col">Deadline</th>
+      <th scope="col">Volunteers</th>
       <th scope="col">Actions</th>
     </tr>
   </thead>
@@ -18,6 +19,7 @@
         <td><%= task.name %></td>
         <td><%= task.description %></td>
         <td><%= task.deadline %></td>
+        <td><%= task.volunteers.length %></td>
         <td><%= link_to 'Show', event_task_path(task, :id => task.id, :event_id => params[:event_id]) %>
           <%= link_to 'Edit', edit_event_task_path(id: task.id,event_id: @event.id) if admin_signed_in?%>  <%= link_to 'Delete', event_task_path(id: task.id,event_id: @event.id), :action => 'destroy', method: :delete, data: { confirm: 'Are you sure?' }, id:"destroy" if admin_signed_in?%>
         </td>
