@@ -37,8 +37,7 @@ Feature: view a list of volunteers for a task
     Given I am logged in as a volunteer named "Zip Zappity"
     And "Zip" is a volunteer for "get liquid"
     When I view the task "get liquid"
-    When I follow "sign up"
-    Then I should see "already a volunteer"
+    Then I should not see "sign up"
 
   Scenario: volunteer cannot delete another volunteer
     Given I am logged in as a volunteer named "Zip Zappity"

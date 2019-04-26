@@ -2,14 +2,29 @@
   <% if !@tasks.empty? %>
   <h1>Tasks for <%= @event.name %></h1>
 
-  <table class="table table-borderless table-hover">
-    <thead>
+<table class="table table-borderless table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Task</th>
+      <th scope="col">Description</th>
+      <th scope="col">Deadline</th>
+      <th scope="col">Volunteers</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tasks.each do |task| %>
       <tr>
-        <th>Task</th>
-        <th>Description</th>
-        <th>Deadline</th>
-        <th colspan="2"></th>
+        <td><%= task.name %></td>
+        <td><%= task.description %></td>
+        <td><%= task.deadline %></td>
+        <td><%= task.volunteers.length %></td>
+        <td><%= link_to 'Show', event_task_path(task, :id => task.id, :event_id => params[:event_id]), id: "show_#{task.id}" %>
+          <%= link_to 'Edit', edit_event_task_path(id: task.id,event_id: @event.id) if admin_signed_in?%>  <%= link_to 'Delete', event_task_path(id: task.id,event_id: @event.id), :action => 'destroy', method: :delete, data: { confirm: 'Are you sure?' }, id: "destroy_#{task.id}" if admin_signed_in?%>
+        </td>
       </tr>
+    <% end %>
     </thead>
 
     <tbody>
@@ -32,5 +47,5 @@
   <br>
 
   <%= link_to 'Add Task', new_event_task_url(@event), class: "btn btn-primary text-white" if admin_signed_in?  %>
-  <%= link_to 'Back', event_url(@event), class: "btn btn-primary text-white"%><br>
+  <%= link_to 'Back', event_url(@event), class: "btn btn-primary text-white" %><br>
 </div>

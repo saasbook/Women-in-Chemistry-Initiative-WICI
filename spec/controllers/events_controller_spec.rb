@@ -1,35 +1,10 @@
 require 'rails_helper'
 
 describe EventsController do
-  describe "#new" do
-    it "creates a new event called @event" do
-      get :new
-      expect(assigns(:event)).not_to be_nil
-      expect(assigns(:event)).to be_a_new(Event)
-    end
-  end
-
-  describe "#create" do
-    it "creates an event" do
-      expect { post :create, params: { event: FactoryBot.attributes_for(:event) }
-      }.to change { Event.count }.by(1)
-    end
-    context "invalid attributes" do
-      it "re-renders new template" do
-        post :create, params: { event: FactoryBot.attributes_for(:invalid_event) }
-        expect(response).to render_template("new")
-      end
-      it "does not add a new event" do
-        expect { post :create, params: { event: FactoryBot.attributes_for(:invalid_event) }
-        }.to change { Event.count }.by(0)
-      end
-    end
-  end
-
-  context "event lists" do
+  context "as a user" do
     before do
-      FactoryBot.create(:event)
       FactoryBot.create(:past_event)
+      FactoryBot.create(:event)
     end
 
     describe "#index" do
@@ -47,22 +22,53 @@ describe EventsController do
         expect(assigns(:events).length).to eq 1
       end
     end
-  end
 
-  context "specific event paths" do
-    let!(:event) { FactoryBot.create(:event) }
-
-    describe "#show" do
-      before { FactoryBot.create(:guest, event_id: event.id) }
-
+    describe "show" do
       it "shows an event and it's associated guests" do
+        event = FactoryBot.create(:event)
+        FactoryBot.create(:guest, event_id: event.id)
         get :show, params: { id: event.id }
         expect(assigns(:guests)).not_to be_nil
         expect(assigns(:guests).length).to eq 1
       end
     end
+  end
+
+  context "as an admin" do
+    before do
+      FactoryBot.create(:past_event)
+    end
+
+    login_admin
+
+    describe "#new" do
+      it "creates a new event called @event" do
+        get :new
+        expect(assigns(:event)).not_to be_nil
+        expect(assigns(:event)).to be_a_new(Event)
+      end
+    end
+
+    describe "#create" do
+      it "creates an event" do
+        expect { post :create, params: { event: FactoryBot.attributes_for(:event) }
+        }.to change { Event.count }.by(1)
+      end
+      context "invalid attributes" do
+        it "re-renders new template" do
+          post :create, params: { event: FactoryBot.attributes_for(:invalid_event) }
+          expect(response).to render_template("new")
+        end
+        it "does not add a new event" do
+          expect { post :create, params: { event: FactoryBot.attributes_for(:invalid_event) }
+          }.to change { Event.count }.by(0)
+        end
+      end
+    end
+
 
     describe "#destroy" do
+      let!(:event) { FactoryBot.create(:event) }
       it "deletes an event" do
         expect { delete :destroy, params: { id: event.id }
         }.to change { Event.count }.by(-1)
@@ -75,6 +81,8 @@ describe EventsController do
     end
 
     describe "#update" do
+      let!(:event) { FactoryBot.create(:event) }
+
       it "updates an existing movie" do
         put :update, params: {id: event.id, event: FactoryBot.attributes_for(:event, name: "modified")}
         event.reload
