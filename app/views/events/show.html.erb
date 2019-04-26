@@ -30,7 +30,7 @@
 <p>
   <strong>Guests:</strong><br>
   <% @guests.each do |guest| %>
-    <%= guest.firstname %> <%= guest.lastname %> <% if admin_signed_in? %> <%= guest.email %> | <%= link_to 'Delete', event_guest_path(@event, guest), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= guest.firstname %> <%= guest.lastname %> <% if admin_signed_in? %> | <%= guest.email %> | <%= link_to 'Delete', event_guest_path(@event, guest), method: :delete, data: { confirm: 'Are you sure?' } %>
     <% end %>
     <br>
   <% end %>
