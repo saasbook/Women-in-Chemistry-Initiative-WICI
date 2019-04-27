@@ -12,48 +12,102 @@ describe GuestsController do
       end
     end
 
-    describe "#create" do
+    context "free event" do
+      let!(:event) { FactoryBot.create(:free_event) }
+
+      describe "#create" do
+        it "adds a guest" do
+          expect { post :create, params: { guest: FactoryBot.attributes_for(:guest), event_id: event.id }
+          }.to change { Guest.count }.by(1)
+        end
+
+        it "sends a confirmation email" do
+          expect { post :create, params: { guest: FactoryBot.attributes_for(:guest), event_id: event.id }
+          }.to change { ActionMailer::Base.deliveries.count }.by(1)
+        end
+
+        it "creates a mailer job" do
+          ActiveJob::Base.queue_adapter = :test
+          expect { post :create, params: { guest: FactoryBot.attributes_for(:guest), event_id: event.id }
+          }.to have_enqueued_job.on_queue('mailers')
+        end
+
+        context "invalid attributes" do
+          it "re-renders new template" do
+            post :create, params: { guest: FactoryBot.attributes_for(:invalid_guest), event_id: event.id }
+            expect(response).to render_template("new")
+          end
+
+          it "does not add a new guest" do
+            expect { post :create, params: { guest: FactoryBot.attributes_for(:invalid_guest), event_id: event.id }
+            }.to change { Guest.count }.by(0)
+          end
+        end
+
+        context "when the event is a full event" do
+          let!(:full_event) { FactoryBot.create(:full_event) }
+
+          it "re-renders new template" do
+            post :create, params: { guest: FactoryBot.attributes_for(:guest), event_id: full_event.id }
+            expect(response).to render_template("new")
+          end
+
+          it "does not add a new guest" do
+            expect { post :create, params: { guest: FactoryBot.attributes_for(:guest), event_id: full_event.id } }
+          end
+        end
+      end
+    end
+
+    context "paid event" do
+      let!(:event) { FactoryBot.create(:event) }
+
       it "adds a guest" do
-        expect { post :create, params: { guest: FactoryBot.attributes_for(:guest), event_id: event.id }
+        card_token = StripeMock.generate_card_token(last4: "4242", exp_year: 3001)
+        expect { post :create, params: { stripeEmail: "someone@fake.com", stripeToken: card_token,
+                                         firstname: "Test", lastname: "guest", email: "test@guest.com",
+                                         occupation: "Other", department: "Other", gender: "Other", event_id: event.id }
         }.to change { Guest.count }.by(1)
       end
 
       it "sends a confirmation email" do
-        expect { post :create, params: { guest: FactoryBot.attributes_for(:guest), event_id: event.id }
+        card_token = StripeMock.generate_card_token(last4: "4242", exp_year: 3001)
+        expect { post :create, params: { stripeEmail: "someone@fake.com", stripeToken: card_token,
+                                         firstname: "Test", lastname: "guest", email: "test@guest.com",
+                                         occupation: "Other", department: "Other", gender: "Other", event_id: event.id }
         }.to change { ActionMailer::Base.deliveries.count }.by(1)
       end
 
       it "creates a mailer job" do
         ActiveJob::Base.queue_adapter = :test
-        expect { post :create, params: { guest: FactoryBot.attributes_for(:guest), event_id: event.id }
+        card_token = StripeMock.generate_card_token(last4: "4242", exp_year: 3001)
+        expect { post :create, params: { stripeEmail: "someone@fake.com", stripeToken: card_token,
+                                         firstname: "Test", lastname: "guest", email: "test@guest.com",
+                                         occupation: "Other", department: "Other", gender: "Other", event_id: event.id }
         }.to have_enqueued_job.on_queue('mailers')
       end
 
-      context "invalid attributes" do
+      context "invalid card" do
         it "re-renders new template" do
-          post :create, params: { guest: FactoryBot.attributes_for(:invalid_guest), event_id: event.id }
+          StripeMock.prepare_card_error(:card_declined)
+          card_token = StripeMock.generate_card_token(last4: "4242", exp_year: 3001)
+          post :create, params: { stripeEmail: "someone@fake.com", stripeToken: card_token,
+                                  firstname: "Test", lastname: "guest", email: "test@guest.com",
+                                  occupation: "Other", department: "Other", gender: "Other", event_id: event.id }
           expect(response).to render_template("new")
         end
 
         it "does not add a new guest" do
-          expect { post :create, params: { guest: FactoryBot.attributes_for(:invalid_guest), event_id: event.id }
+          StripeMock.prepare_card_error(:card_declined)
+          card_token = StripeMock.generate_card_token(last4: "4242", exp_year: 3001)
+          expect { post :create, params: { stripeEmail: "someone@fake.com", stripeToken: card_token,
+                                           firstname: "Test", lastname: "guest", email: "test@guest.com",
+                                           occupation: "Other", department: "Other", gender: "Other", event_id: event.id }
           }.to change { Guest.count }.by(0)
         end
       end
-
-      context "when the event is a full event" do
-        let!(:full_event) { FactoryBot.create(:full_event) }
-
-        it "re-renders new template" do
-          post :create, params: { guest: FactoryBot.attributes_for(:guest), event_id: full_event.id }
-          expect(response).to render_template("new")
-        end
-
-        it "does not add a new guest" do
-          expect { post :create, params: { guest: FactoryBot.attributes_for(:guest), event_id: full_event.id } }
-        end
-      end
     end
+
 
     describe "#destroy" do
       let!(:guest) { FactoryBot.create(:guest, event_id: event.id) }

@@ -32,8 +32,13 @@
   </div>
 
   <div class="form-group">
-    <%= form.label :tickets %>
-    <%= form.check_box :tickets, id: :event_tickets %>
+    <%= form.label :price %>
+    <%= form.number_field :price, id: :event_location, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :has_tickets %>
+    <%= form.check_box :has_tickets, id: :event_tickets, checked_value: true, checked: true, class: 'form-control' %>
   </div>
 
   <div class="form-group">

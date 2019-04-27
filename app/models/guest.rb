@@ -14,8 +14,7 @@ class Guest < ApplicationRecord
     end
   end
 
-  def generate_qr_code(url)
-
+  def self.generate_qr_code(url)
     RQRCode::QRCode.new(url).as_png
   end
 

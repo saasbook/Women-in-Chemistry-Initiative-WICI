@@ -1,0 +1,56 @@
+<%= form_tag event_guests_path(@event, @guest) %>
+  <% if @guest.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(guest.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+      <% guest.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= label_tag :first_name %>
+    <%= text_field_tag :firstname, "", id: :firstname, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag :last_name %>
+    <%= text_field_tag :lastname, "", id: :lastname, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag :email %>
+    <%= text_field_tag :email, "", id: :email, class: "form-control" %>
+  </div>
+
+  <label class="amount">
+    <span>Amount: $<%= number_with_precision(@event.price, precision: 2) %></span>
+  </label>
+
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="Please enter your billing info."
+          data-amount="<%= @event.amount_cents %>"
+          data-locale="auto"></script>
+
+  <h4>Optional</h4>
+
+  <div class="form-group">
+    <%= label_tag :occupation %>
+    <%= select_tag :occupation, options_for_select(['Undergrad', 'Graduate', 'Postdoc', 'Faculty Staff', 'Other'], 'Other'), id: :occupation %>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag :gender %>
+    <%= select_tag :gender, options_for_select(['Male', 'Female', 'Other'], 'Other'), id: :gender %>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag :department %>
+    <%= select_tag :department, options_for_select(['Chemistry', 'Chemical Engineering', 'Stem non-chemistry', 'Other'], 'Other'), id: :department %>
+  </div>
+
+  <%= submit_tag "Confirm Payment", id: :confirm %>

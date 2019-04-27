@@ -27,7 +27,11 @@ describe RemindersMailer do
       expect(mail.subject).to eq ("WICI Event Confirmation")
     end
 
-    it "has an attachment"
+    it "has an attachment" do
+      qr_code = Guest.generate_qr_code("www.test.com")
+      mail = described_class.confirm_guest(guest, event, qr_code)
+      expect(mail.attachments).not_to be_nil
+    end
 
     it "sends to the right email" do
       mail = described_class.confirm_guest(guest, event, "")

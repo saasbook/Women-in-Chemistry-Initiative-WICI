@@ -19,7 +19,12 @@
 
 <p>
   <strong>Tickets:</strong>
-  <%= @event.tickets %>
+  <%= @event.has_tickets %>
+</p>
+
+<p>
+  <strong>Tickets:</strong>
+  $<%= number_with_precision(@event.price, precision: 2) %>
 </p>
 
 <p>

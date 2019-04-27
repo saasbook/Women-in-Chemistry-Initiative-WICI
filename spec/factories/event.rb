@@ -4,7 +4,17 @@ FactoryBot.define do
     description { "asdlkfjas;ldkfjasdf" }
     date { "25-Nov-3018" }
     location { "someplace" }
+    has_tickets { 1 }
     price { 10.25 }
+    capacity { 10 }
+  end
+
+  factory :free_event, parent: :event do
+    name { "a future event" }
+    description { "asdlkfjas;ldkfjasdf" }
+    date { "25-Nov-3018" }
+    location { "someplace" }
+    has_tickets { 0 }
     capacity { 10 }
   end
 
@@ -30,6 +40,7 @@ FactoryBot.define do
     description { "asdlkfjas;ldkfjasdf" }
     date { "25-Nov-3018" }
     location { "someplace" }
+    has_tickets { 1 }
     price { 10 }
     capacity { 0 }
   end
