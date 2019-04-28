@@ -9,9 +9,20 @@ Rails.application.routes.draw do
   devise_for :volunteers, controllers: {
     sessions: 'volunteers/sessions'
   }
+
+  devise_scope :admin do
+    get 'accounts', to: 'admins/registrations#index', as: 'accounts'
+    post 'volunteer/:id/approve', to: 'volunteers/registrations#approve', as: 'approve_volunteer'
+    delete 'volunteer/:id', to: 'volunteers/registrations#destroy', as: 'destroy_volunteer'
+    post 'admin/:id/approve', to: 'admins/registrations#approve', as: 'approve_admin'
+    delete 'admin/:id', to: 'admins/registrations#destroy', as: 'destroy_admin'
+  end
+
   devise_for :admins, controllers: {
       sessions: 'admins/sessions'
   }
+
+
   resources :about, only: [:index]
   resources :donations, only: [:index, :new, :create]
 
