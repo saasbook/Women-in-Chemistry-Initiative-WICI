@@ -6,8 +6,8 @@ Feature: Add and view tasks
 
   Background:
     Given the following events exist:
-      | name              | description                 | date        | location                               | tickets               | capacity |
-      | Pouring liquid    | Look, it changes colors     | 22-Apr-3019 | 422 Treeside Way, Berkeley, CA 94704   | stubhub.com/liquid    | 10       |
+      | name              | description                 | date        | location                               | capacity | price |
+      | Pouring liquid    | Look, it changes colors     | 22-Apr-3019 | 422 Treeside Way, Berkeley, CA 94704   | 10       | 0     |
     And for Pouring liquid the following tasks exist:
       | name              | description                 | deadline        |
       | get liquid   | Look, it changes colors     | 28-Apr-3019 |
@@ -25,8 +25,8 @@ Feature: Add and view tasks
     And I am on the tasks page for the first event
     When I edit get liquid to:
     | name              | description                 | deadline        |
-    | new liquid   |   Look, it changes colors     | 28-Apr-3019 |
-    And I follow "Show"
+    | new liquid        | Look, it changes colors     | 28-Apr-3019     |
+    And I follow "show_1"
     Then I should see "new liquid"
 
   Scenario: Edit as admin:
@@ -56,7 +56,7 @@ Feature: Add and view tasks
   Scenario: I can delete a task
     Given I am logged in as an admin
     And I am on the tasks page for the first event
-    When I follow "Delete"
+    When I follow "destroy_1"
     Then I should not see "get liquid"
     And 0 tasks should exist
 

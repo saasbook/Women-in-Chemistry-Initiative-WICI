@@ -19,7 +19,12 @@
 
 <p>
   <strong>Tickets:</strong>
-  <%= @event.tickets %>
+  <%= @event.has_tickets %>
+</p>
+
+<p>
+  <strong>Tickets:</strong>
+  $<%= number_with_precision(@event.price, precision: 2) %>
 </p>
 
 <p>
@@ -36,8 +41,7 @@
   <% end %>
 </p>
 
-<%= link_to 'RSVP', new_event_guest_path(@event), class: "btn btn-primary text-white" if @event.date > Date.current %>
-
+<%= link_to 'Attend', new_event_guest_path(@event), class: "btn btn-primary text-white" if @event.date > Date.current %>
 <%= link_to 'Tasks', event_tasks_url(@event), class: "btn btn-primary text-white"  if admin_signed_in? || volunteer_signed_in? %>
 
 <%= link_to 'Back', events_path, class: "btn btn-secondary text-white" if @event.date > Date.current %>

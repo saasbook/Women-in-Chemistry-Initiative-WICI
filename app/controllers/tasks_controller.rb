@@ -16,9 +16,9 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(task_params)
-    @task.event = @event
-    if @task.save
+    @task = @event.tasks.new(task_params)
+
+    if @event.save
       flash[:notice] = 'You have successfully added a new task!'
       redirect_to event_tasks_url(@event)
     else
