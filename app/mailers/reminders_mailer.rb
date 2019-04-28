@@ -15,7 +15,7 @@ class RemindersMailer < ApplicationMailer
     attachments['ticket.png'] = File.read("/tmp/qrcode.png")
     mail to: guest.email, from: "wiciberkeley@gmail.com", subject: "WICI Event Confirmation"
   end
-  
+
   def remind_task(volunteer, task)
     @greeting = "Hello"
     @body = "You have the task #{task.name}, due by #{task.deadline}."
