@@ -1,23 +1,46 @@
 require "rails_helper"
 
-describe RemindersMailer  do
-  let!(:test_event) { FactoryGirl.create(:event, id: 10, name: "Event Test", description: "Great", date: "2019-04-14 20:22:21",
-     location: "Here", tickets: 10, capacity: 10) }
-  let!(:test_guest) { FactoryGirl.create(:guest, event_id: test_event.id, firstname: "Andy", lastname: "P", email: "a@gmail.com") }
+describe RemindersMailer do
+  let!(:event) { FactoryBot.create(:event) }
+  let!(:guest) { FactoryBot.create(:guest, event_id: event.id) }
+
   describe "remind" do
-    context "headers" do
-      it "renders the subject" do
-        mail = described_class.remind_guest(test_guest, test_event)
-        expect(mail.subject).to eq ("WICI Event Reminder")
-      end
-      it "sends to the right email" do
-        mail = described_class.remind_guest(test_guest, test_event)
-        expect(mail.to).to eq [test_guest.email]
-      end
-      it "renders the from email" do
-        mail = described_class.remind_guest(test_guest, test_event)
-        expect(mail.from).to eq ["wiciberkeley@gmail.com"]
-      end
+    it "renders the subject" do
+      mail = described_class.remind_guest(guest, event)
+      expect(mail.subject).to eq ("WICI Event Reminder")
+    end
+
+    it "sends to the right email" do
+      mail = described_class.remind_guest(guest, event)
+      expect(mail.to[0]).to eq (guest.email)
+    end
+
+    it "renders the from email" do
+      mail = described_class.remind_guest(guest, event)
+      expect(mail.from[0]).to eq ("wiciberkeley@gmail.com")
+    end
+  end
+
+  describe "confirm" do
+    it "renders the subject" do
+      mail = described_class.confirm_guest(guest, event, "")
+      expect(mail.subject).to eq ("WICI Event Confirmation")
+    end
+
+    it "has an attachment" do
+      qr_code = Guest.generate_qr_code("www.test.com")
+      mail = described_class.confirm_guest(guest, event, qr_code)
+      expect(mail.attachments).not_to be_nil
+    end
+
+    it "sends to the right email" do
+      mail = described_class.confirm_guest(guest, event, "")
+      expect(mail.to[0]).to eq(guest.email)
+    end
+
+    it "renders the from email" do
+      mail = described_class.confirm_guest(guest, event, "")
+      expect(mail.from[0]).to eq("wiciberkeley@gmail.com")
     end
   end
 end
