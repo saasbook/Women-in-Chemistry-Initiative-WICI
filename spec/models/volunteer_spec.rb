@@ -1,13 +1,13 @@
 require 'rails_helper'
 
-RSpec.describe Volunteer, :type => :model do
-  let!(:test_volunteer) { FactoryGirl.create(:test_volunteer, id: 1)}
+RSpec.describe Volunteer, type: :model do
+  let!(:volunteer) { FactoryBot.create(:volunteer)}
   let!(:unapproved_volunteer) { FactoryGirl.create(:unapproved_volunteer)}
-  let!(:test_event) { FactoryGirl.create(:event, id: 1) }
-  let!(:test_task) { FactoryGirl.create(:task, event_id: 1, id: 1)}
+  let!(:event) { FactoryBot.create(:event) }
+  let!(:task) { FactoryBot.create(:task, event_id: event.id)}
 
   it "cannot destroy tasks" do
-    expect(test_volunteer.can_destroy?(test_task)).to be false
+    expect(volunteer.can_destroy?(task)).to be false
   end
 
   it "can be approved" do
@@ -16,7 +16,7 @@ RSpec.describe Volunteer, :type => :model do
   end
 
   it "has an inactive message" do
-    expect(test_volunteer.inactive_message).to be :inactive
+    expect(volunteer.inactive_message).to be :inactive
   end
 
 

@@ -1,16 +1,11 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :assignment do
-    task_id 1
-    volunteer_id 1
+    task_id { 1 }
+    volunteer_id { 1 }
   end
 
-  factory :create_assignment, parent: :assignment do
-    task_id 2
-    volunteer_id 2
-  end
-
-  factory :dupe_assignment, parent: :assignment do
-    task_id 1
-    volunteer_id 2
+  factory :duplicate_assign, parent: :assignment do
+    task_id { 1 }
+    volunteer_id { 2 }
   end
 end

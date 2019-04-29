@@ -1,5 +1,5 @@
 describe Admins::RegistrationsController do
-  let!(:test_admin) { FactoryGirl.create(:test_admin, id: 1)}
+  let!(:admin) { FactoryGirl.create(:admin, id: 2)}
   let!(:unapproved_admin) { FactoryGirl.create(:unapproved_admin)}
 
   before :each do
@@ -30,17 +30,17 @@ describe Admins::RegistrationsController do
 
   describe "#destroy" do
     it "deletes an admin" do
-      expect { delete :destroy, params: { id: test_admin.id }
+      expect { delete :destroy, params: { id: admin.id }
       }.to change { Admin.count }.by(-1)
     end
 
     it "cannot delete current admin" do
-      expect { delete :destroy, params: { id: 2}
+      expect { delete :destroy, params: { id: 1}
       }.to change { Admin.count }.by(0)
     end
 
     it "redirects to index" do
-      delete :destroy, params: { id: test_admin.id }
+      delete :destroy, params: { id: admin.id }
       expect(response).to redirect_to(accounts_path)
     end
   end
@@ -48,7 +48,7 @@ describe Admins::RegistrationsController do
 end
 
 describe Volunteers::RegistrationsController do
-  let!(:test_volunteer) { FactoryGirl.create(:test_volunteer, id: 1)}
+  let!(:volunteer) { FactoryGirl.create(:volunteer)}
   let!(:unapproved_volunteer) { FactoryGirl.create(:unapproved_volunteer)}
 
   before :each do
@@ -71,12 +71,12 @@ describe Volunteers::RegistrationsController do
 
   describe "#destroy" do
     it "deletes a volunteer" do
-      expect { delete :destroy, params: { id: test_volunteer.id }
+      expect { delete :destroy, params: { id: volunteer.id }
       }.to change { Volunteer.count }.by(-1)
     end
 
     it "redirects to index" do
-      delete :destroy, params: { id: test_volunteer.id }
+      delete :destroy, params: { id: volunteer.id }
       expect(response).to redirect_to(accounts_path)
     end
   end
