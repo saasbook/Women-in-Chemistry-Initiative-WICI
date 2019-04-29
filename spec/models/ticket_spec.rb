@@ -4,7 +4,7 @@ describe Ticket do
   let!(:event) { FactoryBot.create(:event) }
   let!(:guest) { FactoryBot.create(:guest, event_id: event.id) }
   let!(:ticket) { FactoryBot.create(:ticket, guest_id: guest.id) }
-  
+
   describe "#generate_code" do
     it "generates a code" do
       ticket.generate_code
