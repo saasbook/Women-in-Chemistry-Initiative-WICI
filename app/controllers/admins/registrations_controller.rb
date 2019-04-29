@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Admins::RegistrationsController < Devise::RegistrationsController
   include Accessible
   before_action :set_admin, only: [:approve, :destroy]
