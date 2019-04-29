@@ -46,32 +46,32 @@ FactoryBot.define do
   end
 
   factory :large_photo_event, parent: :event do
-    name "Event large photo"
-    description "asdlkfjas;ldkfjasdf"
-    date "29-Jul-3018"
-    location "someplace"
-    tickets "tickets.com"
-    capacity 1000
-    image Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/fixtures/myfiles/largefile.png')))
+    name {"Event large photo"}
+    description {"asdlkfjas;ldkfjasdf"}
+    date {"29-Jul-3018"}
+    location {"someplace"}
+    has_tickets { 1 }
+    capacity {1000}
+    image {Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/fixtures/myfiles/largefile.png')))}
   end
 
   factory :bad_photo_event, parent: :event do
-    name "Event bad photo"
-    description "asdlkfjas;ldkfjasdf"
-    date "29-Jul-3018"
-    location "someplace"
-    tickets "tickets.com"
-    capacity 1000
-    image Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/fixtures/myfiles/badfile.txt')))
+    name {"Event bad photo"}
+    description {"asdlkfjas;ldkfjasdf"}
+    date {"29-Jul-3018"}
+    location {"someplace"}
+    has_tickets { 1 }
+    capacity {1000}
+    image {Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/fixtures/myfiles/badfile.txt')))}
   end
 
   factory :good_photo_event, parent: :event do
-    name "Event good photo"
-    description "asdlkfjas;ldkfjasdf"
-    date "29-Jul-3018"
-    location "someplace"
-    tickets "tickets.com"
-    capacity 1000
-    image Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/fixtures/myfiles/goodfile.png')))
+    name {"Event good photo"}
+    description {"asdlkfjas;ldkfjasdf"}
+    date {"29-Jul-3018"}
+    location {"someplace"}
+    has_tickets { 1 }
+    capacity {1000}
+    image {Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/fixtures/myfiles/goodfile.png')))}
   end
 end

@@ -89,7 +89,7 @@ describe EventsController do
         expect(event.name).to eql("modified")
       end
       it "updates an event with a good picture" do
-        put :update, params: {id: event.id, event: FactoryGirl.attributes_for(:event, image: Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/fixtures/myfiles/goodfile.png'))))}
+        put :update, params: {id: event.id, event: FactoryBot.attributes_for(:event, image: Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/fixtures/myfiles/goodfile.png'))))}
         event.reload
         expect(event.image).not_to be_nil
       end
@@ -101,12 +101,12 @@ describe EventsController do
         end
 
         it "re-renders the edit template for bad file type" do
-          put :update, params: { id: event.id, event: FactoryGirl.attributes_for(:bad_photo_event) }
+          put :update, params: { id: event.id, event: FactoryBot.attributes_for(:bad_photo_event) }
           expect(response).to render_template("edit")
         end
 
         it "re-renders the edit template for to large file type" do
-          put :update, params: { id: event.id, event: FactoryGirl.attributes_for(:large_photo_event) }
+          put :update, params: { id: event.id, event: FactoryBot.attributes_for(:large_photo_event) }
           expect(response).to render_template("edit")
         end
 
