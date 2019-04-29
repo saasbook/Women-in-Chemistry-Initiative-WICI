@@ -43,4 +43,23 @@ describe RemindersMailer do
       expect(mail.from[0]).to eq("wiciberkeley@gmail.com")
     end
   end
+  describe "remind task" do
+    context "headers" do
+      let!(:volunteer) { FactoryBot.create(:volunteer, id: 1)}
+      let!(:task) { FactoryBot.create(:task, event_id: 1, id: 1)}
+      let!(:assignment) { FactoryBot.create(:assignment, task_id: 1, volunteer_id: 1)}
+      it "renders the subject" do
+        mail = described_class.remind_task(assignment.volunteer, task)
+        expect(mail.subject).to eq ("WICI Task Volunteer Reminder")
+      end
+      it "sends to the right email" do
+        mail = described_class.remind_task(assignment.volunteer, task)
+        expect(mail.to[0]).to eq(assignment.volunteer.email)
+      end
+      it "renders the from email" do
+        mail = described_class.remind_task(assignment.volunteer, task)
+        expect(mail.from[0]).to eq("wiciberkeley@gmail.com")
+      end
+    end
+  end
 end
