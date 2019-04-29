@@ -16,6 +16,8 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
+# For nicer devise views
+gem 'devise-bootstrap-views', '~> 1.0'
 
 # env variables
 gem 'figaro'
@@ -41,6 +43,7 @@ gem 'sidekiq'
 gem 'redis-rails'
 gem 'redis'
 gem 'hiredis'
+gem 'rqrcode'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'carrierwave', '~> 1.0'
@@ -58,7 +61,7 @@ group :test do
   gem 'cucumber-rails-training-wheels'
   gem 'simplecov', :require => false
   gem 'database_cleaner' # required by Cucumber
-  gem 'factory_girl_rails' # if using FactoryGirl
+  gem 'factory_bot_rails' # factory bot 
   gem 'metric_fu'        # collect code metrics
 end
 
@@ -86,6 +89,8 @@ group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'bullet'
+  gem 'lol_dba'
   gem 'rb-readline'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
