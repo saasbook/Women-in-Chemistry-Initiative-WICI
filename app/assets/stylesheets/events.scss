@@ -12,3 +12,9 @@ img.event-thumb {
 	width: 100px;
 	height: auto;
 }
+
+.inline-w label, .inline-w input {
+    float: none; /* if you had floats before? otherwise inline-block will behave differently */
+    display: inline-block;
+    vertical-align: middle;    
+}

@@ -45,6 +45,13 @@
   <% end %>
 </p>
 
+<p>
+  <strong>Share on Facebook</strong>
+    <%=link_to 'http://www.facebook.com/sharer.php?u='+request.fullpath, :target => :blank do %>
+      <i class="fab fa-facebook-square text-primary"></i>
+    <% end %>
+</p>
+
 <%= link_to 'Attend', new_event_guest_path(@event), class: "btn btn-primary text-white" if @event.date > Date.current %>
 <%= link_to 'Tasks', event_tasks_url(@event), class: "btn btn-primary text-white"  if admin_signed_in? || volunteer_signed_in? %>
 

@@ -58,9 +58,9 @@
   </div>
 
   <% if event.image? %>
-    <div class="form-group">
+    <div class="inline-w">
       <%= form.label :remove_image %>
-      <%= form.check_box :remove_image, class: 'form-control' %>
+      <%= form.check_box :remove_image%>
       <%= image_tag event.image.small_thumb.url%>
     </div>
   <% end %>
