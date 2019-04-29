@@ -1,0 +1,68 @@
+Feature: admins can approve volunteers and admins
+
+  As an admin
+  So that I can verify new accounts
+  I want to approve all accounts before use
+
+  Background:
+    Given the following volunteers exist:
+      | firstname | lastname | email        | approved | password |
+      | John      | Doe      | john@doe.com | true     | 123456   |
+      | Jane      | Doe      | jane@doe.com | false    | 123456   |
+    And the following admins exist:
+      | firstname | lastname | email        | approved | password |
+      | Admini    | Strator  | the@boss.com | true     | 123456   |
+      | Bad       | Admin    | hacker@w.com | false    | 123456   |
+    And I am on the homepage
+
+  Scenario: admin approves a volunteer
+    Given I am logged in as an admin
+    And I am on the accounts page
+    When I approve "jane@doe.com"
+    Then I should not see "Volunteer approved."
+    And "jane@doe.com" should be approved
+
+  Scenario: admin deletes a volunteer
+    Given I am logged in as an admin
+    And I am on the accounts page
+    When I delete "john@doe.com"
+    Then I should see "Volunteer deleted."
+    And "john@doe.com" should not exist
+
+  Scenario: admin denys a volunteer
+    Given I am logged in as an admin
+    And I am on the accounts page
+    When I delete "jane@doe.com"
+    Then I should see "Volunteer deleted."
+    And "jane@doe.com" should not exist
+
+  Scenario: admin approves an admin
+    Given I am logged in as an admin
+    And I am on the accounts page
+    When I approve "hacker@w.com"
+    Then I should see "Admin approved."
+    And "hacker@w.com" should be approved
+
+  Scenario: admin deletes an admin
+    Given I am logged in as an admin
+    And I am on the accounts page
+    When I delete "the@boss.com"
+    Then I should see "Volunteer deleted."
+    And "the@boss.com" should not exist
+
+  Scenario: admin denys an admin
+    Given I am logged in as an admin
+    And I am on the accounts page
+    When I delete "hacker@w.com"
+    Then I should see "Volunteer deleted."
+    And "hacker@w.com" should not exist
+
+  Scenario: volunteer cannot access accounts page
+    Given I am logged in as a volunteer
+    And I go to the accounts page
+    Then I should be on the home page
+
+  Scenario: volunteer cannot login without approval
+    Given I am logged in as an unapproved volunteer
+    Then I should she "Your account has not been approved by your administrator yet."
+    And I should not see "Sign Out"

@@ -18,8 +18,12 @@ class Admins::RegistrationsController < Devise::RegistrationsController
   end
 
   def destroy
-    @admin.destroy
-    redirect_to accounts_path, notice: "Admin deleted." if @admin.destroy
+    if current_admin == @admin
+      redirect_to accounts_path, notice: "Cannot delete the logged in admin."
+    else
+      @admin.destroy
+      redirect_to accounts_path, notice: "Admin deleted."
+    end
   end
 
   private

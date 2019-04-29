@@ -1,5 +1,5 @@
 
-Given /I am logged in as (?:a|an) ([^\s"]*)(?: named "([^"]*)")?/ do |user,name|
+Given /I am logged in as (?:a|an)(\sunapproved)? ([^\s"]*)(?: named "([^"]*)")?/ do |unapproved,user,name|
   if !name.nil?
     name = name.split
     fname = name[0]
@@ -9,7 +9,10 @@ Given /I am logged in as (?:a|an) ([^\s"]*)(?: named "([^"]*)")?/ do |user,name|
   lname ||= "Man"
   email = "#{fname}@#{lname}.net"
   password = '123456'
-  user.classify.constantize.new(email: email, firstname: fname, lastname: lname, password: password, password_confirmation: password).save!
+  approved = unapproved.nil?
+
+
+  user.classify.constantize.new(email: email, firstname: fname, lastname: lname, approved: approved, password: password, password_confirmation: password).save!
 
   visit "/#{user}s/sign_in"
   fill_in "#{user}_email", :with => email
@@ -20,6 +23,7 @@ end
 Given /the following volunteers exist/ do |volunteers_table|
   volunteers_table.hashes.each do |volunteer|
     volunteer[:password_confirmation] = volunteer[:password]
+    volunteer[:approved] ||= true
     new_volunteer = Volunteer.new(volunteer)
     new_volunteer.save!
   end
@@ -28,6 +32,7 @@ end
 Given /the following admins exist/ do |admins_table|
   admins_table.hashes.each do |admin|
     admin[:password_confirmation] = admin[:password]
+    admin[:approved] ||= true
     new_admin = Admin.new(admin)
     new_admin.save!
   end

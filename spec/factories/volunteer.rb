@@ -4,6 +4,7 @@ FactoryGirl.define do
     firstname "John"
     lastname "Doe"
     email "john@smith.com"
+    approved true
     password "123456"
     password_confirmation "123456"
   end
@@ -13,6 +14,16 @@ FactoryGirl.define do
     firstname "Jane"
     lastname "Doe"
     email "jane@with.com"
+    approved true
+    password "123456"
+    password_confirmation "123456"
+  end
+
+  factory :unapproved_volunteer, parent: :volunteer do
+    id 3
+    firstname "Signatious"
+    lastname "Whervyn"
+    email "osmosis@jones.com"
     password "123456"
     password_confirmation "123456"
   end

@@ -1,6 +1,6 @@
 Feature: volunteers and admins can sign up and log in
 
-  As an user
+  As a user
   So that I can take on a role
   I want to login as a admin or volunteer
 

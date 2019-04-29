@@ -4,11 +4,6 @@ class Volunteers::RegistrationsController < Devise::RegistrationsController
   before_action :authenticate, only: [:approve, :index, :destroy]
   skip_before_action :check_user, except: [:new, :create]
 
-
-  def index
-    @volunteers = Volunteer.all.sort_by(:approved)
-  end
-
   def approve
     @volunteer.approve
     redirect_to accounts_path, notice: "Volunteer approved."
@@ -16,7 +11,7 @@ class Volunteers::RegistrationsController < Devise::RegistrationsController
 
   def destroy
     @volunteer.destroy
-    redirect_to accounts_path, notice: "Volunteer deleted." if @volunteer.destroy
+    redirect_to accounts_path, notice: "Volunteer deleted."
   end
 
   private
