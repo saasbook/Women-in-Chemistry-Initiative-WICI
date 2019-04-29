@@ -1,8 +1,8 @@
 <% @volunteers.each do |volunteer| %>
   <tr>
-    <td><%= volunteer.firstname %> <%= volunteer.lastname %>
-    <td><%= volunteer.email %>
-    <td><% if volunteer.approved %>&#10004;<% else %>&times;<% end %>
+    <td><%= volunteer.firstname %> <%= volunteer.lastname %></td>
+    <td><%= volunteer.email %></td>
+    <td><% if volunteer.approved %>&#10004;<% else %>&times;<% end %></td>
     <td><%= link_to "Approve", approve_volunteer_path(volunteer), method: :post, class: "btn btn-primary text-white" if not volunteer.approved %>
     <%= link_to "Delete", destroy_volunteer_path(volunteer), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-secondary text-white" %>
     </td>

@@ -33,6 +33,10 @@ class Volunteer < ApplicationRecord
     self.save!
   end
 
+  def self.list_by_approval
+    Volunteer.all.order(:approved)
+  end
+
 
   def self.send_reset_password_instructions(attributes={})
     recoverable = find_or_initialize_with_errors(reset_password_keys, attributes, :not_found)

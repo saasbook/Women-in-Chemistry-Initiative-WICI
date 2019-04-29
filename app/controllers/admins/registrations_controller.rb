@@ -8,8 +8,8 @@ class Admins::RegistrationsController < Devise::RegistrationsController
 
 
   def index
-    @admins = Admin.all.order(:approved)
-    @volunteers = Volunteer.all.order(:approved)
+    @admins = Admin.list_by_approval
+    @volunteers = Volunteer.list_by_approval
   end
 
   def approve

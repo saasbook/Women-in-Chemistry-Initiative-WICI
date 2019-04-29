@@ -64,7 +64,7 @@ Feature: admins can approve volunteers and admins
 
   Scenario: volunteer cannot login without approval
     Given I am logged in as an unapproved volunteer
-    Then I should see "Your account has not been approved by your administrator yet."
+    Then I should see "Your account must be approved by your administrator."
     And I should not see "Sign Out"
 
   Scenario: volunteer cannot reset password without approval
@@ -72,11 +72,11 @@ Feature: admins can approve volunteers and admins
     When I follow "Forgot your password?"
     And I fill in "Email" with "jane@doe.com"
     And I press "submit"
-    Then I should see "account has not been approved"
+    Then I should see "Your account must be approved by your administrator."
 
   Scenario: admin cannot reset password without approval
     Given I am on the sign in page for admins
     When I follow "Forgot your password?"
     And I fill in "Email" with "hacker@w.com"
     And I press "submit"
-    Then I should see "account has not been approved"
+    Then I should see "Your account must be approved by your administrator."
