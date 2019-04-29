@@ -1,7 +1,11 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:destroy, :update, :show, :edit]
   before_action :set_event
+  before_action :set_user
   before_action :set_assignments, only: [:destroy, :update, :show, :edit]
+  before_action :authenticate_admin!, except: [:index, :show]
+  before_action :authenticate_all, only: [:index, :show]
+
 
   def new
     @task = Task.new
@@ -12,9 +16,9 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(task_params)
-    @task.event = @event
-    if @task.save
+    @task = @event.tasks.new(task_params)
+
+    if @event.save
       flash[:notice] = 'You have successfully added a new task!'
       redirect_to event_tasks_url(@event)
     else
@@ -55,6 +59,14 @@ class TasksController < ApplicationController
 
     def set_event
       @event = Event.find(params[:event_id])
+    end
+
+    def set_user
+      @user = admin_signed_in? ? current_admin : current_volunteer
+    end
+
+    def authenticate_all
+      admin_signed_in? ? authenticate_admin! : authenticate_volunteer!
     end
 
 end

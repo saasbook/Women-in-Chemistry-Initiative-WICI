@@ -1,13 +1,22 @@
 Rails.application.routes.draw do
+  get 'tickets/check'
+
   resources :events do
-    resources :guests, only: [:new, :create, :destroy]
+    resources :guests, only: [:new, :create, :destroy] do
+      get 'ticket/check', to: 'tickets#check', as: 'check_ticket'
+    end
+
     resources :tasks do
-      resources :assignments, except: [:show, :update]
+      resources :assignments, except: [:update]
     end
   end
 
-  devise_for :volunteers
-  devise_for :admins
+  devise_for :volunteers, controllers: {
+    sessions: 'volunteers/sessions'
+  }
+  devise_for :admins, controllers: {
+      sessions: 'admins/sessions'
+  }
   resources :about, only: [:index]
   resources :donations, only: [:index, :new, :create]
 

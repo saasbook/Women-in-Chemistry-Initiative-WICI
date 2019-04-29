@@ -1,36 +1,28 @@
 class AssignmentsController < ApplicationController
   before_action :set_event_and_task
   before_action :set_assignment, only: [:destroy]
-  before_action :authenticate
-  before_action :check_assignment
+  before_action :set_user
+  before_action :authenticate_volunteer!, only: [:create, :new]
+  before_action :authenticate_all, except: [:create, :new]
 
-  # event_assignments
-  def index
-    @assignments = @event.assignments
-    @info = @assignments.empty? ? "#{@event.name} has no volunteers." : ''
-    render "assignments/_index"
-  end
   # new_event_assignment
   def new
-    if @assignment_exists
-      respond_to do |format|
-        format.html { redirect_to event_task_path(@event, @task), notice: 'You are already a volunteer.' }
-        format.json { render :index, status: :conflict, location: @assignment.event }
-      end
-    else
+    if @user.can_signup?(@task)
       @assignment = Assignment.new
+    else
+      redirect_to event_task_path(@event, @task)
     end
   end
 
   # POST /events
   # POST /events.json
   def create
-
     @assignment = Assignment.new(assignment_params)
-
     respond_to do |format|
       if @assignment.save
         format.html { redirect_to event_task_path(@event, @task), notice: 'You are now a volunteer.' }
+        @task.deadline = @event.date if @task.deadline.nil?
+        RemindersMailer.remind_task(@assignment.volunteer, @task).deliver_later(wait_until: @task.deadline - 1)
         format.json { render :show, status: :created, location: @assignment.event }
       else
         format.html { render :new }
@@ -42,7 +34,7 @@ class AssignmentsController < ApplicationController
   # DELETE /events/1
   # DELETE /events/1.json
   def destroy
-    if current_admin || @assignment.volunteer == @user
+    if @user.can_destroy?(@assignment)
       @assignment.destroy
       respond_to do |format|
         format.html { redirect_to event_task_path(@event, @task), notice: 'Volunteer was successfully unassigned.' }
@@ -51,7 +43,7 @@ class AssignmentsController < ApplicationController
     else
       respond_to do |format|
         format.html { redirect_to event_task_path(@event, @task)}
-        format.json { render :index, status: :unauthorized, location: @assignment.event }
+        format.json { render :show, status: :unauthorized, location: @assignment }
       end
     end
   end
@@ -69,8 +61,8 @@ class AssignmentsController < ApplicationController
       @assignment = Assignment.find(params[:id])
     end
 
-    def check_assignment
-      @assignment_exists = Assignment.exists?(task_id: @task.id, volunteer_id: @user.id)
+    def set_user
+      @user = admin_signed_in? ? current_admin : current_volunteer
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
@@ -78,13 +70,7 @@ class AssignmentsController < ApplicationController
       params.require(:assignment).permit(:task_id, :volunteer_id)
     end
 
-    def authenticate
-      if admin_signed_in?
-        authenticate_admin!
-        @user = current_admin
-      else
-        authenticate_volunteer!
-        @user = current_volunteer
-      end
+    def authenticate_all
+      admin_signed_in? ? authenticate_admin! : authenticate_volunteer!
     end
 end

@@ -1,15 +1,47 @@
-<%= form_with(model: guest, url: [event, guest], local: true) do |form| %>
+<%= form_with model: @guest, url: event_guests_path(@event, @guest) do |form| %>
+  <% if @guest.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(guest.errors.count, "error") %> prohibited this event from being saved:</h2>
 
-  <% guest.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
+      <ul>
+      <% guest.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
   <% end %>
-  Event: <%= event.name %><br>
-  First Name: <%= form.text_field :firstname, id: :firstname %><br>
-  Last Name: <%= form.text_field :lastname, id: :lastname %><br>
-  Email: <%= form.text_field :email, id: :email %><br>
-  Optional <br>
-  Occupation: <%= form.select :occupation, [['Undergrad','undergrad'],['Graduate','graduate'], ['Postdoc','postdoc'], ['Faculty Staff','faculty staff'], ['Other','other']], :selected => ['Other','other'] %>
-  Gender: <%= form.select :gender, [['Male','male'],['Female','female'],['Other','other'],['Prefer not to say','prefer not to say']], :selected => ['Other','other'] %>
-  Department: <%= form.select :department, [['Chemistry', 'chemistry'], ['Chemical Engineering', 'chemical Engineering'], ['Stem non-chemistry', 'stem non-chemistry'], ['Other','other']], :selected => ['Other','other'] %><br>
-  <%= form.submit "Submit", id: :submit  %>
+
+  <div class="form-group">
+    <%= form.label :first_name %>
+    <%= form.text_field :firstname, id: :firstname, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :last_name %>
+    <%= form.text_field :lastname, id: :lastname, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :email %>
+    <%= form.text_field :email, id: :email, class: "form-control" %>
+  </div>
+
+  <h4>Optional</h4>
+
+  <div class="form-group">
+    <%= form.label :occupation %>
+    <%= form.select :occupation, options_for_select(['Undergrad', 'Graduate', 'Postdoc', 'Faculty Staff', 'Other'], 'Other'), {}, id: :occupation %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :gender %>
+    <%= form.select :gender, options_for_select(['Male', 'Female', 'Other'], 'Other'), {}, id: :gender %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :department %>
+    <%= form.select :department, options_for_select(['Chemistry', 'Chemical Engineering', 'Stem non-chemistry', 'Other'], 'Other'), {}, id: :department %>
+  </div>
+
+  <%= form.submit "Submit", id: :submit %>
 <% end %>

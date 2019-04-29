@@ -6,8 +6,8 @@ Feature: view a list of volunteers for a task
 
   Background:
     Given the following events exist:
-      | name              | description                 | date        | location                               | tickets               | capacity |
-      | Pouring liquid    | Look, it changes colors     | 22-Apr-3019 | 422 Treeside Way, Berkeley, CA 94704   | stubhub.com/liquid    | 10       |
+      | name              | description                 | date        | location                               | capacity | price |
+      | Pouring liquid    | Look, it changes colors     | 22-Apr-3019 | 422 Treeside Way, Berkeley, CA 94704   | 10       | 0     |
     And for Pouring liquid the following tasks exist:
       | name              | description                 | deadline        |
       | get liquid   | Look, it changes colors     | 28-Apr-3019 |
@@ -37,8 +37,7 @@ Feature: view a list of volunteers for a task
     Given I am logged in as a volunteer named "Zip Zappity"
     And "Zip" is a volunteer for "get liquid"
     When I view the task "get liquid"
-    When I follow "sign up"
-    Then I should see "already a volunteer"
+    Then I should not see "sign up"
 
   Scenario: volunteer cannot delete another volunteer
     Given I am logged in as a volunteer named "Zip Zappity"

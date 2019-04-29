@@ -1,11 +1,11 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   # Uncomment the below to integrate admin auth
-  # before_action :authenticate_admin!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_admin!, except: [:index, :past_events, :show]
   # GET /events
   # GET /events.json
   def index
-    @events = Event.future_events
+    @events = Event.future_events.includes(:guests)
   end
 
   def past_events
@@ -75,6 +75,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:id, :name, :description, :date, :location, :tickets, :capacity)
+      params.require(:event).permit(:id, :name, :description, :date, :location, :capacity, :has_tickets, :price)
     end
 end
