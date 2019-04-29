@@ -58,3 +58,16 @@ Feature: volunteers and admins can sign up and log in
     When I am on the sign in page for volunteers
     Then I should be on the home page
 
+  Scenario: reset volunteer password by email
+    Given I am on the sign in page for volunteers
+    When I follow "Forgot your password?"
+    And I fill in "Email" with "john@doe.com"
+    And I press "submit"
+    Then I should see "You will receive an email with instructions on how to reset your password"
+
+  Scenario: reset admin password by email
+    Given I am on the sign in page for admins
+    When I follow "Forgot your password?"
+    And I fill in "Email" with "the@boss.com"
+    And I press "submit"
+    Then I should see "You will receive an email with instructions on how to reset your password"

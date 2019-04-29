@@ -57,14 +57,22 @@ When /^I log in with the following attributes:$/ do |table|
   step 'I press "Log in"'
 end
 
-Then("the (volunteer|admin) {string} should be approved") do |role, email|
+Then /^the (volunteer|admin) "([^"]*)" should be approved$/ do |role, email|
   role = role.classify.constantize
   user = role.find_by_email(email)
-  assert user.approved
+  expect(user.approved).to be true
 end
 
-Then("the (volunteer|admin) {string} should not exist") do |role, email|
+Then /^the (volunteer|admin) "([^"]*)" should not exist$/ do |role, email|
   role = role.classify.constantize
   user = role.find_by_email(email)
-  assert user.nil?
+  expect(user.nil?).to be true
+end
+
+When /^I approve the (volunteer|admin) "([^"]*)"$/ do |role, email|
+  find('tr', text: email).click_link("Approve")
+end
+
+When /^I delete the (volunteer|admin) "([^"]*)"$/ do |role, email|
+  find('tr', text: email).click_link("Delete")
 end

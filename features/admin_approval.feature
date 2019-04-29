@@ -19,7 +19,7 @@ Feature: admins can approve volunteers and admins
     Given I am logged in as an admin
     And I am on the accounts page
     When I approve the volunteer "jane@doe.com"
-    Then I should not see "Volunteer approved."
+    Then I should see "Volunteer approved."
     And the volunteer "jane@doe.com" should be approved
 
   Scenario: admin deletes a volunteer
@@ -47,14 +47,14 @@ Feature: admins can approve volunteers and admins
     Given I am logged in as an admin
     And I am on the accounts page
     When I delete the admin "the@boss.com"
-    Then I should see "Volunteer deleted."
+    Then I should see "Admin deleted."
     And the admin "the@boss.com" should not exist
 
   Scenario: admin denys an admin
     Given I am logged in as an admin
     And I am on the accounts page
     When I delete the admin "hacker@w.com"
-    Then I should see "Volunteer deleted."
+    Then I should see "Admin deleted."
     And the admin "hacker@w.com" should not exist
 
   Scenario: volunteer cannot access accounts page
@@ -66,3 +66,17 @@ Feature: admins can approve volunteers and admins
     Given I am logged in as an unapproved volunteer
     Then I should see "Your account has not been approved by your administrator yet."
     And I should not see "Sign Out"
+
+  Scenario: volunteer cannot reset password without approval
+    Given I am on the sign in page for volunteers
+    When I follow "Forgot your password?"
+    And I fill in "Email" with "jane@doe.com"
+    And I press "submit"
+    Then I should see "account has not been approved"
+
+  Scenario: admin cannot reset password without approval
+    Given I am on the sign in page for admins
+    When I follow "Forgot your password?"
+    And I fill in "Email" with "hacker@w.com"
+    And I press "submit"
+    Then I should see "account has not been approved"
