@@ -35,7 +35,7 @@ describe Admins::RegistrationsController do
     end
 
     it "cannot delete current admin" do
-      expect { delete :destroy, params: { id: 1}
+      expect { delete :destroy, params: { id: FactoryBot.attributes_for(:admin)[:id] }
       }.to change { Admin.count }.by(0)
     end
 

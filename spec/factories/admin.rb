@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :admin do
-    id { 1 }
+    id { 2 }
     email { "jane@with.com" }
     password { "123456" }
     approved { true }
@@ -8,14 +8,14 @@ FactoryBot.define do
   end
 
   factory :unapproved_admin, parent: :admin do
-    id { 2 }
+    id { 3 }
     email { "bane@cia.com" }
     password { "123456" }
     password_confirmation { "123456" }
   end
 
   factory :other_admin, parent: :admin do
-    id { 3 }
+    id { 4 }
     email { "bobby@soffle.com" }
     password { "123456" }
     approved { true }
