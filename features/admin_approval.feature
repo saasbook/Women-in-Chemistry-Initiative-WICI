@@ -18,44 +18,44 @@ Feature: admins can approve volunteers and admins
   Scenario: admin approves a volunteer
     Given I am logged in as an admin
     And I am on the accounts page
-    When I approve "jane@doe.com"
+    When I approve the volunteer "jane@doe.com"
     Then I should not see "Volunteer approved."
-    And "jane@doe.com" should be approved
+    And the volunteer "jane@doe.com" should be approved
 
   Scenario: admin deletes a volunteer
     Given I am logged in as an admin
     And I am on the accounts page
-    When I delete "john@doe.com"
+    When I delete the volunteer "john@doe.com"
     Then I should see "Volunteer deleted."
-    And "john@doe.com" should not exist
+    And the volunteer "john@doe.com" should not exist
 
   Scenario: admin denys a volunteer
     Given I am logged in as an admin
     And I am on the accounts page
-    When I delete "jane@doe.com"
+    When I delete the volunteer "jane@doe.com"
     Then I should see "Volunteer deleted."
-    And "jane@doe.com" should not exist
+    And the volunteer "jane@doe.com" should not exist
 
   Scenario: admin approves an admin
     Given I am logged in as an admin
     And I am on the accounts page
-    When I approve "hacker@w.com"
+    When I approve the admin "hacker@w.com"
     Then I should see "Admin approved."
-    And "hacker@w.com" should be approved
+    And the admin "hacker@w.com" should be approved
 
   Scenario: admin deletes an admin
     Given I am logged in as an admin
     And I am on the accounts page
-    When I delete "the@boss.com"
+    When I delete the admin "the@boss.com"
     Then I should see "Volunteer deleted."
-    And "the@boss.com" should not exist
+    And the admin "the@boss.com" should not exist
 
   Scenario: admin denys an admin
     Given I am logged in as an admin
     And I am on the accounts page
-    When I delete "hacker@w.com"
+    When I delete the admin "hacker@w.com"
     Then I should see "Volunteer deleted."
-    And "hacker@w.com" should not exist
+    And the admin "hacker@w.com" should not exist
 
   Scenario: volunteer cannot access accounts page
     Given I am logged in as a volunteer
@@ -64,5 +64,5 @@ Feature: admins can approve volunteers and admins
 
   Scenario: volunteer cannot login without approval
     Given I am logged in as an unapproved volunteer
-    Then I should she "Your account has not been approved by your administrator yet."
+    Then I should see "Your account has not been approved by your administrator yet."
     And I should not see "Sign Out"
