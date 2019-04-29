@@ -1,6 +1,6 @@
 describe Admins::RegistrationsController do
-  let!(:admin) { FactoryGirl.create(:admin, id: 2)}
-  let!(:unapproved_admin) { FactoryGirl.create(:unapproved_admin)}
+  let!(:admin) { FactoryBot.create(:other_admin)}
+  let!(:unapproved_admin) { FactoryBot.create(:unapproved_admin)}
 
   before :each do
     request.env['devise.mapping'] = Devise.mappings[:admin]
@@ -48,8 +48,8 @@ describe Admins::RegistrationsController do
 end
 
 describe Volunteers::RegistrationsController do
-  let!(:volunteer) { FactoryGirl.create(:volunteer)}
-  let!(:unapproved_volunteer) { FactoryGirl.create(:unapproved_volunteer)}
+  let!(:volunteer) { FactoryBot.create(:volunteer)}
+  let!(:unapproved_volunteer) { FactoryBot.create(:unapproved_volunteer)}
 
   before :each do
     request.env['devise.mapping'] = Devise.mappings[:admin]

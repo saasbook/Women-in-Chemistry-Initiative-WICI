@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Volunteer, type: :model do
   let!(:volunteer) { FactoryBot.create(:volunteer)}
-  let!(:unapproved_volunteer) { FactoryGirl.create(:unapproved_volunteer)}
+  let!(:unapproved_volunteer) { FactoryBot.create(:unapproved_volunteer)}
   let!(:event) { FactoryBot.create(:event) }
   let!(:task) { FactoryBot.create(:task, event_id: event.id)}
 

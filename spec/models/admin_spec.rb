@@ -1,13 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe Admin, :type => :model do
-  let!(:test_admin) { FactoryGirl.create(:test_admin, id: 1)}
-  let!(:unapproved_admin) { FactoryGirl.create(:unapproved_admin)}
-  let!(:test_event) { FactoryGirl.create(:event, id: 1) }
-  let!(:test_task) { FactoryGirl.create(:task, event_id: 1, id: 1)}
+  let!(:admin) { FactoryBot.create(:admin) }
+  let!(:unapproved_admin) { FactoryBot.create(:unapproved_admin) }
+  let!(:event) { FactoryBot.create(:event) }
+  let!(:task) { FactoryBot.create(:task, event_id: event.id) }
 
   it "can destroy tasks" do
-    expect(test_admin.can_destroy?(test_task)).to be true
+    expect(admin.can_destroy?(task)).to be true
   end
 
   it "can be approved" do
@@ -16,7 +16,7 @@ RSpec.describe Admin, :type => :model do
   end
 
   it "has an inactive message" do
-    expect(test_admin.inactive_message).to be :inactive
+    expect(admin.inactive_message).to be :inactive
   end
 
 end
