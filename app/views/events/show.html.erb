@@ -1,6 +1,5 @@
 <div class="container-fluid" style="padding-top: 20px; padding-left: 30px">
   <p>
-    <strong>Photo:</strong>
     <%= image_tag @event.image.url, class: "event-show" if @event.image? %>
   </p>
 <h1><%= @event.name %></h1>

@@ -7,6 +7,7 @@ FactoryBot.define do
     has_tickets { 1 }
     price { 10.25 }
     capacity { 10 }
+    image {Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/fixtures/myfiles/goodfile.png')))}
   end
 
   factory :free_event, parent: :event do
@@ -16,6 +17,7 @@ FactoryBot.define do
     location { "someplace" }
     has_tickets { 0 }
     capacity { 10 }
+    image {Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/fixtures/myfiles/goodfile.png')))}
   end
 
   factory :past_event, parent: :event do
@@ -24,6 +26,7 @@ FactoryBot.define do
     date { "25-Nov-2018" }
     location { "someplace" }
     capacity { 200 }
+    image {Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/fixtures/myfiles/goodfile.png')))}
   end
 
   factory :invalid_event, parent: :event do
@@ -33,6 +36,7 @@ FactoryBot.define do
     location { "" }
     price { 10.51234 }
     capacity { "" }
+    image {Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/fixtures/myfiles/goodfile.png')))}
   end
 
   factory :full_event, parent: :event do
@@ -43,6 +47,7 @@ FactoryBot.define do
     has_tickets { 1 }
     price { 10 }
     capacity { 0 }
+    image {Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/fixtures/myfiles/goodfile.png')))}
   end
 
   factory :large_photo_event, parent: :event do
