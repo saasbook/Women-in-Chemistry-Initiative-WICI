@@ -12,7 +12,7 @@ class TasksController < ApplicationController
   end
 
   def index
-    @tasks = @event.tasks
+    @tasks = Task.tasks_and_volunteers(@event)
   end
 
   def create
