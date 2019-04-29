@@ -10,6 +10,7 @@
         <th scope="col">Date</th>
         <th scope="col">Location</th>
         <th scope="col">Tickets</th>
+        <th scope="col">Price</th>
         <th scope="col">Guests</th>
         <th scope="col">Actions</th>
       </tr>
@@ -22,10 +23,14 @@
           <td><%= event.description %></td>
           <td><%= event.date %></td>
           <td><%= event.location %></td>
-          <td><%= event.tickets %></td>
-          <td><%= event.guests.length %></td>
+          <td><%= event.has_tickets %></td>
+          <td>$<%= number_with_precision(event.price, precision: 2) %></td>
+          <td><% event.guests.each do |guest| %>
+                <%= guest.firstname %> <%= guest.lastname%>,
+              <% end %>
+          </td>
           <td>
-          <%= link_to 'RSVP', new_event_guest_path(event), id: "rsvp_#{event.id}" %>
+          <%= link_to 'Attend', new_event_guest_path(event), id: "rsvp_#{event.id}" %>
           <%= link_to 'Show', event, id: "event_#{event.id}" %>
           <%= link_to 'Edit', edit_event_path(event) if admin_signed_in? %>
           <%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } if admin_signed_in? %>

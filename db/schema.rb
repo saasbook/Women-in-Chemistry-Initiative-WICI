@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190415214453) do
+ActiveRecord::Schema.define(version: 20190426194634) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -38,13 +38,13 @@ ActiveRecord::Schema.define(version: 20190415214453) do
   create_table "events", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.text "speaker"
     t.datetime "date"
     t.string "location"
-    t.string "tickets"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "capacity"
+    t.decimal "price", precision: 8, scale: 2
+    t.boolean "has_tickets"
   end
 
   create_table "guests", force: :cascade do |t|
@@ -68,6 +68,14 @@ ActiveRecord::Schema.define(version: 20190415214453) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_tasks_on_event_id"
+  end
+
+  create_table "tickets", force: :cascade do |t|
+    t.string "code"
+    t.integer "guest_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["guest_id"], name: "index_tickets_on_guest_id"
   end
 
   create_table "volunteers", force: :cascade do |t|
