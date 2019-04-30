@@ -1,8 +1,5 @@
 require 'rails_helper'
 
-describe Admins::RegistrationsController do
-end
-
 describe Admins::PasswordsController do
 end
 
@@ -13,9 +10,6 @@ describe Admins::UnlocksController do
 end
 
 describe Admins::ConfirmationsController do
-end
-
-describe Volunteers::RegistrationsController do
 end
 
 describe Volunteers::PasswordsController do
