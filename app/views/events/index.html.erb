@@ -5,6 +5,7 @@
     Click event to add your name to the guest list.
     <thead >
       <tr>
+        <th scope="col">Photo</th>
         <th scope="col">Name</th>
         <th scope="col">Description</th>
         <th scope="col">Date</th>
@@ -15,10 +16,10 @@
         <th scope="col">Actions</th>
       </tr>
     </thead>
-
     <tbody>
       <% @events.each do |event| %>
         <tr>
+          <td><%= image_tag event.image.thumb %></td>
           <td><%= event.name %></td>
           <td><%= event.description %></td>
           <td><%= event.date %></td>
@@ -28,6 +29,11 @@
           <td><% event.guests.each do |guest| %>
                 <%= guest.firstname %> <%= guest.lastname%>,
               <% end %>
+          </td>
+          <td>
+          <%= link_to 'http://www.facebook.com/sharer.php?u='+request.fullpath, :target => :blank do %>
+            <i class="fab fa-facebook-square text-primary"></i>
+          <% end %>
           <%= link_to 'Attend', new_event_guest_path(event), id: "rsvp_#{event.id}" %>
           <%= link_to 'Show', event, id: "event_#{event.id}" %>
           <%= link_to 'Edit', edit_event_path(event) if admin_signed_in? %>

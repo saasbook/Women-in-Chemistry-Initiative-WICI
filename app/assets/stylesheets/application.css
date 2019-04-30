@@ -20,6 +20,10 @@ body {
     min-height: 100%;
 }
 
+footer {
+	padding-top: 100px;
+}
+
 .footer {
 	height: 100px;
 	width: 100%;
@@ -72,6 +76,22 @@ body {
 .nav-link:hover {
 	color: inherit;
 }
+
+.remove-link {
+	color: inherit;
+	text-decoration: inherit;
+}
+
+.remove-link:hover {
+	color: inherit;
+	text-decoration: inherit;
+}
+
+.remove-link:visited {
+	color: inherit;
+	text-decoration: inherit;
+}
+
 
 a:hover {
 	background-color: transparent;

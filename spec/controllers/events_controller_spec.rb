@@ -88,10 +88,25 @@ describe EventsController do
         event.reload
         expect(event.name).to eql("modified")
       end
+      it "updates an event with a good picture" do
+        put :update, params: {id: event.id, event: FactoryBot.attributes_for(:event, image: Rack::Test::UploadedFile.new(File.open(File.join(Rails.root, '/spec/fixtures/myfiles/goodfile.png'))))}
+        event.reload
+        expect(event.image).not_to be_nil
+      end
 
       context "invalid attributes" do
         it "re-renders the edit template" do
           put :update, params: { id: event.id, event: FactoryBot.attributes_for(:invalid_event) }
+          expect(response).to render_template("edit")
+        end
+
+        it "re-renders the edit template for bad file type" do
+          put :update, params: { id: event.id, event: FactoryBot.attributes_for(:bad_photo_event) }
+          expect(response).to render_template("edit")
+        end
+
+        it "re-renders the edit template for to large file type" do
+          put :update, params: { id: event.id, event: FactoryBot.attributes_for(:large_photo_event) }
           expect(response).to render_template("edit")
         end
 

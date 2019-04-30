@@ -1,3 +1,4 @@
+
 <%= form_with(model: event, local: true) do |form| %>
   <% if event.errors.any? %>
     <div id="error_explanation">
@@ -45,6 +46,25 @@
     <%= form.label :capacity %>
     <%= form.text_field :capacity, id: :capacity, class: 'form-control'%>
   </div>
+
+  <div class="form-group">
+    <% if event.image? %>
+      <%= form.label "Update Photo" %>
+    <% else %>
+      <%= form.label "Upload Photo" %>
+    <% end %>
+    <%= form.file_field :image, id: :image %>
+    <%= form.hidden_field :image_cache %>
+  </div>
+
+  <% if event.image? %>
+    <div class="inline-w">
+      <%= form.label :remove_image %>
+      <%= form.check_box :remove_image%>
+      <%= image_tag event.image.small_thumb.url%>
+    </div>
+  <% end %>
+
 
   <div class="form-group">
     <%= form.submit :Submit, class: 'btn btn-primary' %>

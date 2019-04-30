@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190426194634) do
+ActiveRecord::Schema.define(version: 20190428212910) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 20190426194634) do
     t.datetime "updated_at", null: false
     t.string "firstname"
     t.string "lastname"
+    t.boolean "approved", default: false, null: false
+    t.index ["approved"], name: "index_admins_on_approved"
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
@@ -44,6 +46,7 @@ ActiveRecord::Schema.define(version: 20190426194634) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "capacity"
+    t.string "image"
     t.decimal "price", precision: 8, scale: 2
     t.boolean "has_tickets"
   end
@@ -89,6 +92,8 @@ ActiveRecord::Schema.define(version: 20190426194634) do
     t.datetime "updated_at", null: false
     t.string "firstname"
     t.string "lastname"
+    t.boolean "approved", default: false, null: false
+    t.index ["approved"], name: "index_volunteers_on_approved"
     t.index ["email"], name: "index_volunteers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_volunteers_on_reset_password_token", unique: true
   end

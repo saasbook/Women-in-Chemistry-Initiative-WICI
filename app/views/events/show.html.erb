@@ -1,4 +1,7 @@
 <div class="container-fluid" style="padding-top: 20px; padding-left: 30px">
+  <p>
+    <%= image_tag @event.image.url, class: "event-show" %>
+  </p>
 <h1><%= @event.name %></h1>
 <br>
 
@@ -39,6 +42,13 @@
     <% end %>
     <br>
   <% end %>
+</p>
+
+<p>
+  <strong>Share on Facebook</strong>
+    <%=link_to 'http://www.facebook.com/sharer.php?u='+request.fullpath, :target => :blank do %>
+      <i class="fab fa-facebook-square text-primary"></i>
+    <% end %>
 </p>
 
 <%= link_to 'Attend', new_event_guest_path(@event), class: "btn btn-primary text-white" if @event.date > Date.current %>
