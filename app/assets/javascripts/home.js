@@ -40,7 +40,7 @@ function collection(imgs) {
 
   this.next("expandedImg");
 }
-var arr = ['https://scontent-sjc3-1.xx.fbcdn.net/v/t31.0-8/29749500_1846027302356928_1424356246379965960_o.jpg?_nc_cat=105&_nc_ht=scontent-sjc3-1.xx&oh=62035fae7e54f571638975b4794a9020&oe=5D3F1A8C',
+var urls = ['https://scontent-sjc3-1.xx.fbcdn.net/v/t31.0-8/29749500_1846027302356928_1424356246379965960_o.jpg?_nc_cat=105&_nc_ht=scontent-sjc3-1.xx&oh=62035fae7e54f571638975b4794a9020&oe=5D3F1A8C',
 'https://scontent-sjc3-1.xx.fbcdn.net/v/t31.0-8/22769682_1781777335448592_5772115123594286650_o.jpg?_nc_cat=108&_nc_ht=scontent-sjc3-1.xx&oh=ba15f1f38bd7edc06e0dd97ee7aa3d7e&oe=5D6FDE36',
 'https://scontent-sjc3-1.xx.fbcdn.net/v/t31.0-8/16113169_1670482029911457_5672124951285453401_o.jpg?_nc_cat=103&_nc_ht=scontent-sjc3-1.xx&oh=3db7135f5c73eb990a8998380efb3584&oe=5D7779BC',
 'https://scontent-sjc3-1.xx.fbcdn.net/v/t1.0-9/45006054_1978141279145529_6321221626599833600_o.jpg?_nc_cat=111&_nc_ht=scontent-sjc3-1.xx&oh=c2d5b3fe73353b56e7fb0951315cfa02&oe=5D650991',
