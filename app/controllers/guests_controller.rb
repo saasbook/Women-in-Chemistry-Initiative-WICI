@@ -9,25 +9,12 @@ class GuestsController < ApplicationController
   end
 
   def create
-    guest_params = @event.has_tickets ? guest_params_ticket : guest_params_no_ticket
     @guest = @event.guests.new(guest_params)
     @guest.ticket = Ticket.new
 
-    if @event.has_tickets
-      customer = Stripe::Customer.create({
-                                             email: params[:stripeEmail],
-                                             source: params[:stripeToken],
-                                         })
-
-      charge = Stripe::Charge.create({
-                                         customer: customer.id,
-                                         amount: @event.amount_cents,
-                                         description: 'Rails Stripe customer',
-                                         currency: 'usd',
-                                     })
-    end
-
     if @event.save
+      stripe_charge if @event.has_tickets
+
       qr_code = Guest.generate_qr_code(event_guest_check_ticket_url(@event, @guest, code: @guest.generate_code))
       flash[:notice] = 'You have successfully registered! Check your email for confirmation.'
       RemindersMailer.confirm_guest(@guest, @event, qr_code).deliver
@@ -38,6 +25,7 @@ class GuestsController < ApplicationController
       render "new"
     end
   rescue Stripe::CardError => e
+    @guest.destroy
     flash[:alert] = e.message
     render "new"
   end
@@ -52,6 +40,24 @@ class GuestsController < ApplicationController
   end
 
   private
+    def stripe_charge
+      customer = Stripe::Customer.create({
+                                             email: params[:stripeEmail],
+                                             source: params[:stripeToken],
+                                         })
+
+      charge = Stripe::Charge.create({
+                                         customer: customer.id,
+                                         amount: @event.amount_cents,
+                                         description: 'Rails Stripe customer',
+                                         currency: 'usd',
+                                     })
+    end
+
+    def guest_params
+      @event.has_tickets ? guest_params_ticket : guest_params_no_ticket
+    end
+
     def guest_params_ticket
       params.permit(:firstname, :lastname, :email, :occupation, :gender, :department)
     end
