@@ -29,6 +29,8 @@
           <td><% event.guests.each do |guest| %>
                 <%= guest.firstname %> <%= guest.lastname%>,
               <% end %>
+          </td>
+          <td>
           <%= link_to 'http://www.facebook.com/sharer.php?u='+request.fullpath, :target => :blank do %>
             <i class="fab fa-facebook-square text-primary"></i>
           <% end %>
