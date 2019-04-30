@@ -6,6 +6,8 @@ class Ticket < ApplicationRecord
 
   def generate_code
     self.code = SecureRandom.hex(32).to_s
+    self.save!
+    return self.code
   end
 
   def self.approved?(code, guest)
