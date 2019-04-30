@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20190426194634) do
   create_table "events", force: :cascade do |t|
     t.string "name"
     t.text "description"
+    t.text "speaker"
     t.datetime "date"
     t.string "location"
     t.datetime "created_at", null: false

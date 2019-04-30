@@ -131,7 +131,7 @@ describe GuestsController do
 
       it "redirects to index" do
         delete :destroy, params: { id: guest.id, event_id: event.id }
-        expect(response).to redirect_to(events_path)
+        expect(response).to redirect_to(event_path(event))
       end
     end
   end
