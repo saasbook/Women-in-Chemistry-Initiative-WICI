@@ -17,6 +17,7 @@ class TasksController < ApplicationController
 
   def create
     @task = @event.tasks.new(task_params)
+    @task.deadline = @event.date if @task.deadline.nil?
 
     if @event.save
       flash[:notice] = 'You have successfully added a new task!'
