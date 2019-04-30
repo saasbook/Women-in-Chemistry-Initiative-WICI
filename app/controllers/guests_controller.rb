@@ -15,9 +15,8 @@ class GuestsController < ApplicationController
     if @event.save
       stripe_charge if @event.has_tickets
 
-      qr_code = Guest.generate_qr_code(event_guest_check_ticket_url(@event, @guest, code: @guest.generate_code))
       flash[:notice] = 'You have successfully registered! Check your email for confirmation.'
-      RemindersMailer.confirm_guest(@guest, @event, qr_code).deliver
+      RemindersMailer.confirm_guest(@guest, @event, generate_qr_code).deliver
       RemindersMailer.remind_guest(@guest, @event).deliver_later(wait_until: @event.date - 1)
       redirect_to event_path(@event)
     else
@@ -52,6 +51,10 @@ class GuestsController < ApplicationController
                                          description: 'Rails Stripe customer',
                                          currency: 'usd',
                                      })
+    end
+
+    def generate_qr_code
+      Guest.generate_qr_code(event_guest_check_ticket_url(@event, @guest, code: @guest.generate_code))
     end
 
     def guest_params
