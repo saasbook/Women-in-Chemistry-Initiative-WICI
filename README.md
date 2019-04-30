@@ -5,6 +5,19 @@
 
 http://women-in-chemistry-initiative.herokuapp.com
 
+
+Make sure to install ImageMagik:
+  first run bundle install
+  for those with homebrew
+  ```bash
+  brew install imagemagick
+  ```
+  On ubuntu
+  ```bash
+  sudo apt-get install imagemagick
+  ```
+
+
 To run this project locally:
   Decrypt `application.yml` if you have access to the key, or add your own API keys to `secrets.yml`. Then run
   ```bash

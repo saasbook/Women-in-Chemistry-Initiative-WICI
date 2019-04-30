@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20190428212910) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "capacity"
+    t.string "image"
     t.decimal "price", precision: 8, scale: 2
     t.boolean "has_tickets"
   end
