@@ -5,7 +5,7 @@ class Event < ApplicationRecord
   has_many :tickets, through: :guests, dependent: :destroy
   validates :image, file_size: { less_than: 1.megabytes }
 
-  validates :name, :date, :location, :capacity, :image, presence: true
+  validates :name, :date, :location, :capacity, presence: true
 
 
   def amount_cents

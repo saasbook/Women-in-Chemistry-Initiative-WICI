@@ -19,7 +19,7 @@
     <tbody>
       <% @events.each do |event| %>
         <tr>
-          <td><%= image_tag event.image.thumb if event.image? %></td>
+          <td><%= image_tag event.image.thumb %></td>
           <td><%= event.name %></td>
           <td><%= event.description %></td>
           <td><%= event.date %></td>
