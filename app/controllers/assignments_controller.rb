@@ -20,9 +20,8 @@ class AssignmentsController < ApplicationController
     @assignment = Assignment.new(assignment_params)
     respond_to do |format|
       if @assignment.save
-        format.html { redirect_to event_task_path(@event, @task), notice: 'You are now a volunteer.' }
-        @task.deadline = @event.date if @task.deadline.nil?
         RemindersMailer.remind_task(@assignment.volunteer, @task).deliver_later(wait_until: @task.deadline - 1)
+        format.html { redirect_to event_task_path(@event, @task), notice: 'You are now a volunteer.' }
         format.json { render :show, status: :created, location: @assignment.event }
       else
         format.html { render :new }
