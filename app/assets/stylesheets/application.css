@@ -14,18 +14,31 @@
  *= require_self
  */
 
+html {
+	height: 100%;
+	overflow: auto;
+}
+
 body {
 	margin: 0;
     padding: 0;
-    min-height: 100%;
+    height: 100%;
+    overflow: auto;
 }
 
-footer {
-	padding-top: 100px;
+#page-container {
+	min-height: 100vh;
+	position: relative;
+}
+
+#content-container {
+	padding-bottom: 200px;
 }
 
 .footer {
-	height: 100px;
+	height: 150px;
+	bottom: 0;
+	position: absolute;
 	width: 100%;
 }
 
@@ -38,18 +51,18 @@ footer {
 .footer-bottom {
 	background-color: #D6D6D6;
 	width: 100%;
-	height: 50px;
+	height: 100px;
 }
 
 .footer-bottom .contact {
-	font-size: 11px;
+	font-size: 12px;
 	padding-top: 0px;
 	text-align: center;
 	width: 50%;
 }
 
 .footer-bottom .legal-text {
-	font-size: 11px;
+	font-size: 12px;
 	padding-top: 0px;
 	text-align: center;
 	width: 50%;
@@ -68,7 +81,7 @@ footer {
 	text-decoration: none;
 }
 
-.container-fluid{
+.container-fluid {
 	padding-left: 5%;
 	padding-top: 2.5%;
 }
