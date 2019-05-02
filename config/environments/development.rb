@@ -11,8 +11,8 @@ Rails.application.configure do
       domain: "gmail.com",
       authentication: "plain",
       enable_starttls_auto: true,
-      user_name: 'donotreplywici',
-      password: "test" #change to ENV key
+      user_name: "donotreplywici",
+      password: ENV["email_pass"]
   }
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development

@@ -10,6 +10,6 @@ class MessageMailer < ApplicationMailer
     # the body of the message that guest sent us.
     @body = message.body
     # the email address used to create the Message
-    mail to: "wiciberkeley@gmail.com", from: message.email, subject: "Contact Form Message"
+    mail to: "donotreplywici@gmail.com", from: message.email, subject: "Contact Form Message"
   end
 end
