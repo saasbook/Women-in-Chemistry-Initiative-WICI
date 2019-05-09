@@ -1,5 +1,5 @@
 class LeadersController < ApplicationController
-  before_action :set_leader, only: [:edit, :update]
+  before_action :set_leader, only: [:edit, :update, :destroy]
 
 
   def edit
@@ -31,6 +31,14 @@ class LeadersController < ApplicationController
         format.html { render :new }
         format.json { render json: @leader.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def destroy
+    @leader.destroy
+    respond_to do |format|
+      format.html { redirect_to about_index_path, notice: 'Leader was successfully destroyed.' }
+      format.json { head :no_content }
     end
   end
 
