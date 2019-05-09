@@ -1,0 +1,52 @@
+<%= form_with(model: leader, local: true) do |form| %>
+  <% if leader.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(leader.errors.count, "error") %> prohibited this leader from being saved:</h2>
+
+      <ul>
+      <% leader.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :firstname %>
+    <%= form.text_field :firstname, id: :leader_firstname, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :lastname %>
+    <%= form.text_field :lastname, id: :leader_lastname, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :role %>
+    <%= form.text_field :role, id: :leader_role, class: 'form-control' %>
+  </div>
+
+
+  <div class="form-group">
+    <% if leader.image? %>
+      <%= form.label "Update Photo" %>
+    <% else %>
+      <%= form.label "Upload Photo" %>
+    <% end %>
+    <%= form.file_field :image, id: :image %>
+    <%= form.hidden_field :image_cache %>
+  </div>
+
+  <% if leader.image? %>
+    <div class="inline-w">
+      <%= form.label :remove_image %>
+      <%= form.check_box :remove_image%>
+      <%= image_tag leader.image.small_thumb.url%>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.submit :Submit, class: 'btn btn-primary' %>
+  </div>
+
+<% end %>

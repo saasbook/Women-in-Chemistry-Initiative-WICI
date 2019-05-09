@@ -1,0 +1,13 @@
+<table class="table table-borderless table-hover" >
+    <tbody>
+      <% @leaders.each do |leader| %>
+        <tr class="d-flex">
+          <td class="col-ex"><%= image_tag leader.image.thumb %></td>
+          <td class="col-ex"><%= leader.firstname %> <%=leader.lastname%></td>
+          <td class="col-ex"><%= leader.role %></td>
+          <td class="col-ex"><%= link_to 'Edit', edit_leader_path(leader) if admin_signed_in? %></td>
+          <td class="col-ex"><%= link_to 'Destroy', leader, method: :delete, data: { confirm: 'Are you sure?' } if admin_signed_in? %></td>
+        </tr>
+      <% end %>
+    </tbody>
+</table>

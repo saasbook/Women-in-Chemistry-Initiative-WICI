@@ -1,5 +1,10 @@
 class AboutController < ApplicationController
-	def index
-		#static page
-	end
+before_action :set_leaders
+
+private
+
+def set_leaders
+  @leaders = Leader.by_created
+end
+
 end
