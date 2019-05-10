@@ -12,7 +12,18 @@ Rails.application.routes.draw do
   end
 
   devise_for :volunteers, controllers: {
-    sessions: 'volunteers/sessions'
+    sessions: 'volunteers/sessions',
+    registrations: 'volunteers/registrations',
+    confirmations: 'volunteers/confirmations',
+    passwords: 'volunteers/passwords'
+  }
+
+
+  devise_for :admins, controllers: {
+      sessions: 'admins/sessions',
+      registrations: 'admins/registrations',
+      confirmations: 'admins/confirmations',
+      passwords: 'admins/passwords'
   }
 
   devise_scope :admin do
@@ -22,11 +33,6 @@ Rails.application.routes.draw do
     post 'admin/:id/approve', to: 'admins/registrations#approve', as: 'approve_admin'
     delete 'admin/:id', to: 'admins/registrations#destroy', as: 'destroy_admin'
   end
-
-  devise_for :admins, controllers: {
-      sessions: 'admins/sessions'
-  }
-
 
   resources :about, only: [:index]
   resources :donations, only: [:index, :new, :create]
