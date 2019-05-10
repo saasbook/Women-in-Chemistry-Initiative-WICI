@@ -1,10 +1,10 @@
 <%= form_tag event_guests_path(@event, @guest) %>
   <% if @guest.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(guest.errors.count, "error") %> prohibited this event from being saved:</h2>
+      <h2><%= pluralize(@guest.errors.count, "error") %> prohibited this event from being saved:</h2>
 
       <ul>
-      <% guest.errors.full_messages.each do |message| %>
+      <% @guest.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>

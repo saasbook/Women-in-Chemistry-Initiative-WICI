@@ -17,7 +17,7 @@ describe RemindersMailer do
 
     it "renders the from email" do
       mail = described_class.remind_guest(guest, event)
-      expect(mail.from[0]).to eq ("wiciberkeley@gmail.com")
+      expect(mail.from[0]).to eq ("donotreplywici@gmail.com")
     end
   end
 
@@ -40,7 +40,7 @@ describe RemindersMailer do
 
     it "renders the from email" do
       mail = described_class.confirm_guest(guest, event, "")
-      expect(mail.from[0]).to eq("wiciberkeley@gmail.com")
+      expect(mail.from[0]).to eq("donotreplywici@gmail.com")
     end
   end
   describe "remind task" do
@@ -58,7 +58,7 @@ describe RemindersMailer do
       end
       it "renders the from email" do
         mail = described_class.remind_task(assignment.volunteer, task)
-        expect(mail.from[0]).to eq("wiciberkeley@gmail.com")
+        expect(mail.from[0]).to eq("donotreplywici@gmail.com")
       end
     end
   end
