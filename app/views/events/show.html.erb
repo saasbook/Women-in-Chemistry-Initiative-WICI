@@ -1,63 +1,70 @@
-<div class="container-fluid" style="padding-top: 20px; padding-left: 30px">
+<!-- Event title -->
+<div class="title-container">
+  <div class="container-fluid" style="padding-top:0px; padding-left: 50px;">
+    <section class="relative about-banner" id="home">
+      <div class="overlay overlay-bg"></div>
+    </section>
+      <h1 align="center" style="color:white; padding-top: 25px;"><%= @event.name%></h1>
+  </div>
+</div>
+<!-- End event title -->
+<!-- Left side with image -->
+<div class="container-fluid" style="padding-left:30%; width: 50%; float: left;">
+  <p>
+    <strong>Date and Time:</strong>
+    <%= @event.date.strftime('%A, %B %e, at %l:%M %p') %>
+  </p>
   <p>
     <%= image_tag @event.image.url, class: "event-show" %>
   </p>
-<h1><%= @event.name %></h1>
-<br>
-
-<p>
+  <%= link_to 'Back', events_path, class: "btn btn-secondary text-white" if @event.date > Date.current %>
+  <%= link_to 'Back', past_events_path, class: "btn btn-secondary text-white" if @event.date < Date.current %>
+</div>
+<!-- End Left side with image -->
+<!-- Right side text -->
+<div class="container-fluid" style="padding-right: 30%; padding-top:100px; width: 50%; float: right;">
   <strong>Description:</strong>
-  <%= @event.description %>
-</p>
+    <p>
+      <%= @event.description %>
+    </p>
 
-<p>
-  <strong>Date:</strong>
-  <%= @event.date %>
-</p>
-
-<p>
   <strong>Location:</strong>
-  <%= @event.location %>
-</p>
+    <p>
+      <%= @event.location %>
+    </p>
 
-<p>
   <strong>Tickets:</strong>
-  <%= @event.has_tickets %>
-</p>
-
-<p>
+    <p>
+      <%= @event.has_tickets %>
+    </p>
   <strong>Tickets:</strong>
-  $<%= number_with_precision(@event.price, precision: 2) %>
-</p>
-
-<p>
+    <p>
+      $<%= number_with_precision(@event.price, precision: 2) %>
+    </p>
   <strong>Capacity:</strong>
-  <%= @event.capacity %>
-</p>
+    <p>
+      <%= @event.capacity %>
+    </p>
 
-<p>
+  <%= link_to 'Attend', new_event_guest_path(@event), class: "btn btn-primary text-white" if @event.date > Date.current %>
+  <%= link_to 'Tasks', event_tasks_url(@event), class: "btn btn-primary text-white"  if admin_signed_in? || volunteer_signed_in? %>
+  <strong>Share:</strong>
+    <p>
+        <%=link_to 'http://www.facebook.com/sharer.php?u='+request.fullpath, :target => :blank do %>
+          <i class="fab fa-facebook-square text-primary"></i>
+        <% end %>
+    </p>
+
+  <% if admin_signed_in? %>
   <strong>Guests:</strong><br>
-  <% @guests.each do |guest| %>
-    <%= guest.firstname %> <%= guest.lastname %> <% if admin_signed_in? %> | <%= guest.email %> | <%= link_to 'Delete', event_guest_path(@event, guest), method: :delete, data: { confirm: 'Are you sure?' } %>
-    <% end %>
-    <br>
-  <% end %>
-</p>
+    <p>
+      <% @guests.each do |guest| %>
+        <%= guest.firstname %> <%= guest.lastname %> <% if admin_signed_in? %> | <%= guest.email %> | <%= link_to 'Delete', event_guest_path(@event, guest), method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+        <br>
+      <% end %>
+    </p>
 
-<p>
-  <strong>Share on Facebook</strong>
-    <%=link_to 'http://www.facebook.com/sharer.php?u='+request.fullpath, :target => :blank do %>
-      <i class="fab fa-facebook-square text-primary"></i>
-    <% end %>
-</p>
-
-<%= link_to 'Attend', new_event_guest_path(@event), class: "btn btn-primary text-white" if @event.date > Date.current %>
-<%= link_to 'Tasks', event_tasks_url(@event), class: "btn btn-primary text-white"  if admin_signed_in? || volunteer_signed_in? %>
-
-<%= link_to 'Back', events_path, class: "btn btn-secondary text-white" if @event.date > Date.current %>
-<%= link_to 'Back', past_events_path, class: "btn btn-secondary text-white" if @event.date < Date.current %>
-
-<% if admin_signed_in? %>
 <br>
 <p>
   <h4>Event Demographics:</h4>

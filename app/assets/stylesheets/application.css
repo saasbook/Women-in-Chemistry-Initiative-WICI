@@ -105,6 +105,14 @@ body {
 	text-decoration: inherit;
 }
 
+.title-container {
+	background-color: #000035;
+	height: 100px;
+	width: 100%;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
 
 a:hover {
 	background-color: transparent;
