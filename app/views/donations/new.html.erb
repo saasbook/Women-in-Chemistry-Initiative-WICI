@@ -1,3 +1,5 @@
+<div class="container-fluid" style="padding-top: 20px; padding-left: 30px">
+<h1> Confirm Donation </h1>
 <%= form_tag donations_path(amount_dollars: @donation.amount_dollars) do %>
 
   <label class="amount">
@@ -10,5 +12,7 @@
           data-amount="<%= @donation.amount_cents %>"
           data-locale="auto"></script>
 
-  <%= submit_tag "Confirm Payment", id: :confirm %>
+  <br><%= submit_tag "Confirm", id: :confirm, class: "btn btn-primary text-white" %> <br><br>
+  <%= link_to 'Back', :back, class: "btn btn-secondary text-white" %>
 <% end %>
+</div>
