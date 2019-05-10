@@ -5,7 +5,7 @@ class Guest < ApplicationRecord
   has_one :ticket, dependent: :destroy
 
   validates :firstname, :lastname, :occupation, :gender, :department, presence: true
-  validates :email, presence: true, uniqueness: true, format: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/
+  validates :email, presence: true, uniqueness: { scope: :event }, format: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/
   validate :check_capacity
 
   def check_capacity
