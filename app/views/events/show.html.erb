@@ -51,10 +51,11 @@
   <strong>Share:</strong>
     <p>
         <%=link_to 'http://www.facebook.com/sharer.php?u='+request.fullpath, :target => :blank do %>
-          <i class="fab fa-facebook-square text-primary"></i>
+          <i class="fab fa-facebook-square text-primary" style = "font-size:40px"></i>
         <% end %>
     </p>
 
+<!-- show guest if admin -->
   <% if admin_signed_in? %>
   <strong>Guests:</strong><br>
     <p>
@@ -66,11 +67,11 @@
     </p>
 
 <br>
-<p>
-  <h4>Event Demographics:</h4>
-  <%= pie_chart @event.guests.group(:occupation).count, colors: ["#00e5ff", "#c33c54", "#070268", "#ffd2a0"], donut: true, title: "Occupation Statistics", messages: {empty: "No data"} %>
-  <%= pie_chart @event.guests.group(:gender).count, colors: ["#00e5ff", "#c33c54", "#070268"], donut: true, title: "Gender Statistics", messages: {empty: "No data"} %>
-  <%= pie_chart @event.guests.group(:department).count, colors: ["#00e5ff", "#c33c54", "#070268"], donut: true, title: "Department Statistics", messages: {empty: "No data"} %>
-</p>
+<h4>Event Demographics:</h4>
+  <p>
+    <%= pie_chart @event.guests.group(:occupation).count, colors: ["#00e5ff", "#c33c54", "#070268", "#ffd2a0"], donut: true, title: "Occupation Statistics", messages: {empty: "No data"} %>
+    <%= pie_chart @event.guests.group(:gender).count, colors: ["#00e5ff", "#c33c54", "#070268"], donut: true, title: "Gender Statistics", messages: {empty: "No data"} %>
+    <%= pie_chart @event.guests.group(:department).count, colors: ["#00e5ff", "#c33c54", "#070268"], donut: true, title: "Department Statistics", messages: {empty: "No data"} %>
+  </p>
 <% end %>
 </div>
