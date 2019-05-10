@@ -4,7 +4,6 @@ Feature: navigate the website with links on homepage
   So that I can browse content relevant to my interests
   I want to be able to click links on the homepage to navigate the site
 
-
   Background:
     Given I am on the home page
 
@@ -22,4 +21,4 @@ Feature: navigate the website with links on homepage
 
   Scenario: click on contact
     When I follow "contact"
-    Then I should see "Contact Form"
+    Then I should see "Contact Us"

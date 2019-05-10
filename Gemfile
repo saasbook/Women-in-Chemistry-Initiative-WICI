@@ -19,6 +19,8 @@ gem 'uglifier', '>= 1.3.0'
 # For nicer devise views
 gem 'devise-bootstrap-views', '~> 1.0'
 
+gem "bootstrap_form", ">= 4.2.0"
+
 # env variables
 gem 'figaro'
 # adds portable third party auth
@@ -61,7 +63,7 @@ group :test do
   gem 'cucumber-rails-training-wheels'
   gem 'simplecov', :require => false
   gem 'database_cleaner' # required by Cucumber
-  gem 'factory_bot_rails' # factory bot 
+  gem 'factory_bot_rails' # factory bot
   gem 'metric_fu'        # collect code metrics
 end
 

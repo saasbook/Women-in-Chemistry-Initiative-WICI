@@ -1,10 +1,6 @@
 class LeadersController < ApplicationController
   before_action :set_leader, only: [:edit, :update, :destroy]
 
-
-  def edit
-  end
-
   def new
     @leader = Leader.new
   end
@@ -15,7 +11,7 @@ class LeadersController < ApplicationController
         format.html { redirect_to about_index_path, notice: 'Leader was successfully edited.' }
         format.json { render :index, status: :created, location: about_index_path }
       else
-        format.html { render :new }
+        format.html { render :edit }
         format.json { render json: @leader.errors, status: :unprocessable_entity }
       end
     end

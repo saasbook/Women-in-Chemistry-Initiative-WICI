@@ -16,22 +16,22 @@ Feature: access legal information, social media pages, contact form with footer
   Scenario: click on contact in footer from home page
   	Given I am on the home page
     When I follow "contact page"
-    Then I should see "Contact Form"
+    Then I should see "Contact Us"
 
   Scenario: click on contact in footer from events page
   	Given I am on the events page
     When I follow "contact page"
-    Then I should see "Contact Form"
+    Then I should see "Contact Us"
 
   Scenario: click on contact in footer from about page
   	Given I am on the about_index page
     When I follow "contact page"
-    Then I should see "Contact Form"
+    Then I should see "Contact Us"
 
   Scenario: click on contact in footer from donate page
   	Given I am on the donate page
     When I follow "contact page"
-    Then I should see "Contact Form"
+    Then I should see "Contact Us"
 
    Scenario: footer information visible from home page
 	Given I am on the home page
