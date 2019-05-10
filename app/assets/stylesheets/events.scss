@@ -4,7 +4,7 @@
 
 
 img.event-show {
-	width: 200px;
+	width: 400px;
 	height: auto;
 }
 
@@ -16,5 +16,9 @@ img.event-thumb {
 .inline-w label, .inline-w input {
     float: none; /* if you had floats before? otherwise inline-block will behave differently */
     display: inline-block;
-    vertical-align: middle;    
+    vertical-align: middle;
+}
+
+.jumbotron {
+	background-color: #c7e1e2 !important;
 }
