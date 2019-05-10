@@ -50,7 +50,6 @@
   </p>
 
 <!-- show guest if admin -->
-  <% if admin_signed_in? %>
   <h4><b>Guests:</b></h4>
   <p>
     <% @guests.each do |guest| %>
@@ -59,7 +58,7 @@
       <br>
     <% end %>
   </p>
-
+<% if admin_signed_in? %>
 <br>
 <h4>Event Demographics:</h4>
   <p>
