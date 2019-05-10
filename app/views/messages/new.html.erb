@@ -1,9 +1,8 @@
 <head>
   <title>Contact</title>
-  <link href="form-validation.css" rel="stylesheet">
 </head>
 <body class="bg-light">
-  <div class="contact-form container-fluid" style="padding-top: 20px; width: 500px">
+  <div class="contact-form container-fluid" style="padding-top: 20px; width: 500px; padding-bottom:80px">
     <div class="py-5 text-center">
       <h1>Contact Us</h1>
       <br>
@@ -15,7 +14,7 @@
 
         <%= f.email_field :email, placeholder: "you@example.com", class: "form-control" %>
 
-        <%= f.text_area :body, class: "form-control" %>
+        <%= f.text_area :body, class: "form-control", rows: "8", label: "Message" %>
 
         <%= f.submit 'Send', class: "btn btn-primary form-control"%>
       <% end %>
