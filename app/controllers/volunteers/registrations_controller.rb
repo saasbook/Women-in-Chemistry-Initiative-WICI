@@ -1,7 +1,7 @@
 class Volunteers::RegistrationsController < Devise::RegistrationsController
   include Accessible
   before_action :set_volunteer, only: [:approve, :destroy]
-  before_action :authenticate, only: [:approve, :index, :destroy]
+  before_action -> {authenticate_admin!(force: true)}, only: [:approve, :destroy]
   skip_before_action :check_user, except: [:new, :create]
 
   def approve
@@ -18,10 +18,6 @@ class Volunteers::RegistrationsController < Devise::RegistrationsController
 
   def set_volunteer
     @volunteer = Volunteer.find(params[:id])
-  end
-
-  def authenticate
-    redirect_to root_path if not admin_signed_in?
   end
 
 end
