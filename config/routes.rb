@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :photos, except: [:show]
+
   devise_for :volunteers, controllers: {
     sessions: 'volunteers/sessions'
   }
@@ -32,7 +34,8 @@ Rails.application.routes.draw do
   resources :donations, only: [:index, :new, :create]
 
   get 'past-events', to: 'events#past_events', as: 'past_events'
-  root 'home#home'
+  get 'home', to: 'photos#home', as: 'home_path'
+  root 'photos#home'
 
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

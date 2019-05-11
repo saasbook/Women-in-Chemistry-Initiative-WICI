@@ -1,0 +1,33 @@
+<div class="container-fluid" style="padding-top: 20px; padding-left: 30px">
+	<br>
+
+<div style="text-align:center">
+  <h2>All photos from our events</h2>
+</div>
+
+<table class="table table-borderless table-hover">
+
+	<thead >
+		<tr>
+			<th scope="col">Photo</th>
+			<th scope="col">Description</th>
+			<th scope="col">Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @photos.each do |photo| %>
+			<tr>
+				<td><%= image_tag photo.image.thumb %></td>
+				<td><%= photo.description %></td>
+				<td>
+				<%= link_to 'Edit', edit_photo_path(photo) %>
+				<%= link_to 'Destroy', photo, method: :delete, data: { confirm: 'Are you sure?' } %>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+<%= link_to 'New Photo', new_photo_path, class: "btn btn-primary text-white"%>
+<%= link_to 'Gallery', home_path_url, class: "btn btn-primary text-white"%>
+</body>
+</div>
