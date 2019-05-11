@@ -13,6 +13,8 @@ class PhotosController < ApplicationController
 
   def home
     @photos = Photo.all
+    @num_cols = 3
+    @value = 1
   end
 
   def edit

@@ -1,3 +1,9 @@
+<style>
+.image-size {
+  max-width: 300px;
+  max-height: 200px;
+}
+</style>
 <div class="container-fluid" style="padding-top: 20px; padding-left: 30px">
 	<br>
 	<h2>Welcome to the Women in Chemistry Initiative Website!</h2><br><br>
@@ -18,17 +24,22 @@
 
 	<thead >
 		<tr>
-			<th scope="col">Photo</th>
-			<th scope="col">Description</th>
+			<th scope="col">Photos</th>
 		</tr>
 	</thead>
 	<tbody>
+    <tr>
 		<% @photos.each do |photo| %>
-			<tr>
-				<td><%= image_tag photo.image.thumb %></td>
-				<td><%= photo.description %></td>
-			</tr>
+      <td><figure>
+				<%= image_tag photo.image.thumb%>
+				<figcaption><%= photo.description %></figcaption>
+      </figure></td>
+        <% if @value % @num_cols == 0 %>
+          </tr> <tr>
+        <% end %>
+        <% @value += 1 %>
 		<% end %>
+  </tr>
 	</tbody>
 </table>
 <%= link_to 'Edit Gallery', photos_url, class: "btn btn-primary text-white"%>
