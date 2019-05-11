@@ -1,70 +1,77 @@
 <!-- Event title -->
-<div class="jumbotron">
-  <div class="container-fluid">
-    <h1 class="display-4" style="padding-left: 1%"><%= @event.name%></h1>
-    <br>
-    <h3 style="padding-left: 1%">
-      <strong>When:</strong>
+<div class="bg-image">
+  <br>
+    <h1 class="display-4" style="padding-left: 2%; color:white"><b><%= @event.name%></b></h1>
+    <h3 style="padding-left: 2%; color:white">
       <%= @event.date.strftime('%A, %B %e, at %l:%M %p') %>
-      <br>
-      <br>
+    </h3>
+    <h2 style="padding-left: 2%">
       <%= link_to 'Back', events_path, class: "btn btn-secondary text-white" if @event.date > Date.current %>
       <%= link_to 'Back', past_events_path, class: "btn btn-secondary text-white" if @event.date < Date.current %>
-    </h3>
-  </div>
+    </h2>
 </div>
 <!-- End event title -->
 <!-- Left side with image -->
-<div class="container-fluid" style="padding-left:3%; padding-top: 1%; width: 25%; float: left;">
+<div class="container-fluid" style="padding-left:5%; padding-top: 2%; padding-bottom: 1%; width: 30%; float: left;">
   <p>
     <%= image_tag @event.image.url, class: "event-show" %>
   </p>
 </div>
 <!-- End Left side with image -->
-<!-- Right side text -->
-<div class="container-fluid" style="padding-right:3%; padding-top: 1%; width: 70%; float: right;">
-  <h4><b>Description:</b></h4>
+
+
+<!-- Center text -->
+<div class="container-fluid" style="padding-right:1%; padding-top: 2%; padding-bottom: 1%; width: 10%; float: left;">
+    <h4><b>Location:</b></h4>
     <p>
-      <%= @event.description %>
+      <%= @event.location %>
     </p>
-  <h4><b>Location:</b></h4>
-  <p>
-    <%= @event.location %>
-  </p>
-  <h4><b>Price:</b></h4>
-  <p>
-    $<%= number_with_precision(@event.price, precision: 2) %>
-  </p>
-  <h4><b>Capacity:</b></h4>
-  <p>
-    <%= @event.capacity %>
-  </p>
+    <h4><b>Price:</b></h4>
+    <p>
+      $<%= number_with_precision(@event.price, precision: 2) %>
+    </p>
+    <h4><b>Capacity:</b></h4>
+    <p>
+      <%= @event.capacity %>
+    </p>
+    <h4><b>Share:</b></h4>
+    <p>
+        <%=link_to 'http://www.facebook.com/sharer.php?u='+request.fullpath, :target => :blank do %>
+          <i class="fab fa-facebook-square text-primary" style = "font-size:40px"></i>
+        <% end %>
+    </p>
+  </div>
+<!-- End Center text -->
 
-  <%= link_to 'Attend', new_event_guest_path(@event), class: "btn btn-primary text-white" if @event.date > Date.current %>
-  <%= link_to 'Tasks', event_tasks_url(@event), class: "btn btn-primary text-white"  if admin_signed_in? || volunteer_signed_in? %>
-  <h4><b>Share:</b></h4>
-  <p>
-      <%=link_to 'http://www.facebook.com/sharer.php?u='+request.fullpath, :target => :blank do %>
-        <i class="fab fa-facebook-square text-primary" style = "font-size:40px"></i>
-      <% end %>
-  </p>
-
+<!-- Right text -->
+  <div class="container-fluid" style="padding-right:5%; padding-top: 2%; padding-bottom: 2%; width: 50%; float: left;">
+      <h4><b>Description:</b></h4>
+        <p>
+          <%= @event.description %>
+        </p>
+        <%= link_to 'Attend', new_event_guest_path(@event), class: "btn btn-primary text-white" if @event.date > Date.current %>
+        <%= link_to 'Tasks', event_tasks_url(@event), class: "btn btn-primary text-white"  if admin_signed_in? || volunteer_signed_in? %>
+    </div>
+    <div class="container-fluid" align="center" style="padding-bottom:50%">
+    </div>
 <!-- show guest if admin -->
-  <h4><b>Guests:</b></h4>
-  <p>
+<% if admin_signed_in? %>
+<div class="container-fluid" style="padding-top:25%">
+  <h1 align="center">Guests:</h1>
+  <h4 style="padding-left:40%;">
     <% @guests.each do |guest| %>
-      <%= guest.firstname %> <%= guest.lastname %> <% if admin_signed_in? %> | <%= guest.email %> | <%= link_to 'Delete', event_guest_path(@event, guest), method: :delete, data: { confirm: 'Are you sure?' } %>
-      <% end %>
+      <%= guest.firstname %> <%= guest.lastname %> | <%= guest.email %> | <%= link_to 'Delete', event_guest_path(@event, guest), method: :delete, data: { confirm: 'Are you sure?' } %>
       <br>
     <% end %>
-  </p>
-<% if admin_signed_in? %>
-<br>
-<h4>Event Demographics:</h4>
-  <p>
-    <%= pie_chart @event.guests.group(:occupation).count, colors: ["#00e5ff", "#c33c54", "#070268", "#ffd2a0"], donut: true, title: "Occupation Statistics", messages: {empty: "No data"} %>
-    <%= pie_chart @event.guests.group(:gender).count, colors: ["#00e5ff", "#c33c54", "#070268"], donut: true, title: "Gender Statistics", messages: {empty: "No data"} %>
-    <%= pie_chart @event.guests.group(:department).count, colors: ["#00e5ff", "#c33c54", "#070268"], donut: true, title: "Department Statistics", messages: {empty: "No data"} %>
-  </p>
-<% end %>
+  </h4>
 </div>
+<div class="container-fluid" align="center">
+  <h1>Event Demographics:</h1>
+  <br>
+  <div class="row" style="padding-left:20%;">
+    <div class="column"><%= pie_chart @event.guests.group(:occupation).count, colors: ["#00e5ff", "#c33c54", "#070268", "#ffd2a0"], donut: true, title: "Occupation Statistics", messages: {empty: "No data"}%></div>
+    <div class="column"><%= pie_chart @event.guests.group(:gender).count, colors: ["#00e5ff", "#c33c54", "#070268"], donut: true, title: "Gender Statistics", messages: {empty: "No data"}%></div>
+    <div class="column"><%= pie_chart @event.guests.group(:department).count, colors: ["#00e5ff", "#c33c54", "#070268"], donut: true, title: "Department Statistics", messages: {empty: "No data"}%></div>
+  </div>
+</div>
+<% end %>

@@ -21,4 +21,24 @@ img.event-thumb {
 
 .jumbotron {
 	background-color: #c7e1e2 !important;
+	height: 200px;
+}
+.column {
+  float: left;
+  width: 33.33%;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.bg-image {
+  /* The image used */
+  background-image: url("event-default.png");
+  /* Full height */
+  height: 200px;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
