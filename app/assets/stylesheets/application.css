@@ -90,6 +90,10 @@ body {
 	color: inherit;
 }
 
+.nav-link {
+	font-size: 16px;
+}
+
 .remove-link {
 	color: inherit;
 	text-decoration: inherit;
