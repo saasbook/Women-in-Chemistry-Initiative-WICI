@@ -13,6 +13,10 @@ class Event < ApplicationRecord
     (price * 100).to_i
   end
 
+  def past_event?
+    Date.current > date
+  end
+
   def self.past_events
     Event.where("date < ?", Date.current).order(date: :desc)
   end
