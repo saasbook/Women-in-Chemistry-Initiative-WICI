@@ -1,7 +1,11 @@
-<div class="container-fluid" style="padding-top: 20px; padding-left: 30px">
-<h1>Editing Event</h1>
-
-<%= render 'form', event: @event %>
-
-<%= link_to 'Back', events_path, class: "btn btn-secondary text-white" %><br><br>
+<div class="bg-image">
+  <div class="container-fluid">
+    <h1 class="display-4" style="padding-left: 1%; color:white">Edit Event</h1>
+    <h3 style="padding-left: 1%">
+      <%= link_to 'Back', events_path, class: "btn btn-secondary text-white" %><br><br>
+    </h3>
+  </div>
+</div>
+<div class="container-fluid">
+  <%= render 'form', event: @event %>
 </div>
