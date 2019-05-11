@@ -14,6 +14,13 @@
  *= require_self
  */
 
+:root {
+    --teal-bg: #2E8C8C;
+    --dark-teal: #0F4040;
+    --gold-hl: #B19632;
+    --gray-ft: #8C8C8C;
+}
+
 html {
 	height: 100%;
 	overflow: auto;
@@ -27,7 +34,6 @@ body {
 }
 
 #page-container {
-	min-height: 100vh;
 	position: relative;
 }
 
