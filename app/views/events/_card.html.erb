@@ -6,8 +6,11 @@
         <hr width="100%" color="white">
         <p class="card-text"><%= event.description %></p>
         <p class="card-text"><b>Date: </b><%= event.date.strftime("%a, %B %d, %Y") %></p>
-        <p class="card-text"><b>Time: </b><%= event.date.strftime("%l:%M %P") %></p>
-        <p class="card-text"><b>Price: </b>$<%= number_with_precision(event.price, precision: 2) %></p>
+        <% unless event.past_event? %>
+          <p class="card-text"><b>Capacity: </b><%= event.guests.length %>/<%= event.capacity %></p>
+          <p class="card-text"><b>Time: </b><%= event.date.strftime("%l:%M %P") %></p>
+          <p class="card-text"><b>Price: </b>$<%= number_with_precision(event.price, precision: 2) %></p>
+        <% end %>
         <p class="card-text"><b>Location: </b><%= event.location %></p>
         <div class="card-actions">
           <%= link_to 'RSVP', new_event_guest_path(event), class: "btn btn-primary", id: "rsvp_#{event.id}" unless event.past_event? %>
