@@ -15,16 +15,20 @@ class GuestsController < ApplicationController
     if @event.save
       stripe_charge if @event.has_tickets
       confirm_and_remind
-      
+
       flash[:notice] = 'You have successfully registered! Check your email for confirmation.'
       redirect_to event_path(@event)
     else
-      flash[:alert] = 'Your registration failed, please make sure your information is correct.'
+      if @guest.errors.include?(:capacity)
+        flash.now[:alert] = "We're sorry, this event is at capacity."
+      else
+        flash.now[:alert] = 'Your registration failed, please make sure your information is correct.'
+      end
       render "new"
     end
   rescue Stripe::CardError, Stripe::InvalidRequestError => e
     @guest.destroy
-    flash[:alert] = e.message
+    flash.now[:alert] = e.message
     render "new"
   end
 
@@ -66,11 +70,11 @@ class GuestsController < ApplicationController
     end
 
     def guest_params_ticket
-      params.permit(:firstname, :lastname, :email, :occupation, :gender, :department)
+      params.permit(:first_name, :last_name, :email, :occupation, :gender, :department)
     end
 
     def guest_params_no_ticket
-      params.require(:guest).permit(:firstname, :lastname, :email, :occupation, :gender, :department)
+      params.require(:guest).permit(:first_name, :last_name, :email, :occupation, :gender, :department)
     end
 
     def set_guest

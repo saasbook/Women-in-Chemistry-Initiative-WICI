@@ -59,10 +59,6 @@ a.social-link:hover {
     margin-left: 10px;
 }
 
-.card-actions {
-    margin-bottom: 10px;
-}
-
 #page-container {
 	position: relative;
 }
@@ -71,6 +67,10 @@ a.social-link:hover {
     min-height: 100vh;
     padding-bottom: 50px;
     background: var(--teal-bg);
+}
+
+.error-explanation {
+    color: black;
 }
 
 
@@ -147,6 +147,31 @@ a.social-link:hover {
 .bg-card {
     background-color: var(--teal-dk) !important;
 }
+
+.content-card {
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+.card-title, .card-title:visited, .card-title:hover {
+    font-size: 40px;
+    color: white;
+}
+
+.card-text {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.card-actions {
+    margin-bottom: 10px;
+}
+
+.fab .fa-facebook {
+    width: 24px !important;
+    height: 24px !important;
+}
+
 
 a:hover {
 	background-color: transparent;

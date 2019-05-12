@@ -9,6 +9,17 @@ When /^I submit the form with the following attributes:$/ do |table|
   step 'I press "submit"'
 end
 
+When /^I confirm the form with the following attributes:$/ do |table|
+  criteria = table.rows_hash.each do |field, value|
+    if field.include?('[')
+      select(value, :from => field)
+    else
+      fill_in field, :with => value
+    end
+  end
+  step 'I press "confirm"'
+end
+
 When /^I fill out the form with the following attributes:$/ do |table|
   criteria = table.rows_hash.each do |field, value|
     if field.include?('[')

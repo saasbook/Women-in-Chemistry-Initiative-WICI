@@ -1,4 +1,4 @@
-<div class="event-card card bg-card text-white" id="event_<%= event.id %>">
+<div class="content-card card bg-card text-white" id="event_<%= event.id %>">
   <div class="row">
     <div class="col-lg-7">
       <div class="col-lg-12">
@@ -9,7 +9,7 @@
         <% unless event.past_event? %>
           <p class="card-text"><b>Capacity: </b><%= event.guests.length %>/<%= event.capacity %></p>
           <p class="card-text"><b>Time: </b><%= event.date.strftime("%l:%M %P") %></p>
-          <p class="card-text"><b>Price: </b>$<%= number_with_precision(event.price, precision: 2) %></p>
+          <p class="card-text"><b>Price: </b><%= event.price.nil? || event.price == 0 ? "Free!": "$" + number_with_precision(event.price, precision: 2) %></p>
         <% end %>
         <p class="card-text"><b>Location: </b><%= event.location %></p>
         <div class="card-actions">
@@ -40,9 +40,6 @@
             <i class="fab fa-linkedin social-icon"></i>
           <% end %>
         </div>
-      </div>
-      <div class="col-lg-12">
-
       </div>
     </div>
   </div>
