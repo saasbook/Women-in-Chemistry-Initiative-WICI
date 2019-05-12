@@ -7,12 +7,16 @@ class Event < ApplicationRecord
 
   validates :name, :date, :location, :capacity, presence: true
 
+  mount_uploader :image, ImageUploader
 
   def amount_cents
     (price * 100).to_i
   end
 
-  mount_uploader :image, ImageUploader
+  def past_event?
+    Date.current > date
+  end
+
   def self.past_events
     Event.where("date < ?", Date.current).order(date: :desc)
   end

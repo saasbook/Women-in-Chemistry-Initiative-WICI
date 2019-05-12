@@ -1,23 +1,33 @@
 <div class="footer">
 	<div class="navbar navbar-expand-lg footer-top">
-		<div class="footer-icons">
+		<div class="col-md-12 text-center footer-icons">
 			<a href="https://www.facebook.com/BerkeleyWICI">
-				<i class="fab fa-facebook-square text-white"></i>
+				<i class="fab fa-facebook-square text-white social-icon"></i>
 			</a>
 			<a href="mailto:wiciberkeley@gmail.com">
-				<i class="fas fa-envelope text-white"></i>
+				<i class="fas fa-envelope text-white social-icon"></i>
 			</a>
-			<%= link_to new_message_path do %>
-				<i class="fas fa-address-book text-white"></i>
-			<% end %>	
+
 		</div>
 	</div>
 	<div class="navbar navbar-expand-lg footer-bottom">
-		<div class="legal-text">
-			Legal Information: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-		</div>
-		<div class="contact">
-			Contact us using wiciberkeley@gmail.com, facebook.com/BerkeleyWICI, or our <%= link_to 'contact page',new_message_path, class: "remove-link" %>
-		</div>
+    <div class="row">
+      <div class="col-md-12 footer-text text-center">
+        <%= link_to 'Home', root_path, class: "remove-link", id: "home_footer" %> |
+        <%= link_to 'Events', events_path, class: "remove-link", id: "events_footer" %> |
+        <%= link_to 'About', about_index_path, class: "remove-link", id: "about_footer" %> |
+        <%= link_to 'Donate', donations_path, class: "remove-link", id: "donate_footer" %> |
+        <%= link_to 'Contact', new_message_path, class: "remove-link", id: "contact_footer" %>
+      </div>
+      <div class="col-md-6 offset-md-3 text-center footer-text">
+        Legal Information: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+        aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+        fugiat nulla.
+      </div>
+      <div class="col-md-12 text-center footer-text">
+        © Women In Chemistry Initiative 2019
+      </div>
+    </div>
 	</div>
 </div>
