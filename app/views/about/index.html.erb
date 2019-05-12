@@ -1,19 +1,17 @@
-
 <div class="jumbotron">
         <div class="container-fluid">
           <h1 class="display-4">Our Mission</h1>
-          <p class="lead">To serve as a social network of like-minded graduate students to promote women in chemistry.</p>
+          <p class="lead text-white">To serve as a social network of like-minded graduate students to promote women in chemistry.</p>
           <hr class="my-4">
-          <%= link_to "Contact Us", new_message_path, class: "btn btn-primary btn-lg text-white" %>
+          <%= link_to "Contact Us", new_message_path, class: "btn btn-primary btn-lg" %>
         </div>
       </div>
-<body class="bg-light">
 <div class="container-fluid"style="padding-top: 30px; padding-left:30px;">
   <div class="row">
     <div class="col-md"style="padding-right: 40px;">
       <h1> About</h1>
       <br>
-      <p class="about">
+      <p class="about event-card card bg-card" style="color: white">
         WICI, a non-profit organization founded in 2015, serves as an inclusive social and professional network of graduate and postdoctoral students of all genders and experiences. Our mission is to support the health and wellness of our members and community, as well as to promote women in chemistry and chemical engineering, through events both on campus and in the Bay Area. We believe that providing these opportunities for socialization, discussion, and support will increase the visibility of women in STEM, make connections with our local community, and encourage women to pursue careers in STEM.
         <br>
         <br>
@@ -25,9 +23,11 @@
   </div>
     <div class="col-sm">
       <h1>Our Committee </h1>
-      <%= render "leaders/list" %>
-      <%= link_to 'Add new leader', new_leader_path, class: "btn btn-primary text-white", id:"add leader" if admin_signed_in? %>
+      <br>
+      <div class="event-card card bg-card">
+        <%= render "leaders/list" %>
+      </div>
+      <%= link_to 'Add new leader', new_leader_path, class: "btn btn-primary", id:"add leader" if admin_signed_in? %>
     </div>
   </div>
 </div>
-</body>

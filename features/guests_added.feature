@@ -72,5 +72,5 @@ Feature: See if you are attending an event
         | Tara           | Gon              | tg@gmail.com | Faculty Staff        | Prefer not to say  | Other               | 1       |
         | Alex           | Morgan           | am@gmail.com | Other                | Female             | Other               | 1       |
         | Sasha          | Downer           | sd@gmail.com | Postdoc              | Other              | Stem non-chemistry  | 1       |
-    When I follow "event_1"
+    When I follow "show_1"
     Then I should see "Loading..."

@@ -14,6 +14,7 @@
 
         margin:10px;
         margin-top:38px;
+        color: white;
 
 
     }
@@ -31,7 +32,7 @@
 
     .jumbotron
     {
-      background-color: #c7e1e2 !important;
+      background-color: var(--teal-hd) !important;
     }
 
     .about

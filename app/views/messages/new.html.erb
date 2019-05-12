@@ -1,13 +1,13 @@
 <head>
   <title>Contact</title>
 </head>
-<body class="bg-light">
-  <div class="contact-form container-fluid" style="padding-top: 20px; width: 500px; padding-bottom:80px">
+  <div class="contact-form container-fluid text-white" style="padding-top: 20px; width: 500px; padding-bottom:80px">
     <div class="py-5 text-center">
       <h1>Contact Us</h1>
-      <br>
-      <p class="lead" style="font-size: 16px">Send us feedback, comments, or questions below, or email <a href="mailto:wiciberkeley@gmail.com" target="_top">wiciberkeley@gmail.com</a>.</p>
     </div>
+    <div class="event-card card bg-card">
+      <p class="lead text-center" style="font-size: 16px">Send us feedback, comments, or questions below, or email <a href="mailto:wiciberkeley@gmail.com" target="_top" style="color:var(--gold-lt)">wiciberkeley@gmail.com</a>.</p>
+
       <%= bootstrap_form_for @message, url: create_message_path do |f| %>
 
         <%= f.text_field :name, class: "form-control"%>
@@ -19,6 +19,8 @@
         <%= f.submit 'Send', class: "btn btn-primary form-control"%>
       <% end %>
   </div>
+
+</div>
 <br>
 <br>
-</body>
+
