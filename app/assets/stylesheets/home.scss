@@ -2,8 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-body {
-	background-color: var(--teal-hd) !important;
+.welcome {
+	text-align: center;
 }
 
 .image-size {
@@ -14,6 +14,29 @@ body {
 .home-image {
 	padding-left: 0px !important;
 	padding-right: 0px !important;
-	border: 3px solid var(--teal-dk);
+	border: 3px solid var(--gold-hl);
 	margin-left: -3px;
 }
+
+.home-image:hover{
+	opacity: .7;
+}
+
+.caption-holder {
+	background-color: black;
+	color: white;
+	opacity: 0;
+	position: absolute;
+	bottom: 0;
+	height: 40px;
+	width: 100%;
+	text-align: center;
+}
+
+.divider {
+	border-bottom: 1px solid white;
+	padding-top: 20px;
+	margin-bottom: 40px;
+	width: 100%;
+}
+

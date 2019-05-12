@@ -1,22 +1,15 @@
 <div class="container-fluid" style="padding-top: 20px; padding-left: 30px">
 	<br>
-	<h2>Welcome to the Women in Chemistry Initiative Website!</h2><br><br>
-
-<div style="text-align:center">
-  <h2>Mission Statement:</h2>
-  <p>To serve as a social network of like-minded graduate students to promote women in chemistry.</p><br><br>
-</div>
-
-<div style="text-align:center">
-  <h2>Photos from our events</h2>
-  <p>Click on the images below to view:</p>
-</div>
+	<h1 class="welcome">Welcome to the WICI Website!</h1><br><br>
 
 <div class="container-fluid">
   <div class="row">
     <% @photos.each do |photo| %>
-      <div class="col-4 home-image">
+      <div class="col-4 home-image" onmouseover="showCaption(this)" onmouseleave="hideCaption(this)">
         <%= image_tag photo.image, class: "image-size" %>
+        <div class="caption-holder">
+          <%= photo.description %>
+        </div>
       </div>
         <% if @value % @num_cols == 0 %>
           </div>
@@ -28,4 +21,11 @@
   </div>
 </div>
 <br>
-<%= link_to 'Edit Gallery', photos_url, class: "btn btn-primary text-white"%>
+<% if admin_signed_in? %>
+  <%= link_to 'Edit Gallery', photos_url, class: "btn btn-primary text-white"%>
+<% end %>
+<div class="divider"></div>
+<div class="container-fluid">
+  <h1>Mission Statement</h1><br>
+  <h5>To serve as a social network of like-minded scientists to promote women in chemistry. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.</h5><br><br>
+</div>
