@@ -8,9 +8,52 @@ img.event-show {
 	height: auto;
 }
 
-img.event-thumb {
-	width: 100px;
-	height: auto;
+img.event-index {
+  width: 100%;
+  height: auto;
+  border: 2px solid white;
+}
+
+hr {
+  border-color: white;
+  margin: 0;
+}
+
+.social-container {
+  margin-top: 15px;
+}
+
+.event-container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.event-card {
+  padding: 25px;
+  margin-bottom: 25px;
+}
+
+.card-title {
+  font-size: 40px;
+  color: white;
+}
+
+.card-text {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.fab .fa-facebook {
+  width: 24px !important;
+  height: 24px !important;
+}
+
+.card-title:visited {
+  color: white;
+}
+
+.card-title:hover {
+  color: var(--gray-hv);
 }
 
 .inline-w label, .inline-w input {

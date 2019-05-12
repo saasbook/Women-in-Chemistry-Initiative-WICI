@@ -22,4 +22,4 @@ Feature: navigate the website with links on homepage
 
   Scenario: click on contact
     When I follow "contact"
-    Then I should see "Contact Form"
+    Then I should see "Contact Us"
