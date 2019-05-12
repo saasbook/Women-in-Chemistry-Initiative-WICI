@@ -1,11 +1,10 @@
-<div class="bg-image">
-  <div class="container-fluid">
-    <h1 class="display-4" style="padding-left: 1%; color:white">Edit Event</h1>
-    <h3 style="padding-left: 1%">
-      <%= link_to 'Back', events_path, class: "btn btn-secondary text-white" %><br><br>
-    </h3>
-  </div>
-</div>
 <div class="container-fluid">
-  <%= render 'form', event: @event %>
+  <div class="col-lg-12 text-center">
+    <h1> Edit <%= @event.name %> </h1>
+  </div>
+  <div class="container-fluid" style="padding-left:20%;padding-right:20%">
+    <div class="event-card card bg-card text-white" id="event_<%= @event.id %>">
+        <%= render 'form', event: @event %>
+    </div>
+  </div>
 </div>
