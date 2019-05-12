@@ -1,7 +1,7 @@
 class Admins::RegistrationsController < Devise::RegistrationsController
   include Accessible
   before_action :set_admin, only: [:approve, :destroy]
-  before_action :authenticate, only: [:approve, :index, :destroy]
+  before_action -> {authenticate_admin!(force: true)}, only: [:approve, :index, :destroy]
   skip_before_action :check_user, except: [:new, :create]
 
 
@@ -30,8 +30,4 @@ class Admins::RegistrationsController < Devise::RegistrationsController
     @admin = Admin.find(params[:id])
   end
 
-
-  def authenticate
-    redirect_to root_path if not admin_signed_in?
-  end
 end
