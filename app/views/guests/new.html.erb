@@ -1,8 +1,11 @@
-<div class="container-fluid" style="padding-top: 20px; padding-left: 30px">
-<h1>New Guest for <%= @event.name %></h1>
-<%= render 'form', event: @event, guest: @guest unless @event.has_tickets %>
-
-<%= render 'payment_form', event: @event if @event.has_tickets %>
-
-<%= link_to 'Back', events_path, class: 'btn btn-secondary text-white' %>
+<div class="container-fluid">
+  <div class="col-lg-12 text-center">
+    <h1>New Guest for <%= @event.name %></h1>
+  </div>
+  <div class="container-fluid" style="padding-left:20%;padding-right:20%">
+    <div class="event-card card bg-card text-white">
+      <%= render 'form', event: @event, guest: @guest unless @event.has_tickets %>
+      <%= render 'payment_form', event: @event if @event.has_tickets %>
+    </div>
+  </div>
 </div>
