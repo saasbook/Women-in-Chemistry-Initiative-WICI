@@ -1,14 +1,6 @@
-<style>
-.image-size {
-  max-width: 300px;
-  max-height: 200px;
-}
-</style>
 <div class="container-fluid" style="padding-top: 20px; padding-left: 30px">
 	<br>
 	<h2>Welcome to the Women in Chemistry Initiative Website!</h2><br><br>
-
-<body>
 
 <div style="text-align:center">
   <h2>Mission Statement:</h2>
@@ -20,28 +12,19 @@
   <p>Click on the images below to view:</p>
 </div>
 
-<table class="table table-borderless table-hover">
-
-	<thead >
-		<tr>
-			<th scope="col">Photos</th>
-		</tr>
-	</thead>
-	<tbody>
-    <tr>
-		<% @photos.each do |photo| %>
-      <td><figure>
-				<%= image_tag photo.image.thumb%>
-				<figcaption><%= photo.description %></figcaption>
-      </figure></td>
+<div class="container-fluid">
+  <div class="row">
+    <% @photos.each do |photo| %>
+      <div class="col-4 home-image">
+        <%= image_tag photo.image, class: "image-size" %>
+      </div>
         <% if @value % @num_cols == 0 %>
-          </tr> <tr>
+          </div>
+          <div class="row">
         <% end %>
         <% @value += 1 %>
-		<% end %>
-  </tr>
-	</tbody>
-</table>
-<%= link_to 'Edit Gallery', photos_url, class: "btn btn-primary text-white"%>
-</body>
+     <% end %>
+     </div>
+  </div>
 </div>
+<%= link_to 'Edit Gallery', photos_url, class: "btn btn-primary text-white"%>
