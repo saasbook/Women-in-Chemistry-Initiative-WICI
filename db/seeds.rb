@@ -7,3 +7,4 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Admin.create(email: "tempadmin@wici.com", approved: true, password: "WICIWebsite", password_confirmation: "WICIWebsite")
+Leader.create(firstname: "Kiera", lastname: "Wilhelm", role: "President")
