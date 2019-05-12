@@ -1,36 +1,19 @@
-<div class="container-fluid" style="padding-top: 20px; padding-left: 30px">
-  <h1>Past Events</h1>
-
-  <table class="table table-borderless table-hover">
-    <thead>
-      <tr>
-        <th scope="col"></th>
-        <th scope="col">Name</th>
-        <th scope="col">Description</th>
-        <th scope="col">Date</th>
-        <th scope="col">Location</th>
-        <th scope="col">Tickets</th>
-        <th scope="col">Actions</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @events.each do |event| %>
-        <tr>
-          <td><%= image_tag event.image.thumb %></td>
-          <td><%= event.name %></td>
-          <td><%= event.description %></td>
-          <td><%= event.date %></td>
-          <td><%= event.location %></td>
-          <td><%= event.has_tickets %></td>
-          <td><%= link_to 'Show', event %> <%= link_to 'Edit', edit_event_path(event) if admin_signed_in? %>  <%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } if admin_signed_in? %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-
-  <br>
-
-  <%= link_to 'Back', events_path, class: "btn btn-secondary text-white"%>
+<div class="container-fluid">
+  <div class="col-md-12 text-center">
+    <h1> Past Events </h1>
+  </div>
+  <div class="col-md-8 event-container offset-md-2">
+    <% if @events.empty? %>
+      <div class="col-md-12 no-events text-center text-white">
+        There are no past events.
+      </div>
+    <% end %>
+    <% @events.each do |event| %>
+      <%= render 'card', event: event %>
+    <% end %>
+  </div>
+  <div class="col-md-12 text-center">
+    <%= link_to 'Back', root_path, class: "btn btn-secondary" %>
+    <%= link_to 'Upcoming Events', events_path, class: "btn btn-primary" %>
+  </div>
 </div>
