@@ -12,10 +12,12 @@ Feature: access legal information, social media pages, contact form with footer
   So that I can easily navigate the website and learn legal information about WICI
   I should see a footer on all pages
 
-  
+  Scenario: click on links in the footer
+    Given I am on the home page
+    And I follow "contact_footer"
+    Then I should see "Contact Us"
 
-
-   Scenario: footer information visible from home page
+  Scenario: footer information visible from home page
 	Given I am on the home page
     Then I should see "Legal Information"
 
