@@ -14,6 +14,14 @@
  *= require_self
  */
 
+:root {
+    --teal-bg: #7DB9BD;
+    --teal-dk: #2E8C8C;
+    --teal-hd: #0F4040;
+    --gold-hl: #CFAA48;
+    --gold-lt: #F5CD62;
+}
+
 html {
 	height: 100%;
 	overflow: auto;
@@ -24,66 +32,73 @@ body {
     padding: 0;
     height: 100%;
     overflow: auto;
+    background-color: var(--teal-hd) !important;
+}
+
+h1 {
+    color: white;
+    font-size: 60px !important;
+}
+
+i, i:visited {
+    font-size: 30px !important;
+}
+
+hr {
+    margin-top: 0 !important;
+}
+
+a.social-link:hover {
+    text-decoration: none;
+}
+
+
+.social-icon, .social-icon:hover {
+    color: var(--gold-lt);
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.card-actions {
+    margin-bottom: 10px;
 }
 
 #page-container {
-	min-height: 100vh;
 	position: relative;
 }
 
 #content-container {
-	padding-bottom: 200px;
+    min-height: 100vh;
+    padding-bottom: 50px;
+    background: var(--teal-bg);
 }
 
+
 .footer {
-	height: 150px;
-	bottom: 0;
 	position: absolute;
 	width: 100%;
 }
 
 .footer-top {
-	background-color: #4C8F97;
+	background-color: var(--teal-dk);
 	height: 50px;
 	width: 100%;
 }
 
 .footer-bottom {
-	background-color: #D6D6D6;
-	width: 100%;
-	height: 100px;
+	background-color: var(--teal-hd);
+    width: 100%;
 }
 
-.footer-bottom .contact {
-	font-size: 12px;
-	padding-top: 0px;
-	text-align: center;
-	width: 50%;
-}
-
-.footer-bottom .legal-text {
-	font-size: 12px;
-	padding-top: 0px;
-	text-align: center;
-	width: 50%;
-}
-
-.footer-icons {
-	padding-left: 47.0%;
-	font-size: 20px;
-}
-
-.footer-icons a {
-	padding-right: 12px;
-}
-
-.footer-icons a:hover {
-	text-decoration: none;
+.footer-text {
+    color: white;
+    font-size: 12px;
+    margin-top: 10px
 }
 
 .container-fluid {
-	padding-left: 5%;
-	padding-top: 2.5%;
+	padding-left: 20px;
+	padding-top: 20px;
 }
 
 .nav-link:hover {
@@ -95,7 +110,7 @@ body {
 }
 
 .remove-link {
-	color: inherit;
+	color: lightgrey;
 	text-decoration: inherit;
 }
 
@@ -105,10 +120,37 @@ body {
 }
 
 .remove-link:visited {
-	color: inherit;
+	color: lightgrey;
 	text-decoration: inherit;
 }
 
+.btn-secondary {
+    background-color: white !important;
+    border-color: white !important;
+    color: var(--teal-dk) !important;
+}
+
+.btn-primary {
+    background-color: var(--gold-lt) !important;
+    border-color: var(--gold-lt) !important;
+    color: var(--teal-dk) !important;
+}
+
+.btn-secondary:hover {
+    background-color: var(--teal-dk) !important;
+    border-color: var(--teal-dk) !important;
+    color: white !important;
+}
+
+.btn-primary:hover {
+    background-color: var(--gold-hl) !important;
+    border-color: var(--gold-hl) !important;
+    color: white !important;
+}
+
+.bg-card {
+    background-color: var(--teal-dk) !important;
+}
 
 a:hover {
 	background-color: transparent;
