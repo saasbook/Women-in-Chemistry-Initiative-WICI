@@ -1,0 +1,25 @@
+<div class="card" id="event_<%= event.id %>">
+  <div class="row">
+    <div class="col-md-7">
+      <h5><a class="card-title" href="/events/<%= event.id %>"><%= event.name %></a></h5>
+      <p class="card-text"><%= event.description %></p>
+      <p class="card-text"><b>Date: </b><%= event.date.strftime("%a, %B %d, %Y") %></p>
+      <p class="card-text"><b>Capacity: </b><%= event.guests.length %>/<%= event.capacity %></p>
+      <p class="card-text"><b>Time: </b><%= event.date.strftime("%l:%M %P") %></p>
+      <p class="card-text"><b>Price: </b>$<%= number_with_precision(event.price, precision: 2) %></p>
+      <p class="card-text"><b>Location: </b><%= event.location %></p>
+      <%= link_to 'Attend', new_event_guest_path(event), class: "btn btn-primary text-white", id: "rsvp_#{event.id}" %>
+      <%= link_to 'Show', event, class: "btn btn-primary text-white", id: "show_#{event.id}" %>
+      <%= link_to 'Edit', edit_event_path(event), class: "btn btn-primary text-white", id: "edit_#{event.id}" if admin_signed_in? %>
+      <%= link_to 'Destroy', event, class: "btn btn-primary text-white", id: "destroy_#{event.id}", method: :delete, data: {confirm: 'Are you sure?'} if admin_signed_in? %>
+    </div>
+    <div class="col-md-5">
+      <a class="featured-card-image" id="event" href="/events/<%= event.id %>">
+        <%= image_tag event.image.index, class: 'featured-card-image' %>
+      </a>
+    </div>
+  </div>
+  <%= link_to 'http://www.facebook.com/sharer.php?u=' + event_url(event), :target => :blank do %>
+    <i class="fab fa-facebook-square text-primary"></i>
+  <% end %>
+</div>
