@@ -15,10 +15,11 @@
  */
 
 :root {
-    --teal-bg: #2E8C8C;
-    --dark-teal: #0F4040;
-    --gold-hl: #B19632;
-    --gray-ft: #8C8C8C;
+    --teal-bg: #7DB9BD;
+    --teal-dk: #2E8C8C;
+    --teal-hd: #0F4040;
+    --gold-hl: #CFAA48;
+    --gold-lt: #F5CD62;
 }
 
 html {
