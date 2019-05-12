@@ -83,7 +83,7 @@ describe EventsController do
     describe "#update" do
       let!(:event) { FactoryBot.create(:event) }
 
-      it "updates an existing movie" do
+      it "updates an existing event" do
         put :update, params: {id: event.id, event: FactoryBot.attributes_for(:event, name: "modified")}
         event.reload
         expect(event.name).to eql("modified")
