@@ -73,7 +73,7 @@ a.social-link:hover {
 }
 
 #content-container {
-    min-height: 100vh;
+    min-height: calc(100vh - 236px);
     padding-bottom: 50px;
     background: var(--teal-bg);
 }
