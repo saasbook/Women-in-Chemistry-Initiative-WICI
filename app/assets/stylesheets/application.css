@@ -14,6 +14,14 @@
  *= require_self
  */
 
+:root {
+    --teal-bg: #7DB9BD;
+    --teal-dk: #2E8C8C;
+    --teal-hd: #0F4040;
+    --gold-hl: #CFAA48;
+    --gold-lt: #F5CD62;
+}
+
 html {
 	height: 100%;
 	overflow: auto;
@@ -32,12 +40,12 @@ body {
 }
 
 #content-container {
-	padding-bottom: 200px;
+    min-height: 100vh;
+    padding-bottom: 50px;
 }
 
 .footer {
 	height: 150px;
-	bottom: 0;
 	position: absolute;
 	width: 100%;
 }
