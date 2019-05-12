@@ -34,6 +34,11 @@ body {
     overflow: auto;
 }
 
+.navbar-colors {
+	background-color: var(--teal-dk);
+	color: var(--gold-hl);
+}
+
 #page-container {
 	min-height: 100vh;
 	position: relative;
