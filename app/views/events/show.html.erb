@@ -63,7 +63,7 @@
       <h1 align="center">Guests:</h1>
       <h4>
         <% @guests.each do |guest| %>
-          <%= guest.firstname %> <%= guest.lastname %> | <%= guest.email %> | <%= link_to 'Delete', event_guest_path(@event, guest), method: :delete, data: { confirm: 'Are you sure?' } if admin_signed_in? %>
+          <%= guest.first_name %> <%= guest.last_name %> | <%= guest.email %> | <%= link_to 'Delete', event_guest_path(@event, guest), method: :delete, data: { confirm: 'Are you sure?' } if admin_signed_in? %>
           <br>
         <% end %>
       </h4>
