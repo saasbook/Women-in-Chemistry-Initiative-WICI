@@ -13,9 +13,11 @@
       <li class="nav-item">
         <%= link_to "About", about_index_path, id: "about", class: "nav-link" %>
       </li>
-      <li class="nav-item">
-        <%= link_to "Donate", donations_path, id: "donate", class: "nav-link" %>
-      </li>
+      <% if Donation.show %>
+        <li class="nav-item">
+          <%= link_to "Donate", donations_path, id: "donate", class: "nav-link" %>
+        </li>
+      <% end %>
       <li>
         <%= link_to "Contact", new_message_path, id: "contact", class: "nav-item nav-link" %>
       </li>

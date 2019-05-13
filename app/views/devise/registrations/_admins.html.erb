@@ -4,7 +4,7 @@
       <td><%= admin.email %></td>
       <td><% if admin.approved %>&#10004;<% else %>&times;<% end %></td>
       <td><%= link_to "Approve", approve_admin_path(admin), method: :post, class: "btn btn-primary text-white" if not admin.approved %>
-      <%= link_to "Delete", destroy_admin_path(admin), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-secondary text-white" %>
+      <%= link_to "Delete", destroy_admin_path(admin), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger text-white" %>
       </td>
   </tr>
 <% end %>
