@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
-  <div class="container-fluid" style="float:center; width:70%; padding-top: 0%;">
+  <div class="container-fluid">
     <div class="form-group">
       <h4><b><%= form.label :name %></b></h4>
       <%= form.text_field :name, id: :event_name, class: 'form-control' %>
@@ -36,7 +36,7 @@
       <%= form.check_box :has_tickets, id: :trigger, onclick:"myFunction()", style:"width:40px;height:40px;"%>
     </div><br>
 
-    <div class="form-group" id="hidden_fields" style="display:none">
+    <div class="form-group" id="hidden_fields">
       <h4><b><%= form.label :price %></b></h4>
       <%= form.number_field :price, id: :event_location, class: 'form-control' %>
     </div>
@@ -71,5 +71,5 @@
     <div class="form-group">
       <%= link_to 'Back', :back, class: "btn btn-secondary" %>
     </div>
-  <% end %>
-</div>
+  </div>
+<% end %>

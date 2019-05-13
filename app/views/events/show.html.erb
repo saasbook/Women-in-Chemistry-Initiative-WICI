@@ -14,7 +14,7 @@
             <p class="card-text"><b>Date: </b><%= @event.date.strftime("%a, %B %d, %Y") %></p>
             <% unless @event.past_event? %>
               <p class="card-text"><b>Time: </b><%= @event.date.strftime("%l:%M %P") %></p>
-              <p class="card-text"><b>Price: </b>$<%= number_with_precision(@event.price, precision: 2) %></p>
+              <p class="card-text"><b>Price: </b><%= @event.price.nil? || @event.price == 0 ? "Free!": "$" + number_with_precision(@event.price, precision: 2) %></p>
               <p class="card-text"><b>Capacity: </b><%= @event.guests.length %>/<%= @event.capacity %></p>
             <% end %>
             <div class="card-actions">
