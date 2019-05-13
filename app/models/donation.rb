@@ -22,4 +22,8 @@ class Donation
   def self.show
     @@show
   end
+
+  def self.set_show_true
+    @@show = true
+  end
 end

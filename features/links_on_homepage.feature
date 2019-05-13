@@ -6,6 +6,7 @@ Feature: navigate the website with links on homepage
 
   Background:
     Given I am on the home page
+    And the donation page is visible
 
   Scenario: click on events
     When I follow "events"
@@ -16,7 +17,7 @@ Feature: navigate the website with links on homepage
     Then I should see "About"
 
   Scenario: click on donate
-    When I follow "donate"
+    And I follow "donate"
     Then I should see "Donate"
 
   Scenario: click on contact

@@ -15,3 +15,7 @@ And /I authorize payment/ do
     sleep(3) # allows stripe_checkout_app to submit
   end
 end
+
+And /the donation page is visible/ do
+  Donation.set_show_true
+end
