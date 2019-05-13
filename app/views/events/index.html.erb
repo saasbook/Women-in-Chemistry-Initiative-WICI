@@ -14,7 +14,7 @@
   </div>
 
   <div class="col-lg-12 text-center">
-    <%= link_to 'Back', :back, class: "btn btn-secondary" %>
+    <%= link_to 'Back', root_path, class: "btn btn-secondary" %>
     <%= link_to 'Past Events', past_events_path, class: "btn btn-primary text-center" %>
     <%= link_to 'New Event', new_event_path, class: "btn btn-primary text-center" if admin_signed_in? %>
   </div>
