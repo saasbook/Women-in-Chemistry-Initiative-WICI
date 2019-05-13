@@ -95,6 +95,7 @@ describe GuestsController do
                                   firstname: "Test", lastname: "guest", email: "test@guest.com",
                                   occupation: "Other", department: "Other", gender: "Other", event_id: event.id }
           expect(response).to render_template("new")
+          expect(flash.alert).not_to be_nil
         end
 
         it "does not add a new guest" do
@@ -104,6 +105,33 @@ describe GuestsController do
                                            firstname: "Test", lastname: "guest", email: "test@guest.com",
                                            occupation: "Other", department: "Other", gender: "Other", event_id: event.id }
           }.to change { Guest.count }.by(0)
+          expect(flash.alert).not_to be_nil
+        end
+      end
+
+      context "invalid request" do
+        it "re-renders new template" do
+          card_token = StripeMock.generate_card_token(last4: "4242", exp_year: 3001)
+          post :create, params: { stripeEmail: "someone@fake.com", stripeToken: card_token,
+                                  occupation: "Other", department: "Other", gender: "Other", event_id: event.id }
+
+          post :create, params: { stripeEmail: "someone@fake.com", stripeToken: card_token,
+                                  firstname: "Test", lastname: "guest", email: "test@guest.com",
+                                  occupation: "Other", department: "Other", gender: "Other", event_id: event.id }
+          expect(response).to render_template("new")
+          expect(flash.alert).not_to be_nil
+        end
+
+        it "does not add a new guest" do
+          card_token = StripeMock.generate_card_token(last4: "4242", exp_year: 3001)
+          post :create, params: { stripeEmail: "someone@fake.com", stripeToken: card_token,
+                                  occupation: "Other", department: "Other", gender: "Other", event_id: event.id }
+
+          expect { post :create, params: { stripeEmail: "someone@fake.com", stripeToken: card_token,
+                                           firstname: "Test", lastname: "guest", email: "test@guest.com",
+                                           occupation: "Other", department: "Other", gender: "Other", event_id: event.id }
+          }.to change { Guest.count }.by(0)
+          expect(flash.alert).not_to be_nil
         end
       end
     end

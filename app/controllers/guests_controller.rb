@@ -26,6 +26,7 @@ class GuestsController < ApplicationController
       end
       render "new"
     end
+
   rescue Stripe::CardError, Stripe::InvalidRequestError => e
     @guest.destroy
     flash.now[:alert] = e.message
