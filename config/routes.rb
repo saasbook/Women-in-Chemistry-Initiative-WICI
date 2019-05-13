@@ -42,7 +42,7 @@ Rails.application.routes.draw do
 
   get 'past-events', to: 'events#past_events', as: 'past_events'
   get 'home', to: 'photos#home', as: 'home_path'
-  root 'photos#home'
+  root 'home#home'
 
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
