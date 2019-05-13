@@ -1,24 +1,26 @@
-<div class="container-fluid" style="padding-top: 20px; padding-left:; width: 30%; float: centered;">
-  <div align="center">
-    <h1> Contact Form </h1>
-    <br>
-      <p>
-        Please send us feedback, comments, or any questions below.
-      </p>
+<head>
+  <title>Contact</title>
+</head>
+  <div class="contact-form container-fluid text-white" style="padding-top: 20px; width: 500px; padding-bottom:80px">
+    <div class="py-5 text-center">
+      <h1>Contact Us</h1>
+    </div>
+    <div class="event-card card bg-card">
+      <p class="lead text-center" style="font-size: 16px">Send us feedback, comments, or questions below, or email <a href="mailto:wiciberkeley@gmail.com" target="_top" style="color:var(--gold-lt)">wiciberkeley@gmail.com</a>.</p>
+
+      <%= bootstrap_form_for @message, url: create_message_path do |f| %>
+
+        <%= f.text_field :name, class: "form-control"%>
+
+        <%= f.email_field :email, placeholder: "you@example.com", class: "form-control" %>
+
+        <%= f.text_area :body, class: "form-control", rows: "8", label: "Message" %>
+
+        <%= f.submit 'Send', class: "btn btn-primary form-control"%>
+      <% end %>
   </div>
-    <%= form_for @message, url: create_message_path do |f| %>
 
-      <%= @message.errors.full_messages.join(', ') %>
-
-      <%= f.text_field :name, placeholder: 'Name', class: "form-control", style: "margin-top: 10px;" %>
-
-      <%= f.email_field :email, placeholder: 'Email',class: "form-control", style: "margin-top: 10px;" %>
-
-      <%= f.text_area :body, placeholder: 'Insert message here.', class: "form-control", style: "margin-top: 10px;" %>
-
-      <%= f.submit 'Send', class: "btn btn-primary form-control", style: "margin-top: 10px;" %>
-    <% end %>
-    <p>
-      Or email us at <a href="mailto:wiciberkeley@gmail.com" target="_top">wiciberkeley@gmail.com</a>
-    </p>
 </div>
+<br>
+<br>
+

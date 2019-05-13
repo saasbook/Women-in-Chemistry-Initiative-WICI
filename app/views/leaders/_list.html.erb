@@ -1,0 +1,17 @@
+
+<table class="table table-borderless table-hover" >
+    <tbody>
+      <% @leaders.each do |leader| %>
+        <tr class="d-flex">
+          <div class="media">
+            <%=image_tag leader.image.thumb, class: "media-object dp rounded-circle float-left"%>
+            <div class="media-body">
+              <h4 class="media-heading"><%=leader.firstname%> <%=leader.lastname%> <small> <%=leader.role%></small></h4>
+              <%= link_to 'Destroy', leader, method: :delete, data: { confirm: 'Are you sure?' } if admin_signed_in? %>
+              <%= link_to 'Edit', edit_leader_path(leader) if admin_signed_in? %>
+            </div>
+        </div>
+        </tr>
+      <% end %>
+    </tbody>
+</table>

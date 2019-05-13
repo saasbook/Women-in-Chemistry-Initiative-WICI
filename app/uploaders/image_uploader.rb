@@ -17,7 +17,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   end
 
   def default_url(*args)
-    [version_name, "default.png"].compact.join('_')
+    "default.png"
   end
 
   def extension_whitelist
