@@ -8,11 +8,11 @@
         There are no upcoming events.
       </div>
     <% end %>
+
     <% @events.each do |event| %>
       <%= render 'card', event: event %>
     <% end %>
   </div>
-
   <div class="col-lg-12 text-center">
     <%= link_to 'Back', root_path, class: "btn btn-secondary" %>
     <%= link_to 'Past Events', past_events_path, class: "btn btn-primary text-center" %>

@@ -5,18 +5,17 @@
         <a class="card-title" href="/events/<%= event.id %>"><%= event.name %></a>
         <hr width="100%" color="white">
         <p class="card-text"><%= event.description %></p>
+        <p class="card-text"><b>Location: </b><%= event.location %></p>
         <p class="card-text"><b>Date: </b><%= event.date.strftime("%a, %B %d, %Y") %></p>
         <% unless event.past_event? %>
-          <p class="card-text"><b>Capacity: </b><%= event.guests.length %>/<%= event.capacity %></p>
           <p class="card-text"><b>Time: </b><%= event.date.strftime("%l:%M %P") %></p>
           <p class="card-text"><b>Price: </b><%= event.price.nil? || event.price == 0 ? "Free!": "$" + number_with_precision(event.price, precision: 2) %></p>
         <% end %>
-        <p class="card-text"><b>Location: </b><%= event.location %></p>
         <div class="card-actions">
           <%= link_to 'RSVP', new_event_guest_path(event), class: "btn btn-primary", id: "rsvp_#{event.id}" unless event.past_event? %>
           <%= link_to 'More Info', event, class: "btn btn-primary", id: "show_#{event.id}" %>
-          <%= link_to 'Edit Info', edit_event_path(event), class: "btn btn-primary", id: "edit_#{event.id}" if admin_signed_in? %>
-          <%= link_to 'Delete Event', event, class: "btn btn-primary", id: "destroy_#{event.id}", method: :delete, data: {confirm: 'Are you sure?'} if admin_signed_in? %>
+          <%= link_to 'Edit Info', edit_event_path(event), class: "btn btn-danger text-white", id: "edit_#{event.id}" if admin_signed_in? %>
+          <%= link_to 'Delete Event', event, class: "btn btn-danger text-white", id: "destroy_#{event.id}", method: :delete, data: {confirm: 'Are you sure?'} if admin_signed_in? %>
         </div>
       </div>
     </div>

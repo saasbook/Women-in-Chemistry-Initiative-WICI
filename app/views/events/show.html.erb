@@ -1,69 +1,82 @@
-<div class="container-fluid" style="padding-top: 20px; padding-left: 30px">
-  <p>
-    <%= image_tag @event.image.url, class: "event-show" %>
-  </p>
-<h1><%= @event.name %></h1>
-<br>
-
-<p>
-  <strong>Description:</strong>
-  <%= @event.description %>
-</p>
-
-<p>
-  <strong>Date:</strong>
-  <%= @event.date %>
-</p>
-
-<p>
-  <strong>Location:</strong>
-  <%= @event.location %>
-</p>
-
-<p>
-  <strong>Tickets:</strong>
-  <%= @event.has_tickets %>
-</p>
-
-<p>
-  <strong>Tickets:</strong>
-  $<%= number_with_precision(@event.price, precision: 2) %>
-</p>
-
-<p>
-  <strong>Capacity:</strong>
-  <%= @event.capacity %>
-</p>
-
-<p>
-  <strong>Guests:</strong><br>
-  <% @guests.each do |guest| %>
-    <%= guest.first_name %> <%= guest.last_name %> <% if admin_signed_in? %> | <%= guest.email %> | <%= link_to 'Delete', event_guest_path(@event, guest), method: :delete, data: { confirm: 'Are you sure?' } %>
+<div class="container-fluid">
+  <div class="col-lg-12 text-center">
+    <h1> Event Info </h1>
+  </div>
+  <div class="col-lg-8 event-container offset-lg-2">
+    <div class="event-card card bg-card text-white" id="event_<%= @event.id %>">
+      <div class="row">
+        <div class="col-lg-7">
+          <div class="col-lg-12">
+            <a class="card-title" href="/events/<%= @event.id %>"><%= @event.name %></a>
+            <hr width="100%" color="white">
+            <p class="card-text"><%= @event.description %></p>
+            <p class="card-text"><b>Location: </b><%= @event.location %></p>
+            <p class="card-text"><b>Date: </b><%= @event.date.strftime("%a, %B %d, %Y") %></p>
+            <% unless @event.past_event? %>
+              <p class="card-text"><b>Time: </b><%= @event.date.strftime("%l:%M %P") %></p>
+              <p class="card-text"><b>Price: </b>$<%= number_with_precision(@event.price, precision: 2) %></p>
+              <p class="card-text"><b>Capacity: </b><%= @event.guests.length %>/<%= @event.capacity %></p>
+            <% end %>
+            <div class="card-actions">
+              <%= link_to 'RSVP', new_event_guest_path(@event), class: "btn btn-primary", id: "rsvp_#{@event.id}" unless @event.past_event? %>
+              <%= link_to 'Tasks', event_tasks_url(@event), class: "btn btn-primary", id: "task_#{@event.id}"  if admin_signed_in? || volunteer_signed_in? %>
+              <%= link_to 'Edit Info', edit_event_path(@event), class: "btn btn-danger text-white", id: "edit_#{@event.id}" if admin_signed_in? %>
+              <%= link_to 'Delete Event', @event, class: "btn btn-danger text-white", id: "destroy_#{@event.id}", method: :delete, data: {confirm: 'Are you sure?'} if admin_signed_in? %>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 offset-lg-1">
+          <div class="col-lg-12 text-right">
+            <a id="event_img_<%= @event.id %>" href="/events/<%= @event.id %>">
+              <%= image_tag @event.image.index, class: 'event-index' %>
+            </a>
+          </div>
+          <div class="col-lg-12 text-center social-container">
+            <div class="card-text text-center"><b>Share this event</b></div>
+            <div class="card-text text-center">
+              <%= link_to 'https://twitter.com/intent/tweet?text=' + event_url(@event), class: "social-link", target: :blank do %>
+                <i class="fab fa-twitter social-icon"></i>
+              <% end %>
+              <%= link_to 'http://www.facebook.com/sharer.php?u=' + event_url(@event), class: "social-link", target: :blank do %>
+                <i class="fab fa-facebook social-icon"></i>
+              <% end %>
+              <%= link_to 'https://www.linkedin.com/sharing/share-offsite/?url=' + event_url(@event), class: "social-link", target: :blank do %>
+                <i class="fab fa-linkedin social-icon"></i>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-12 text-center">
+      <%= link_to 'Back', :back, class: "btn btn-secondary" %>
+      <%= link_to 'Past Events', past_events_path, class: "btn btn-primary text-center" %>
+      <%= link_to 'New Event', new_event_path, class: "btn btn-primary text-center" if admin_signed_in? %>
+    </div>
+  </div>
+</div>
+<!-- show guest if admin -->
+<div class="container-fluid">
+  <div class="col-lg-12 text-center">
+    <% if admin_signed_in? %>
+    <div class="container-fluid">
+      <h1 align="center">Guests:</h1>
+      <h4>
+        <% @guests.each do |guest| %>
+          <%= guest.firstname %> <%= guest.lastname %> | <%= guest.email %> | <%= link_to 'Delete', event_guest_path(@event, guest), method: :delete, data: { confirm: 'Are you sure?' } if admin_signed_in? %>
+          <br>
+        <% end %>
+      </h4>
+    </div>
+    <div class="container-fluid" align="center">
+      <h1>Event Demographics:</h1>
+      <br>
+      <div class="row" style="padding-left:20%;">
+        <div class="column"><%= pie_chart @event.guests.group(:occupation).count, colors: ["#00e5ff", "#c33c54", "#070268", "#ffd2a0"], donut: true, title: "Occupation Statistics", messages: {empty: "No data"}%></div>
+        <div class="column"><%= pie_chart @event.guests.group(:gender).count, colors: ["#00e5ff", "#c33c54", "#070268"], donut: true, title: "Gender Statistics", messages: {empty: "No data"}%></div>
+        <div class="column"><%= pie_chart @event.guests.group(:department).count, colors: ["#00e5ff", "#c33c54", "#070268"], donut: true, title: "Department Statistics", messages: {empty: "No data"}%></div>
+      </div>
+    </div>
     <% end %>
-    <br>
-  <% end %>
-</p>
-
-<p>
-  <strong>Share on Facebook</strong>
-    <%=link_to 'http://www.facebook.com/sharer.php?u='+request.fullpath, :target => :blank do %>
-      <i class="fab fa-facebook-square text-primary"></i>
-    <% end %>
-</p>
-
-<%= link_to 'Attend', new_event_guest_path(@event), class: "btn btn-primary text-white" if @event.date > Date.current %>
-<%= link_to 'Tasks', event_tasks_url(@event), class: "btn btn-primary text-white"  if admin_signed_in? || volunteer_signed_in? %>
-
-<%= link_to 'Back', events_path, class: "btn btn-secondary text-white" if @event.date > Date.current %>
-<%= link_to 'Back', past_events_path, class: "btn btn-secondary text-white" if @event.date < Date.current %>
-
-<% if admin_signed_in? %>
-<br>
-<p>
-  <h4>Event Demographics:</h4>
-  <%= pie_chart @event.guests.group(:occupation).count, colors: ["#00e5ff", "#c33c54", "#070268", "#ffd2a0"], donut: true, title: "Occupation Statistics", messages: {empty: "No data"} %>
-  <%= pie_chart @event.guests.group(:gender).count, colors: ["#00e5ff", "#c33c54", "#070268"], donut: true, title: "Gender Statistics", messages: {empty: "No data"} %>
-  <%= pie_chart @event.guests.group(:department).count, colors: ["#00e5ff", "#c33c54", "#070268"], donut: true, title: "Department Statistics", messages: {empty: "No data"} %>
-</p>
-<% end %>
+  </div>
 </div>

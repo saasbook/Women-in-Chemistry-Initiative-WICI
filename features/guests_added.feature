@@ -18,7 +18,6 @@ Feature: See if you are attending an event
       | last_name     | Guest          |
       | email        | test@guest.com |
     Then I should see "You have successfully registered!"
-    And I should see "Test Guest"
 
   Scenario: Delete a guest
     Given I am logged in as an admin
@@ -43,7 +42,6 @@ Feature: See if you are attending an event
       | department        | Chemistry      |
     And I press "confirm"
     Then I should see "You have successfully registered!"
-    And I should see "Test Guest"
 
   Scenario: Capacity is reached
     When I follow "rsvp_2"

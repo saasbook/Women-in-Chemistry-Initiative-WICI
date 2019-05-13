@@ -103,8 +103,14 @@ a.social-link:hover {
 }
 
 .nav-link:hover {
-	color: inherit;
+	color: white !important;
 }
+
+.nav-link {
+	font-size: 16px;
+    color: #dbdbdb !important;
+}
+
 
 .remove-link {
 	color: lightgrey;

@@ -15,3 +15,16 @@
 //= require_tree .
 //= require Chart.bundle
 //= require chartkick
+function myFunction() {
+  // Get the checkbox
+  var checkBox = document.getElementById("trigger");
+  // Get the output text
+  var text = document.getElementById("hidden_fields");
+
+  // If the checkbox is checked, display the output text
+  if (checkBox.checked == true){
+    text.style.display = "block";
+  } else {
+    text.style.display = "none";
+  }
+}
