@@ -1,24 +1,25 @@
-<div class="container-fluid" style="padding-top: 20px; width: 30%;">
-  <div align="center">
+
+<div class="container-fluid">
+  <div class="col-lg-12 text-center">
     <h1> Contact Us </h1>
-    <br>
-      <p>
-        Please send us feedback, comments, or any questions below.
-      </p>
   </div>
-    <%= form_for @message, url: create_message_path do |f| %>
+  <div class="col-lg-4 offset-lg-4">
+    <div class="event-card card bg-card text-white">
+      <p class="card-text text-center">Got feedback? Send us an email using the form below, or at
+        <a href="mailto:wiciberkeley@gmail.com" target="_top" style="color:var(--gold-lt)">wiciberkeley@gmail.com</a>.
+      </p>
 
-      <%= @message.errors.full_messages.join(', ') %>
+      <%= bootstrap_form_for @message, url: create_message_path do |f| %>
 
-      <%= f.text_field :name, placeholder: 'Name', class: "form-control", style: "margin-top: 10px;" %>
+        <%= f.text_field :name, class: "form-control" %>
 
-      <%= f.email_field :email, placeholder: 'Email',class: "form-control", style: "margin-top: 10px;" %>
+        <%= f.email_field :email, placeholder: "you@example.com", class: "form-control" %>
 
-      <%= f.text_area :body, placeholder: 'Insert message here.', class: "form-control", style: "margin-top: 10px;" %>
+        <%= f.text_area :body, class: "form-control", rows: "8", label: "Message" %>
 
-      <%= f.submit 'Send', class: "btn btn-primary form-control", style: "margin-top: 10px;" %>
-    <% end %>
-    <p>
-      Or email us at <a href="mailto:wiciberkeley@gmail.com" target="_top">wiciberkeley@gmail.com</a>
-    </p>
+        <%= f.submit 'Send', class: "btn btn-primary form-control" %>
+      <% end %>
+    </div>
+  </div>
 </div>
+

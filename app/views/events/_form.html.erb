@@ -1,4 +1,3 @@
-
 <%= form_with(model: event, local: true) do |form| %>
   <% if event.errors.any? %>
     <div id="error_explanation">
@@ -11,55 +10,55 @@
       </ul>
     </div>
   <% end %>
-
+<div class="container-fluid" style="float:center; width:70%; padding-top: 0%;">
   <div class="form-group">
-    <%= form.label :name %>
+    <h4><b><%= form.label :name %></b></h4>
     <%= form.text_field :name, id: :event_name, class: 'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= form.label :description %>
+    <h4><b><%= form.label :description %></b></h4>
     <%= form.text_area :description, id: :event_description, class: 'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= form.label :date %>
-    <%= form.datetime_select :date, id: :event_date, class: 'form-control' %>
+    <h4><b><%= form.label :date %></b></h4>
+    <%= form.datetime_select :date, id: :event_date, :ampm => true, :minute_step => 30 ,class: 'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= form.label :location %>
+    <h4><b><%= form.label :location %></b></h4>
     <%= form.text_field :location, id: :event_location, class: 'form-control' %>
   </div>
 
-  <div class="form-group">
-    <%= form.label :price %>
+  <div>
+    <h4><b><%= form.label :has_tickets %></b></h4>
+    <%= form.check_box :has_tickets, id: :trigger, onclick:"myFunction()", style:"width:40px;height:40px;"%>
+  </div><br>
+
+  <div class="form-group" id="hidden_fields" style="display:none">
+    <h4><b><%= form.label :price %></b></h4>
     <%= form.number_field :price, id: :event_location, class: 'form-control' %>
   </div>
 
   <div class="form-group">
-    <%= form.label :has_tickets %>
-    <%= form.check_box :has_tickets, id: :event_tickets, checked_value: true, checked: true, class: 'form-control' %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :capacity %>
+    <h4><b><%= form.label :capacity %></b></h4>
     <%= form.text_field :capacity, id: :capacity, class: 'form-control'%>
   </div>
 
   <div class="form-group">
     <% if event.image? %>
-      <%= form.label "Update Photo" %>
+      <h4><b><%= form.label "Upload Photo"%></b></h4>
     <% else %>
-      <%= form.label "Upload Photo" %>
+      <h4><b><%= form.label "Upload Photo" %></b></h4>
     <% end %>
-    <%= form.file_field :image, id: :image %>
+    <%= form.file_field :image, id: :image%>
     <%= form.hidden_field :image_cache %>
   </div>
 
   <% if event.image? %>
     <div class="inline-w">
-      <%= form.label :remove_image %>
+      <%= form.label :remove_image%>
       <%= form.check_box :remove_image%>
       <%= image_tag event.image.small_thumb.url%>
     </div>
@@ -69,4 +68,8 @@
   <div class="form-group">
     <%= form.submit :Submit, class: 'btn btn-primary' %>
   </div>
+  <div class="form-group">
+    <%= link_to 'Back', :back, class: "btn btn-secondary" %>
+  </div>
 <% end %>
+</div>

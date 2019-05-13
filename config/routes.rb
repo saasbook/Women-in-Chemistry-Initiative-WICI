@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   end
 
   resources :photos, except: [:show]
+  resources :leaders, except: [:show, :index]
 
   devise_for :volunteers, controllers: {
     sessions: 'volunteers/sessions',

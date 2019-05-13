@@ -18,7 +18,7 @@ Feature: access legal information, social media pages, contact form with footer
     Then I should see "Contact Us"
 
   Scenario: footer information visible from home page
-	Given I am on the home page
+	  Given I am on the home page
     Then I should see "Legal Information"
 
   Scenario: footer information visible from events page

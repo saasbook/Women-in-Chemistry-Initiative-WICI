@@ -1,24 +1,41 @@
-<div style="padding-top: 10px; padding-left:30px; width: 50%; display: inline-block;">
-  <h1> About</h1>
-  <br>
-  <h5>
-    WICI, a non-profit organization founded in 2015, serves as an inclusive social and professional network of graduate and postdoctoral students of all genders and experiences. Our mission is to support the health and wellness of our members and community, as well as to promote women in chemistry and chemical engineering, through events both on campus and in the Bay Area. We believe that providing these opportunities for socialization, discussion, and support will increase the visibility of women in STEM, make connections with our local community, and encourage women to pursue careers in STEM.
-    <br>
-    <br>
-  	Since it was founded in June 2015, WICI has attracted more than 250 members, and our social media outreach connects more than 4,000 individuals on Facebook. WICI holds a variety of events every month that have drawn consistently strong attendance. Our programming includes monthly game, trivia, and craft nights, meetups at local restaurants, social and networking hours, and keynote talks from prominent female faculty in chemistry.
-    <br>
-    <br>
-  	Email wiciberkeley@gmail.com for general information, how to become a member, or inquiries regarding making a charitable tax-deductible donation.
-  </h5>
-<%= link_to 'Back', root_path , class: "btn btn-secondary" %>
-<%= link_to 'Contact Us', new_message_path , class: "btn btn-primary" %>
+<div class="jumbotron about-jumbotron">
+  <div class="container-fluid">
+    <h1 class="display-4">Our Mission</h1>
+    <p class="lead text-white">To serve as a social network of like-minded graduate students to promote women in chemistry.</p>
+  </div>
 </div>
-<div style="padding-top: 10px; padding-right: 100px; width: 45%; float: right;">
-  <div>
-    <h1>Our Mission </h2>
-    <br>
-    <h2>
-      To serve as a social network of like-minded graduate students to promote women in chemistry.
-    </h2>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-5 offset-lg-1 text-center">
+      <h1> About</h1>
+      <div class="event-card card bg-card text-white">
+        <p class="card-text text-left">
+          WICI, a non-profit organization founded in 2015, serves as an inclusive social and professional network of
+          graduate and postdoctoral students of all genders and experiences. Our mission is to support the health and
+          wellness of our members and community, as well as to promote women in chemistry and chemical engineering,
+          through events both on campus and in the Bay Area. We believe that providing these opportunities for
+          socialization, discussion, and support will increase the visibility of women in STEM, make connections with
+          our local community, and encourage women to pursue careers in STEM.
+          <br>
+          <br>
+          Since it was founded in June 2015, WICI has attracted more than 250 members, and our social media outreach
+          connects more than 4,000 individuals on Facebook. WICI holds a variety of events every month that have drawn
+          consistently strong attendance. Our programming includes monthly game, trivia, and craft nights, meetups at
+          local restaurants, social and networking hours, and keynote talks from prominent female faculty in chemistry.
+          <br>
+          <br>
+          Email wiciberkeley@gmail.com for general information, how to become a member, or inquiries regarding making a
+          charitable tax-deductible donation.
+        </p>
+      </div>
+    </div>
+
+    <div class="col-lg-5 text-center">
+      <h1>Our Committee</h1>
+      <div class="event-card card bg-card text-white">
+        <%= render "leaders/list" %>
+      </div>
+      <%= link_to 'Add new leader', new_leader_path, class: "btn btn-primary", id: "add leader" if admin_signed_in? %>
+    </div>
   </div>
 </div>

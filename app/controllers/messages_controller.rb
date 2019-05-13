@@ -11,10 +11,10 @@ class MessagesController < ApplicationController
     # call the Mailer if the message received from the user is valid
     if @message.valid?
       MessageMailer.contact_me(@message).deliver_now
-      flash[:notice] = "Message received, thanks!"
+      flash[:notice] = "Message has been sent."
       redirect_to new_message_path
     else
-      flash[:alert] = "Please make sure your contact information is correct!"
+      flash[:alert] = "Please correct the errors below."
       render :new
     end
   end

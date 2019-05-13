@@ -1,10 +1,5 @@
-// Place all the styles related to the events controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-
 img.event-show {
-  width: 200px;
+  width: 400px;
   height: auto;
 }
 
@@ -60,4 +55,14 @@ hr {
   float: none; /* if you had floats before? otherwise inline-block will behave differently */
   display: inline-block;
   vertical-align: middle;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
 }

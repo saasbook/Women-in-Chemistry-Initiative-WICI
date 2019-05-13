@@ -7,9 +7,9 @@
     <% @photos.each do |photo| %>
       <div class="col-4 home-image" onmouseover="showCaption(this)" onmouseleave="hideCaption(this)">
         <%= image_tag photo.image, class: "image-size" %>
-        <div class="caption-holder">
+        <%= content_tag :div, class: "caption-holder" do %>
           <%= photo.description %>
-        </div>
+        <% end %>
       </div>
         <% if @value % @num_cols == 0 %>
           </div>
@@ -21,9 +21,11 @@
   </div>
 </div>
 <br>
-<% if admin_signed_in? %>
-  <%= link_to 'Edit Gallery', photos_url, class: "btn btn-primary"%>
-<% end %>
+<div class="container-fluid">
+  <% if admin_signed_in? %>
+    <%= link_to 'Edit Gallery', photos_url, class: "btn btn-primary"%>
+  <% end %>
+</div>
 <div class="divider"></div>
 <div class="container-fluid">
   <h1>Mission Statement</h1><br>
