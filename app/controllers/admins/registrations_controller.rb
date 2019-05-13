@@ -24,10 +24,14 @@ class Admins::RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def toggle_donation_show
+    Donation.show_toggle
+    redirect_to accounts_path
+  end
+
   private
 
   def set_admin
     @admin = Admin.find(params[:id])
   end
-
 end

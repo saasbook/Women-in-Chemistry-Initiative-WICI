@@ -1,7 +1,10 @@
 <div class="container-fluid" style="padding-top: 20px; padding-left: 30px">
+  <h1>Controls</h1>
+  <h4> Donate page visibility toggle </h4>
+    <%= button_to "Toggle", {action: "toggle_donation_show"}, {class: "btn btn-primary"} %>
+    Currently: <%=  Donation.show ? "enabled":"disabled" %>
   <h1>Accounts</h1>
   Manage admin and volunteer accounts. <br><br>
-
   <h4> Volunteers </h4>
   <table class="table table-borderless table-hover">
     <thead >
