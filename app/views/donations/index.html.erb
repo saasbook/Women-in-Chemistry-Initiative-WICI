@@ -1,13 +1,14 @@
 <div align="center">
-<div class="container-fluid" style="padding-top: 20px; padding-left:; width: 30%; float: centered;">
-	<h1 class="container-fluid"> Support Our Cause </h1>
-	<div class="container-fluid"> Proceeds go towards the Women in Chemistry Initiative </div>
+  <div class="container-fluid">
+    <h1 class="container-fluid"> Support Our Cause </h1>
+    <div class="container-fluid"> Proceeds go towards the Women in Chemistry Initiative </div>
 
-	<%= form_tag(new_donation_path, method: :get, class: "form-group") do %>
-	  <%= text_field_tag :amount_dollars, 0, class: "form-control", style: "margin-top: 10px;"%>
-	  <%= submit_tag "Donate", id: :donate, class: "btn btn-primary form-control", style: "margin-top: 10px;"%>
-	<% end %>
-	<%= link_to "Donate $5", new_donation_path(amount_dollars: 5), id: "donate_5", class: "btn btn-primary form-control", style: "margin-top: 10px; width: 32%;" %>
-	<%= link_to "Donate $10", new_donation_path(amount_dollars: 10), id: "donate_10", class: "btn btn-primary form-control", style: "margin-top: 10px; width: 32%;" %>
-	<%= link_to "Donate $15", new_donation_path(amount_dollars: 15), id: "donate_15", class: "btn btn-primary form-control", style: "margin-top: 10px; width: 32%;" %>
+    <%= form_tag(new_donation_path, method: :get, class: "form-group") do %>
+      <%= text_field_tag :amount_dollars, 0, class: "form-control", style: "margin-top: 10px;"%>
+      <%= submit_tag "Donate", id: :donate, class: "btn btn-primary form-control", style: "margin-top: 10px;"%>
+    <% end %>
+    <%= link_to "Donate $5", new_donation_path(amount_dollars: 5), id: "donate_5", class: "btn btn-primary form-control", style: "margin-top: 10px; width: 32%;" %>
+    <%= link_to "Donate $10", new_donation_path(amount_dollars: 10), id: "donate_10", class: "btn btn-primary form-control", style: "margin-top: 10px; width: 32%;" %>
+    <%= link_to "Donate $15", new_donation_path(amount_dollars: 15), id: "donate_15", class: "btn btn-primary form-control", style: "margin-top: 10px; width: 32%;" %>
+  </div>
 </div>

@@ -3,7 +3,7 @@
     <h1> Event Info </h1>
   </div>
   <div class="col-lg-8 event-container offset-lg-2">
-    <div class="event-card card bg-card text-white" id="event_<%= @event.id %>">
+    <div class="content-card card bg-card text-white" id="event_<%= @event.id %>">
       <div class="row">
         <div class="col-lg-7">
           <div class="col-lg-12">
@@ -14,7 +14,7 @@
             <p class="card-text"><b>Date: </b><%= @event.date.strftime("%a, %B %d, %Y") %></p>
             <% unless @event.past_event? %>
               <p class="card-text"><b>Time: </b><%= @event.date.strftime("%l:%M %P") %></p>
-              <p class="card-text"><b>Price: </b>$<%= number_with_precision(@event.price, precision: 2) %></p>
+              <p class="card-text"><b>Price: </b><%= @event.price.nil? || @event.price == 0 ? "Free!": "$" + number_with_precision(@event.price, precision: 2) %></p>
               <p class="card-text"><b>Capacity: </b><%= @event.guests.length %>/<%= @event.capacity %></p>
             <% end %>
             <div class="card-actions">
@@ -31,7 +31,6 @@
               <%= image_tag @event.image.index, class: 'event-index' %>
             </a>
           </div>
-
           <div class="col-lg-12 text-center social-container">
             <div class="card-text text-center"><b>Share this event</b></div>
             <div class="card-text text-center">
@@ -64,7 +63,7 @@
       <h1 align="center">Guests:</h1>
       <h4>
         <% @guests.each do |guest| %>
-          <%= guest.firstname %> <%= guest.lastname %> | <%= guest.email %> | <%= link_to 'Delete', event_guest_path(@event, guest), method: :delete, data: { confirm: 'Are you sure?' } if admin_signed_in? %>
+          <%= guest.first_name %> <%= guest.last_name %> | <%= guest.email %> | <%= link_to 'Delete', event_guest_path(@event, guest), method: :delete, data: { confirm: 'Are you sure?' } if admin_signed_in? %>
           <br>
         <% end %>
       </h4>
@@ -79,5 +78,5 @@
       </div>
     </div>
     <% end %>
-    </div>
+  </div>
 </div>

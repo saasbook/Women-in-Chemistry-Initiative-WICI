@@ -12,7 +12,7 @@ describe GuestsController do
       end
     end
 
-    context "free event" do
+    context "for a free event" do
       let!(:event) { FactoryBot.create(:free_event) }
 
       describe "#create" do
@@ -59,13 +59,13 @@ describe GuestsController do
       end
     end
 
-    context "paid event" do
+    context "for a paid event" do
       let!(:event) { FactoryBot.create(:event) }
 
       it "adds a guest" do
         card_token = StripeMock.generate_card_token(last4: "4242", exp_year: 3001)
         expect { post :create, params: { stripeEmail: "someone@fake.com", stripeToken: card_token,
-                                         firstname: "Test", lastname: "guest", email: "test@guest.com",
+                                         first_name: "Test", last_name: "guest", email: "test@guest.com",
                                          occupation: "Other", department: "Other", gender: "Other", event_id: event.id }
         }.to change { Guest.count }.by(1)
       end
@@ -73,7 +73,7 @@ describe GuestsController do
       it "sends a confirmation email" do
         card_token = StripeMock.generate_card_token(last4: "4242", exp_year: 3001)
         expect { post :create, params: { stripeEmail: "someone@fake.com", stripeToken: card_token,
-                                         firstname: "Test", lastname: "guest", email: "test@guest.com",
+                                         first_name: "Test", last_name: "guest", email: "test@guest.com",
                                          occupation: "Other", department: "Other", gender: "Other", event_id: event.id }
         }.to change { ActionMailer::Base.deliveries.count }.by(1)
       end
@@ -82,7 +82,7 @@ describe GuestsController do
         ActiveJob::Base.queue_adapter = :test
         card_token = StripeMock.generate_card_token(last4: "4242", exp_year: 3001)
         expect { post :create, params: { stripeEmail: "someone@fake.com", stripeToken: card_token,
-                                         firstname: "Test", lastname: "guest", email: "test@guest.com",
+                                         first_name: "Test", last_name: "guest", email: "test@guest.com",
                                          occupation: "Other", department: "Other", gender: "Other", event_id: event.id }
         }.to have_enqueued_job.on_queue('mailers')
       end

@@ -11,24 +11,86 @@
     </div>
   <% end %>
 
-  <div class="form-group">
-    <%= label_tag :first_name %>
-    <%= text_field_tag :firstname, "", id: :firstname, class: "form-control" %>
+  <div class="row">
+    <div class="col-lg-6 offset-lg-3">
+      <p class="card-text">Fields marked with * are required.</p>
+    </div>
+
+    <div class="col-lg-3 offset-lg-3">
+      <div class="form-group">
+        <%= label_tag "First name*" %>
+        <%= text_field_tag :first_name, "", id: :first_name, class: "form-control first-name" %>
+      </div>
+    </div>
+
+    <div class="col-lg-3">
+      <div class="form-group">
+        <%= label_tag "Last name*" %>
+        <%= text_field_tag :last_name, "", id: :last_name, class: "form-control" %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6 offset-lg-3">
+      <div class="form-group">
+        <%= label_tag "Email*" %>
+        <%= text_field_tag :email, "", id: :email, class: "form-control" %>
+      </div>
+    </div>
   </div>
 
-  <div class="form-group">
-    <%= label_tag :last_name %>
-    <%= text_field_tag :lastname, "", id: :lastname, class: "form-control" %>
+  <div class="row">
+    <div class="col-lg-10 offset-lg-1">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="form-group">
+            <%= label_tag :gender %>
+            <%= select_tag :gender, options_for_select(['Male', 'Female', 'Non-binary', 'Other', ''], ''), class: "form-control", id: :gender %>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="form-group">
+            <%= label_tag :occupation %>
+            <%= select_tag :occupation, options_for_select(['Undergrad', 'Graduate', 'Postdoc', 'Faculty Staff', 'Other', ''], ''), class: "form-control", id: :occupation %>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="form-group">
+            <%= label_tag :department %>
+            <%= select_tag :department, options_for_select(['Chemistry', 'Chemical Engineering', 'STEM non-chemistry', 'Other', ''], ''), class: "form-control", id: :department %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="form-group">
-    <%= label_tag :email %>
-    <%= text_field_tag :email, "", id: :email, class: "form-control" %>
-  </div>
+  <div class="col-lg-4 offset-lg-4">
+    <div class="card checkout-card">
+      <div class="row">
+        <div class="col-lg-6">
+          <p class="card-text checkout-text"><b>Ticket x 1</b></p>
+        </div>
 
-  <label class="amount">
-    <span>Amount: $<%= number_with_precision(@event.price, precision: 2) %></span>
-  </label>
+        <div class="col-lg-6">
+          <p class="card-text checkout-text text-right">
+            <label class="amount">
+              <span><%= number_with_precision(@event.price, precision: 2) %></span>
+            </label>
+          </p>
+        </div>
+      </div>
+      <hr width="100%" color="black" style="margin-bottom: 0px" >
+      <div class="row">
+        <div class="col-lg-6">
+          <p class="card-text checkout-text"><b>Total: </b></p>
+        </div>
+
+        <div class="col-lg-6">
+          <p class="card-text checkout-text text-right">$<%= number_with_precision(@event.price, precision: 2) %></p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
@@ -36,21 +98,16 @@
           data-amount="<%= @event.amount_cents %>"
           data-locale="auto"></script>
 
-  <h4>Optional</h4>
-
-  <div class="form-group">
-    <%= label_tag :occupation %>
-    <%= select_tag :occupation, options_for_select(['Undergrad', 'Graduate', 'Postdoc', 'Faculty Staff', 'Other'], 'Other'), id: :occupation %>
+  <div class="row">
+    <div class="col-lg-12 text-center">
+      <div class="form-group">
+        <p class="card-text"> You will be asked to enter your payment info via Stripe. Please make sure the amount is correct. </p>
+        <%= link_to 'Back', :back, class: "btn btn-secondary" %>
+        <%= submit_tag "Confirm Payment", class: 'btn btn-primary', id: :confirm %>
+      </div>
+    </div>
   </div>
 
-  <div class="form-group">
-    <%= label_tag :gender %>
-    <%= select_tag :gender, options_for_select(['Male', 'Female', 'Other'], 'Other'), id: :gender %>
-  </div>
+  <%= image_tag "payment/stripe.png", width: 100 %>
 
-  <div class="form-group">
-    <%= label_tag :department %>
-    <%= select_tag :department, options_for_select(['Chemistry', 'Chemical Engineering', 'Stem non-chemistry', 'Other'], 'Other'), id: :department %>
-  </div>
 
-  <%= submit_tag "Confirm Payment", id: :confirm %>
