@@ -9,7 +9,7 @@ http://women-in-chemistry-initiative.herokuapp.com
 
 
 
-To run this project locally:\
+### To run this project locally:
   Decrypt `application.yml` if you have access to the key, or add your own API keys to `secrets.yml`. Then run
   ```bash
   bundle install --without production
@@ -45,24 +45,29 @@ To run this project locally:\
   and open http://localhost:3000/ in your browser.
 
 
-To setup an admin account:
- - Go to /admins/sign_up and make a new account.
- - Then, go to /admins/sign_in and sign in with the temporary admin.
+### To setup an admin account:
+ - Go to the /admins/sign_up path and make a new account.
+ - Then, go to the /admins/sign_in path and sign in with the temporary admin.
   ```
   Email: tempadmin@wici.com
   Password: WICIWebsite
   ```
  - Go to the accounts page and approve your admin account.
  - Click "Sign Out".
- - Then go to /admins/sign_in and log in with your new account.
+ - Then go to the /admins/sign_in path and log in with your new account.
  - Finally, go to the accounts page and delete the tempadmin@wici.com account.
  - Admins accounts can add/edit events and tasks, approve/delete volunteers and admins, delete guests, and more. They can also change the leaders displayed on the about page.
+ 
+### To setup an volunteer account:
+ - Visit the /volunteers/sign_up path and create a new account.
+ - Notify an admin and request account verification.
+ - Once they approve your account, visit the /volunteers/sign_in path to make sure your account is verified. 
 
-Environment variables: 
+### Environment variables: 
  - `ENV["EMAIL_PASS"]`: the password to the email being used in the mailer. If you don't know this password, we recommend changing the email.
  - `ENV["SECRET_KEY_BASE"]`: secret input for the Rails `key_generator` method
  - `ENV["STRIPE_API_KEY"]`: the secret key for the stripe API 
  - `ENV["STRIPE_PUBLISHABLE_KEY"]`: the public key for the stripe API
  
-Heroku addons:
- - the Redis server requires the Heroku Redis addon: to install, run `heroku addons:create heroku-redis:hobby-dev -a [appname]`
+### Heroku addons:
+ - The Redis server requires the Heroku Redis addon: to install, run `heroku addons:create heroku-redis:hobby-dev -a [appname]`
