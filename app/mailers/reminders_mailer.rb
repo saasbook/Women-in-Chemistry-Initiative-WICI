@@ -7,7 +7,7 @@ class RemindersMailer < ApplicationMailer
 
   def confirm_guest(guest, event, qrcode)
     @greeting = "Hello"
-    @body = "You are registered for the WICI #{event.name}, on #{event.date.strftime('%A, %b%e, at %l:%M %p')}, at #{event.location}"
+    @body = "You are registered for the WICI #{event.name}, on #{event.date.strftime('%A, %b %e, at %l:%M %p')}. The event is located at #{event.location}."
     File.open("/tmp/qrcode.png", "wb") do |f|
       f.write qrcode
     end

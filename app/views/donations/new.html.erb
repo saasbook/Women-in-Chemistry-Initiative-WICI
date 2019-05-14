@@ -1,18 +1,18 @@
 <div class="container-fluid" style="padding-top: 20px; padding-left: 30px">
-<h1> Confirm Donation </h1>
-<%= form_tag donations_path(amount_dollars: @donation.amount_dollars) do %>
+  <h1> Confirm Donation </h1>
+  <%= form_tag donations_path(amount_dollars: @donation.amount_dollars) do %>
 
-  <label class="amount">
-    <span>Amount: $<%= number_with_precision(@donation.amount_dollars, precision: 2) %></span>
-  </label>
+    <label class="amount">
+      <span>Amount: $<%= number_with_precision(@donation.amount_dollars, precision: 2) %></span>
+    </label>
 
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-description="Please enter your billing info."
-          data-amount="<%= @donation.amount_cents %>"
-          data-locale="auto"></script>
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+            data-description="Please enter your billing info."
+            data-amount="<%= @donation.amount_cents %>"
+            data-locale="auto"></script>
 
-  <br><%= submit_tag "Confirm", id: :confirm, class: "btn btn-primary text-white" %> <br><br>
-  <%= link_to 'Back', :back, class: "btn btn-secondary text-white" %>
-<% end %>
+    <br><%= submit_tag "Confirm", id: :confirm, class: "btn btn-primary text-white" %> <br><br>
+    <%= link_to 'Back', :back, class: "btn btn-secondary text-white" %>
+  <% end %>
 </div>

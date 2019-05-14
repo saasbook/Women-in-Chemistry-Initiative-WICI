@@ -16,6 +16,14 @@ describe Admins::RegistrationsController do
     end
   end
 
+  describe "#toggle_donation_show" do
+    it "toggles the @@show class variable" do
+      curr = Donation.show
+      post :toggle_donation_show
+      expect(Donation.show).to eql(!curr)
+    end
+  end
+
   describe "approve" do
     it "approves an admin" do
       post :approve, params: {id: unapproved_admin.id}

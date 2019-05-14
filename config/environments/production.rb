@@ -10,7 +10,7 @@ Rails.application.configure do
       authentication: "plain",
       enable_starttls_auto: true,
       user_name: 'donotreplywici',
-      password: ENV["EMAIL_PASS"] #change to ENV key
+      password: Rails.application.secrets.email_pass
   }
   # Code is not reloaded between requests.
   config.cache_classes = true

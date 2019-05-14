@@ -35,6 +35,7 @@ Rails.application.routes.draw do
     delete 'volunteer/:id', to: 'volunteers/registrations#destroy', as: 'destroy_volunteer'
     post 'admin/:id/approve', to: 'admins/registrations#approve', as: 'approve_admin'
     delete 'admin/:id', to: 'admins/registrations#destroy', as: 'destroy_admin'
+    post 'toggle', to: 'admins/registrations#toggle_donation_show'
   end
 
   resources :about, only: [:index]

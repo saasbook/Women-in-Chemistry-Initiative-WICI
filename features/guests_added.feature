@@ -13,18 +13,18 @@ Feature: See if you are attending an event
 
   Scenario: I register for an event with no demographics:
     Given I am on the first event rsvp page
-    And I submit the form with the following attributes:
-      | firstname    | Test           |
-      | lastname     | Guest          |
+    And I confirm the form with the following attributes:
+      | first_name    | Test           |
+      | last_name     | Guest          |
       | email        | test@guest.com |
     Then I should see "You have successfully registered!"
 
   Scenario: Delete a guest
     Given I am logged in as an admin
     And I am on the first event rsvp page
-    And I submit the form with the following attributes:
-      | firstname    | Test           |
-      | lastname     | Guest          |
+    And I confirm the form with the following attributes:
+      | first_name    | Test           |
+      | last_name     | Guest          |
       | email        | test@guest.com |
     And I am on the first event page
     And I follow "Delete"
@@ -33,29 +33,29 @@ Feature: See if you are attending an event
   Scenario: I register for an event with demographics:
     When I follow "rsvp_1"
     And I fill out the form with the following attributes:
-      | firstname         | Test           |
-      | lastname          | Guest          |
+      | first_name         | Test           |
+      | last_name          | Guest          |
       | email             | test@guest.com |
     And I select the following attributes:
       | occupation        | Undergrad      |
       | gender            | Male           |
       | department        | Chemistry      |
-    And I press "submit"
+    And I press "confirm"
     Then I should see "You have successfully registered!"
 
   Scenario: Capacity is reached
     When I follow "rsvp_2"
-    And I submit the form with the following attributes:
-      | firstname    | Test           |
-      | lastname     | Guest          |
+    And I confirm the form with the following attributes:
+      | first_name    | Test           |
+      | last_name     | Guest          |
       | email        | test@guest.com |
-    Then I should see "Your registration failed, please make sure your information is correct."
+    Then I should see "We're sorry, this event is at capacity."
 
   Scenario: Bad email
     When I follow "rsvp_1"
-    And I submit the form with the following attributes:
-      | firstname    | Test           |
-      | lastname     | Guest          |
+    And I confirm the form with the following attributes:
+      | first_name    | Test           |
+      | last_name     | Guest          |
       | email        | test           |
     Then I should see "Your registration failed, please make sure your information is correct."
 
@@ -63,7 +63,7 @@ Feature: See if you are attending an event
     Given I am logged in as an admin
     And I am on the events page
     And the following guests exist:
-        | firstname      | lastname         | email        | occupation           | gender             | department          | event_id|
+        | first_name      | last_name         | email        | occupation           | gender             | department          | event_id|
         | John           | Doe              | jd@gmail.com | Undergrad            | Male               | Chemistry           | 1       |
         | Sara           | Sen              | ss@gmail.com | Graduate             | Female             | Chemical Engineering| 1       |
         | Steph          | Curry            | sc@gmail.com | Postdoc              | Male               | Stem non-chemistry  | 1       |
