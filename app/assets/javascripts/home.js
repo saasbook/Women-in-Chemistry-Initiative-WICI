@@ -8,7 +8,13 @@ function myFunction(imgs) {
 	arr.i = imgs.id
 }
 
+function showCaption(photo) {
+  $(photo).children(".caption-holder")[0].style.opacity = 1;
+}
 
+function hideCaption(photo) {
+  $(photo).children(".caption-holder")[0].style.opacity = 0;
+}
 
 function collection(imgs) {
   this.imgs = imgs;

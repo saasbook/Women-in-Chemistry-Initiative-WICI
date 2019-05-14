@@ -1,0 +1,33 @@
+<div class="container-fluid" style="padding-top: 20px; padding-left: 30px">
+	<br>
+	<h1 class="welcome">Welcome to the WICI Website!</h1><br><br>
+
+<div class="container-fluid">
+  <div class="row">
+    <% @photos.each do |photo| %>
+      <div class="col-4 home-image" onmouseover="showCaption(this)" onmouseleave="hideCaption(this)">
+        <%= image_tag photo.image, class: "image-size" %>
+        <%= content_tag :div, class: "caption-holder" do %>
+          <%= photo.description %>
+        <% end %>
+      </div>
+        <% if @value % @num_cols == 0 %>
+          </div>
+          <div class="row">
+        <% end %>
+        <% @value += 1 %>
+     <% end %>
+     </div>
+  </div>
+</div>
+<br>
+<div class="container-fluid">
+  <% if admin_signed_in? %>
+    <%= link_to 'Edit Gallery', photos_url, class: "btn btn-primary"%>
+  <% end %>
+</div>
+<div class="divider"></div>
+<div class="container-fluid">
+  <h1>Mission Statement</h1><br>
+  <h5 class="text-white">To serve as a social network of like-minded scientists to promote women in chemistry. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.</h5><br><br>
+</div>

@@ -60,6 +60,10 @@ a.social-link:hover {
     margin-left: 10px;
 }
 
+.card-actions {
+    margin-bottom: 10px;
+}
+
 #page-container {
 	position: relative;
 }
