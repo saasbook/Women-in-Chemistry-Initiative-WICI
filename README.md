@@ -4,6 +4,7 @@
 [![Build Status](https://travis-ci.org/walkerspence/Women-in-Chemistry-Initiative-WICI.svg?branch=master)](https://travis-ci.org/walkerspence/Women-in-Chemistry-Initiative-WICI)
 
 Heroku deployment: http://women-in-chemistry-initiative.herokuapp.com
+
 Screencast: https://www.youtube.com/watch?v=ZlapLIpzmi4&feature=youtu.be
 
 ### To run this project locally:
