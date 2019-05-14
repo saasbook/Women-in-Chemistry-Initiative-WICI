@@ -12,17 +12,21 @@
           data-description="Please enter your billing info."
           data-amount="<%= @donation.amount_cents %>"
           data-locale="auto"></script>
-
-  <div >
-    <%= link_to 'Change', :back, class: "btn btn-secondary text-center", style: "float: left; margin-top: 4%;" %>
-    <%= submit_tag "Confirm", id: :confirm, class: "btn btn-primary text-center", style: "float: right; margin-top: 4%; margin-right: 8%" %>
+  <div>
+    <label class="amount" id="label_5aaa_0">
+      <div id="div_5aaa_3">Donation Total: </div>
+      <div id="div_5aaa_4"> $<%= number_with_precision(@donation.amount_dollars, precision: 2) %></div>
+    </label>
   </div>
-<div>
-  <label class="amount" id="label_5aaa_0">
-    <div id="div_5aaa_3">Donation Total: </div>
-    <div id="div_5aaa_4"> $<%= number_with_precision(@donation.amount_dollars, precision: 2) %></div>
-  </label>
-</div>
+  <div class="row">
+    <div class="col-lg-6">
+      <%= link_to 'Change', :back, class: "btn btn-secondary text-center", style: "float: left; margin-top: 4%;" %>
+    </div>
+    <div class="col-lg-6 text-right">
+      <%= submit_tag "Confirm", id: :confirm, class: "btn btn-primary text-center", style: "float: right; margin-top: 4%; margin-right: 8%" %>
+    </div>
+  </div>
+
 
 
 
