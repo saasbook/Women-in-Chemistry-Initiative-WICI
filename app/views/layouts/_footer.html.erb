@@ -16,7 +16,9 @@
         <%= link_to 'Home', root_path, class: "remove-link", id: "home_footer" %> |
         <%= link_to 'Events', events_path, class: "remove-link", id: "events_footer" %> |
         <%= link_to 'About', about_index_path, class: "remove-link", id: "about_footer" %> |
-        <%= link_to 'Donate', donations_path, class: "remove-link", id: "donate_footer" %> |
+        <% if Donation.show %>
+          <%= link_to 'Donate', donations_path, class: "remove-link", id: "donate_footer" %> |
+        <% end %>
         <%= link_to 'Contact', new_message_path, class: "remove-link", id: "contact_footer" %>
       </div>
       <div class="col-md-6 offset-md-3 text-center footer-text">
