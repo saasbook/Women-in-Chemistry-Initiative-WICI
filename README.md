@@ -63,3 +63,6 @@ Environment variables:
  - `ENV["SECRET_KEY_BASE"]`: secret input for the Rails `key_generator` method
  - `ENV["STRIPE_API_KEY"]`: the secret key for the stripe API 
  - `ENV["STRIPE_PUBLISHABLE_KEY"]`: the public key for the stripe API
+ 
+Heroku addons:
+ - the redis server requires the heroku redis addon: to install, run `heroku addons:create heroku-redis:hobby-dev -a [appname]`
