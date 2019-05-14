@@ -97,6 +97,10 @@ a.social-link:hover {
     margin-top: 10px
 }
 
+.navbar-bg {
+    background-color: var(--teal-hd);
+}
+
 .container-fluid {
 	padding-left: 20px;
 	padding-top: 20px;

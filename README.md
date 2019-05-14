@@ -57,3 +57,9 @@ To setup an admin account:
  - Then go to /admins/sign_in and log in with your new account.
  - Finally, go to the accounts page and delete the tempadmin@wici.com account.
  - Admins accounts can add/edit events and tasks, approve/delete volunteers and admins, delete guests, and more. They can also change the leaders displayed on the about page.
+
+Environment variables: 
+ - `ENV["EMAIL_PASS"]`: the password to the email being used in the mailer. If you don't know this password, we recommend changing the email.
+ - `ENV["SECRET_KEY_BASE"]`: secret input for the Rails `key_generator` method
+ - `ENV["STRIPE_API_KEY"]`: the secret key for the stripe API 
+ - `ENV["STRIPE_PUBLISHABLE_KEY"]`: the public key for the stripe API
