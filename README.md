@@ -65,4 +65,4 @@ Environment variables:
  - `ENV["STRIPE_PUBLISHABLE_KEY"]`: the public key for the stripe API
  
 Heroku addons:
- - the redis server requires the heroku redis addon: to install, run `heroku addons:create heroku-redis:hobby-dev -a [appname]`
+ - the Redis server requires the Heroku Redis addon: to install, run `heroku addons:create heroku-redis:hobby-dev -a [appname]`
