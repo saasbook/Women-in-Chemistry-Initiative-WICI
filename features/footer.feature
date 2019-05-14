@@ -18,20 +18,20 @@ Feature: access legal information, social media pages, contact form with footer
     Then I should see "Contact Us"
 
   Scenario: footer information visible from home page
-	  Given I am on the home page
-    Then I should see "Legal Information"
+    Given I am on the home page
+    Then I should see "The Women in Chemistry Initiative"
 
   Scenario: footer information visible from events page
   	Given I am on the events page
-    Then I should see "Legal Information"
+    Then I should see "The Women in Chemistry Initiative"
 
   Scenario: footer information visible from about page
   	Given I am on the about_index page
-    Then I should see "Legal Information"
+    Then I should see "The Women in Chemistry Initiative"
 
   Scenario: footer information visible from donate page
   	Given I am on the donate page
-    Then I should see "Legal Information"
+    Then I should see "The Women in Chemistry Initiative"
 
 
 
