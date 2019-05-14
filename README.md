@@ -3,11 +3,8 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/d46360549fe56fe328d4/test_coverage)](https://codeclimate.com/github/walkerspence/Women-in-Chemistry-Initiative-WICI/test_coverage)
 [![Build Status](https://travis-ci.org/walkerspence/Women-in-Chemistry-Initiative-WICI.svg?branch=master)](https://travis-ci.org/walkerspence/Women-in-Chemistry-Initiative-WICI)
 
-http://women-in-chemistry-initiative.herokuapp.com
-
-
-
-
+Heroku deployment: http://women-in-chemistry-initiative.herokuapp.com
+Screencast: https://www.youtube.com/watch?v=ZlapLIpzmi4&feature=youtu.be
 
 ### To run this project locally:
   Decrypt `application.yml` if you have access to the key, or add your own API keys to `secrets.yml`. Then run
