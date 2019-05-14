@@ -17,4 +17,4 @@ Feature: View photos on the home page
     Then I should not see "Edit Gallery"
 
   Scenario: users can see mission statement
-    Then I should see "Mission Statement"
+    Then I should see "Our mission"
