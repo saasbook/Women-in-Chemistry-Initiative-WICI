@@ -1,15 +1,17 @@
 <div class="container-fluid" style="padding-top: 20px; padding-left: 30px">
 	<br>
-	<h1 class="welcome">Welcome to the WICI Website!</h1><br><br>
+	<h1 class="welcome">Welcome to the Women in Chemistry Initiative Website!</h1><br><br>
 
 <div class="container-fluid">
   <div class="row">
     <% Photo.all.each do |photo| %>
       <div class="col-4 home-image" onmouseover="showCaption(this)" onmouseleave="hideCaption(this)">
-        <%= image_tag photo.image, class: "image-size" %>
-        <%= content_tag :div, class: "caption-holder" do %>
-          <%= photo.description %>
-        <% end %>
+      <%= image_tag photo.image.home, class: "image-size" %>
+      <% if !photo.description.empty? %>
+          <%= content_tag :div, class: "caption-holder" do %>
+          	<%= photo.description %>
+          <% end %>
+      <% end %>
       </div>
         <% if @value % @num_cols == 0 %>
           </div>
