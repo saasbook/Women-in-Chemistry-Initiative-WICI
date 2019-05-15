@@ -62,7 +62,8 @@ Screencast: https://www.youtube.com/watch?v=ZlapLIpzmi4&feature=youtu.be
  - Once they approve your account, visit the /volunteers/sign_in path to make sure your account is verified. 
 
 ### Environment variables: 
- - `ENV["EMAIL_PASS"]`: the password to the email being used in the mailer. If you don't know this password, we recommend changing the email.
+ - `ENV["GMAIL_NAME"]`: name for a gmail account to use for the mailer (`ENV["GMAIL_NAME"] + "@gmail.com"`) 
+ - `ENV["EMAIL_PASS"]`: the password to the email being used in the mailer. 
  - `ENV["SECRET_KEY_BASE"]`: secret input for the Rails `key_generator` method
  - `ENV["STRIPE_API_KEY"]`: the secret key for the stripe API 
  - `ENV["STRIPE_PUBLISHABLE_KEY"]`: the public key for the stripe API
