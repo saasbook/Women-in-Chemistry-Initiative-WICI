@@ -11,7 +11,7 @@ Rails.application.configure do
       domain: "gmail.com",
       authentication: "plain",
       enable_starttls_auto: true,
-      user_name: "donotreplywici",
+      user_name: Rails.application.secrets.gmail_name,
       password: Rails.application.secrets.email_pass
   }
   # In the development environment your application's code is reloaded on
