@@ -8,7 +8,9 @@ Heroku deployment: http://women-in-chemistry-initiative.herokuapp.com
 Screencast: https://www.youtube.com/watch?v=ZlapLIpzmi4&feature=youtu.be
 
 ### To run this project locally:
-  Decrypt `application.yml` if you have access to the key, or add your own API keys to `secrets.yml`. Then run
+  Decrypt `application.yml` if you have access to the key, or add your own keys to `secrets.yml.` See the bottom of this document for a description of what each environment variable is responsible for.  
+
+  Then run
   ```bash
   bundle install --without production
   ```
