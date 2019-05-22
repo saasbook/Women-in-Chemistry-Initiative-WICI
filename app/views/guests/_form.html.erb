@@ -1,0 +1,74 @@
+<%= form_with model: guest, local: true, url: event_guests_path(event, guest) do |form| %>
+  <% if guest.errors.any? %>
+    <div class="error-explanation", id="error_explanation">
+      <h2><%= pluralize(guest.errors.count, "error") %> prohibited this guest from being registered:</h2>
+
+      <ul>
+        <% guest.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-lg-6 offset-lg-3">
+      <p class="card-text">Fields marked with * are required.</p>
+    </div>
+    <div class="col-lg-3 offset-lg-3">
+      <div class="form-group">
+        <%= form.label "First name*" %>
+        <%= form.text_field :first_name, id: :first_name, class: "form-control" %>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="form-group">
+        <%= form.label "Last name*" %>
+        <%= form.text_field :last_name, id: :last_name, class: "form-control" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6 offset-lg-3">
+      <div class="form-group">
+        <%= form.label "Email*" %>
+        <%= form.text_field :email, id: :email, class: "form-control" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-10 offset-lg-1">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="form-group">
+            <%= form.label :gender %>
+            <%= form.select :gender, options_for_select(['Male', 'Female', 'Non-binary', 'Other', ''], ''), {}, class: "form-control", id: :gender %>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="form-group">
+            <%= form.label :occupation %>
+            <%= form.select :occupation, options_for_select(['Undergrad', 'Graduate', 'Postdoc', 'Faculty Staff', 'Other', ''], ''), {}, class: "form-control", id: :occupation %>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="form-group">
+            <%= form.label :department %>
+            <%= form.select :department, options_for_select(['Chemistry', 'Chemical Engineering', 'STEM non-chemistry', 'Other', ''], ''), {}, class: "form-control", id: :department %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12 text-center">
+      <div class="form-group">
+        <%= link_to 'Back', :back, class: "btn btn-secondary" %>
+        <%= form.submit "Confirm Registration", class: "btn btn-primary", id: :confirm %>
+      </div>
+    </div>
+  </div>
+<% end %>

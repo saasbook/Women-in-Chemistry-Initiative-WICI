@@ -1,0 +1,45 @@
+<div class="container-fluid" id="div_5aaa_1">
+  <h1 id="h1_5aaa_0" > Confirm Donation </h1>
+  <%= form_tag donations_path(amount_dollars: @donation.amount_dollars) do %>
+  <div id="div_5aaa_2">
+    Please make sure the amount is correct. Click confirm to enter your payment information or click change to donate a different amount.
+  </div>
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="Please enter your billing info."
+          data-amount="<%= @donation.amount_cents %>"
+          data-locale="auto"></script>
+  <div>
+    <label class="amount" id="label_5aaa_0">
+      <div id="div_5aaa_3">Donation Total: </div>
+      <div id="div_5aaa_4"> $<%= number_with_precision(@donation.amount_dollars, precision: 2) %></div>
+    </label>
+  </div>
+  <div class="row">
+    <div class="col-lg-6">
+      <%= link_to 'Change', :back, class: "btn btn-secondary text-center", style: "float: left; margin-top: 4%;" %>
+    </div>
+    <div class="col-lg-6 text-right">
+      <%= submit_tag "Confirm", id: :confirm, class: "btn btn-primary text-center", style: "float: right; margin-top: 4%; margin-right: 8%" %>
+    </div>
+  </div>
+
+
+
+
+
+  <div id="div_5aaa_5">
+    <%= image_tag("/payment/stripe/powered_by_stripe.png", :alt => "rss feed", class: "cardstripe", style: "width: 20%; height: 20%") %>
+    <%= image_tag("/payment/paymethod/dark/1.png", :alt => "rss feed", class: "card", style: "width: 7%; height: 7%" ) %>
+    <%= image_tag("/payment/paymethod/dark/2.png", :alt => "rss feed", class: "card", style: "width: 7%; height: 7%") %>
+    <%= image_tag("/payment/paymethod/dark/22.png", :alt => "rss feed", class: "card", style: "width: 7%; height: 7%") %>
+    <%= image_tag("/payment/paymethod/dark/16.png", :alt => "rss feed", class: "card", style: "width: 7%; height: 7%") %>
+    <%= image_tag("/payment/paymethod/dark/14.png", :alt => "rss feed", class: "card", style: "width: 7%; height: 7%") %>
+    <%= image_tag("/payment/paymethod/dark/10.png", :alt => "rss feed", class: "card", style: "width: 7%; height: 7%") %>
+  </div>
+<br>
+<% end %>
+</div>
+
+<div id="div_5aaa_6" >
+  </div>

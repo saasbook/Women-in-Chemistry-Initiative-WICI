@@ -1,0 +1,19 @@
+<div class="container-fluid">
+  <div class="col-md-12 text-center">
+    <h1> Past Events </h1>
+  </div>
+  <div class="col-md-8 event-container offset-md-2">
+    <% if @events.empty? %>
+      <div class="col-md-12 no-events text-center text-white">
+        There are no past events.
+      </div>
+    <% end %>
+    <% @events.each do |event| %>
+      <%= render 'card', event: event %>
+    <% end %>
+  </div>
+  <div class="col-md-12 text-center">
+    <%= link_to 'Back', :back, class: "btn btn-secondary" %>
+    <%= link_to 'Upcoming Events', events_path, class: "btn btn-primary" %>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="container-fluid" >
+	<br>
+	<h1 class="welcome">Women in Chemistry Initiative</h1><br><br>
+
+<div class="container-fluid">
+  <div class="row">
+    <% Photo.all.each do |photo| %>
+      <div class="col-4 home-image" onmouseover="showCaption(this)" onmouseleave="hideCaption(this)">
+      <%= image_tag photo.image.home, class: "image-size" %>
+      <% unless photo.description.empty? %>
+          <%= content_tag :div, class: "caption-holder" do %>
+          	<%= photo.description %>
+          <% end %>
+      <% end %>
+      </div>
+        <% if @value % @num_cols == 0 %>
+          </div>
+          <div class="row">
+        <% end %>
+        <% @value += 1 %>
+     <% end %>
+     </div>
+  </div>
+</div>
+<br>
+<div class="container-fluid">
+  <% if admin_signed_in? %>
+    <%= link_to 'Edit Gallery', photos_url, class: "btn btn-primary"%>
+  <% end %>
+</div>
+<div class="divider"></div>
+<div class="container-fluid text-center">
+  <h1>Our mission</h1><br>
+  <h5 class="text-white">To serve as a social network of like-minded scientists to promote women in chemistry.</h5><br><br>
+</div>

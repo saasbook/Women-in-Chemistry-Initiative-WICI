@@ -1,0 +1,194 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require rails_bootstrap_forms
+ */
+
+:root {
+    --teal-bg: #7DB9BD;
+    --teal-dk: #2E8C8C;
+    --teal-hd: #0F4040;
+    --gold-hl: #CFAA48;
+    --gold-lt: #F5CD62;
+}
+
+html {
+	height: 100%;
+	overflow: auto;
+}
+
+body {
+	margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: auto;
+    background-color: var(--teal-hd) !important;
+}
+
+h1 {
+    color: white;
+    font-size: 60px !important;
+}
+
+i, i:visited {
+    font-size: 30px !important;
+}
+
+hr {
+    margin-top: 0 !important;
+}
+
+a.social-link:hover {
+    text-decoration: none;
+}
+
+
+.social-icon, .social-icon:hover {
+    color: var(--gold-lt);
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.card-actions {
+    margin-bottom: 10px;
+}
+
+#page-container {
+	position: relative;
+}
+
+#content-container {
+    min-height: 100vh;
+    padding-bottom: 50px;
+    background: var(--teal-bg);
+}
+
+.error-explanation {
+    color: black;
+}
+
+
+.footer {
+	position: absolute;
+	width: 100%;
+}
+
+.footer-top {
+	background-color: var(--teal-dk);
+	height: 50px;
+	width: 100%;
+}
+
+.footer-bottom {
+	background-color: var(--teal-hd);
+    width: 100%;
+}
+
+.footer-text {
+    color: white;
+    font-size: 12px;
+    margin-top: 10px
+}
+
+.navbar-bg {
+    background-color: var(--teal-hd);
+}
+
+.container-fluid {
+	padding-left: 20px;
+	padding-top: 20px;
+}
+
+.nav-link:hover {
+	color: white !important;
+}
+
+.nav-link {
+	font-size: 16px;
+    color: #dbdbdb !important;
+}
+
+
+.remove-link {
+	color: lightgrey;
+	text-decoration: inherit;
+}
+
+.remove-link:hover {
+	color: inherit;
+	text-decoration: inherit;
+}
+
+.remove-link:visited {
+	color: lightgrey;
+	text-decoration: inherit;
+}
+
+.btn-secondary {
+    background-color: white !important;
+    border-color: white !important;
+    color: var(--teal-dk) !important;
+}
+
+.btn-primary {
+    background-color: var(--gold-lt) !important;
+    border-color: var(--gold-lt) !important;
+    color: var(--teal-dk) !important;
+}
+
+.btn-secondary:hover {
+    background-color: var(--teal-dk) !important;
+    border-color: var(--teal-dk) !important;
+    color: white !important;
+}
+
+.btn-primary:hover {
+    background-color: var(--gold-hl) !important;
+    border-color: var(--gold-hl) !important;
+    color: white !important;
+}
+
+.bg-card {
+    background-color: var(--teal-dk) !important;
+}
+
+.content-card {
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+.card-title, .card-title:visited, .card-title:hover {
+    font-size: 40px;
+    color: white;
+}
+
+.card-text {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.card-actions {
+    margin-bottom: 10px;
+}
+
+.fab .fa-facebook {
+    width: 24px !important;
+    height: 24px !important;
+}
+
+
+a:hover {
+	background-color: transparent;
+}
+ input, textarea { display: block; }

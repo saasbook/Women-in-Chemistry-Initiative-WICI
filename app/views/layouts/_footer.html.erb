@@ -1,0 +1,35 @@
+<div class="footer">
+	<div class="navbar navbar-expand-lg footer-top">
+		<div class="col-md-12 text-center footer-icons">
+			<a href="https://www.facebook.com/BerkeleyWICI">
+				<i class="fab fa-facebook-square text-white social-icon"></i>
+			</a>
+			<a href="mailto:wiciberkeley@gmail.com">
+				<i class="fas fa-envelope text-white social-icon"></i>
+			</a>
+
+		</div>
+	</div>
+	<div class="navbar navbar-expand-lg footer-bottom">
+    <div class="row">
+      <div class="col-md-12 footer-text text-center">
+        <%= link_to 'Home', root_path, class: "remove-link", id: "home_footer" %> |
+        <%= link_to 'Events', events_path, class: "remove-link", id: "events_footer" %> |
+        <%= link_to 'About', about_index_path, class: "remove-link", id: "about_footer" %> |
+        <% if Donation.show %>
+          <%= link_to 'Donate', donations_path, class: "remove-link", id: "donate_footer" %> |
+        <% end %>
+        <%= link_to 'Contact', new_message_path, class: "remove-link", id: "contact_footer" %>
+      </div>
+      <div class="col-md-6 offset-md-3 text-center footer-text">
+        The Women in Chemistry Initiative, a 501(c)3 non-profit organization founded in 2015, serves as an inclusive
+        social and professional network of graduate and postdoctoral students of all genders and experiences.
+        Our mission is to support the health and wellness of our members and community, as well as to promote women in
+        chemistry and chemical engineering, through events both on campus and in the Bay Area.
+      </div>
+      <div class="col-md-12 text-center footer-text">
+        © Women In Chemistry Initiative 2019
+      </div>
+    </div>
+	</div>
+</div>

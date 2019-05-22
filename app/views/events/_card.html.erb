@@ -1,0 +1,45 @@
+<div class="content-card card bg-card text-white" id="event_<%= event.id %>">
+  <div class="row">
+    <div class="col-lg-7">
+      <div class="col-lg-12">
+        <a class="card-title" href="/events/<%= event.id %>"><%= event.name %></a>
+        <hr width="100%" color="white">
+        <p class="card-text"><%= event.description %></p>
+        <p class="card-text"><b>Location: </b><%= event.location %></p>
+        <p class="card-text"><b>Date: </b><%= event.date.strftime("%a, %B %d, %Y") %></p>
+        <% unless event.past_event? %>
+          <p class="card-text"><b>Time: </b><%= event.date.strftime("%l:%M %P") %></p>
+          <p class="card-text"><b>Price: </b><%= event.price.nil? || event.price == 0 ? "Free!": "$" + number_with_precision(event.price, precision: 2) %></p>
+        <% end %>
+        <div class="card-actions">
+          <%= link_to 'RSVP', new_event_guest_path(event), class: "btn btn-primary", id: "rsvp_#{event.id}" unless event.past_event? %>
+          <%= link_to 'More Info', event, class: "btn btn-primary", id: "show_#{event.id}" %>
+          <%= link_to 'Edit Info', edit_event_path(event), class: "btn btn-danger text-white", id: "edit_#{event.id}" if admin_signed_in? %>
+          <%= link_to 'Delete Event', event, class: "btn btn-danger text-white", id: "destroy_#{event.id}", method: :delete, data: {confirm: 'Are you sure?'} if admin_signed_in? %>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 offset-lg-1">
+      <div class="col-lg-12 text-right">
+        <a id="event_img_<%= event.id %>" href="/events/<%= event.id %>">
+          <%= image_tag event.image.index, class: 'event-index' %>
+        </a>
+      </div>
+
+      <div class="col-lg-12 text-center social-container">
+        <div class="card-text text-center"><b>Share this event</b></div>
+        <div class="card-text text-center">
+          <%= link_to 'https://twitter.com/intent/tweet?text=' + event_url(event), class: "social-link", target: :blank do %>
+            <i class="fab fa-twitter social-icon"></i>
+          <% end %>
+          <%= link_to 'http://www.facebook.com/sharer.php?u=' + event_url(event), class: "social-link", target: :blank do %>
+            <i class="fab fa-facebook social-icon"></i>
+          <% end %>
+          <%= link_to 'https://www.linkedin.com/sharing/share-offsite/?url=' + event_url(event), class: "social-link", target: :blank do %>
+            <i class="fab fa-linkedin social-icon"></i>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

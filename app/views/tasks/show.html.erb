@@ -1,0 +1,25 @@
+<div class="container-fluid" style="padding-top: 20px; padding-left: 30px">
+<h1><%= @task.name %></h1>
+<br>
+<p>
+  <strong>Description:</strong>
+  <%= @task.description %>
+</p>
+
+<p>
+  <strong>Deadline:</strong>
+  <%= @task.deadline %>
+</p>
+<br>
+<% if !@assignments.empty? %>
+<h4>Volunteers for <%= @task.name %></h4>
+<%= render 'assignments/index' %>
+<% end %>
+<% if @assignments.empty? %>
+<h4>There are no volunteers for <%= @task.name %></h4>
+<% end %>
+
+<br>
+  <%= link_to 'Sign up for this task', new_event_task_assignment_path(@event, @task), class: "btn btn-primary text-white", id:"sign up" if @user.can_signup?(@task) %>  <%= link_to 'Back', event_tasks_url(@event), class: "btn btn-secondary text-white" %><br>
+
+</div>

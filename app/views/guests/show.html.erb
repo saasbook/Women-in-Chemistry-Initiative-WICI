@@ -1,0 +1,10 @@
+Display All Guests <br />
+<hr>
+<% if !@guests.blank? %>
+	<% for item in @guests %>
+		<%= item.firstname %> <%= item.lastname %> <%= item.email %> <%= item.event %> <br />
+	<% end %>
+<% else %>
+
+<% end %>
+<%= link_to 'Back', new_guest_path, class: 'btn btn-secondary text-white' %>

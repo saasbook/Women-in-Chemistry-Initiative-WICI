@@ -1,0 +1,43 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.welcome {
+	text-align: center;
+}
+
+.image-size {
+  height: 300px;
+  width: 100%;
+}
+
+.home-image {
+	padding-left: 0px !important;
+	padding-right: 0px !important;
+	border: 3px solid white !important;
+	margin-left: -3px;
+}
+
+.home-image:hover{
+	opacity: .7;
+}
+
+.caption-holder {
+	background-color: black;
+	color: white;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	bottom: 0;
+	height: 70px;
+	width: 100%;
+	text-align: center;
+}
+
+.divider {
+	border-bottom: 1px solid white;
+	padding-top: 20px;
+	margin-bottom: 40px;
+	width: 100%;
+}

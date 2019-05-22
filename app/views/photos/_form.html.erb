@@ -1,0 +1,41 @@
+<%= form_with(model: photo, local: true) do |form| %>
+  <% if photo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(photo.errors.count, "error") %> prohibited this photo from being saved:</h2>
+
+      <ul>
+      <% photo.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :event_description, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <% if photo.image? %>
+      <%= form.label "Update Photo" %>
+    <% else %>
+      <%= form.label "Upload Photo" %>
+    <% end %>
+    <%= form.file_field :image, id: :image %>
+    <%= form.hidden_field :image_cache %>
+  </div>
+
+  <% if photo.image? %>
+    <div class="inline-w">
+      <%= form.label :remove_image %>
+      <%= form.check_box :remove_image%>
+      <%= image_tag photo.image.small_thumb.url%>
+    </div>
+  <% end %>
+
+
+  <div class="form-group">
+    <%= form.submit :Submit, class: 'btn btn-primary' %>
+  </div>
+<% end %>

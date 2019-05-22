@@ -1,0 +1,11 @@
+<div class="row">
+  <% @leaders.each do |leader| %>
+      <div class="col-lg-4">
+          <%= image_tag leader.image.thumb, class: "dp rounded-circle" %>
+          <h4><%= leader.firstname %> <%= leader.lastname %></h4>
+          <p class="card-text"> <%= leader.role %></p>
+          <%= link_to 'Destroy', leader, method: :delete, data: {confirm: 'Are you sure?'} if admin_signed_in? %>
+          <%= link_to 'Edit', edit_leader_path(leader) if admin_signed_in? %>
+      </div>
+  <% end %>
+</div>

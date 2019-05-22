@@ -1,0 +1,44 @@
+img.event-show {
+  width: 400px;
+  height: auto;
+}
+
+img.event-index {
+  width: 100%;
+  height: auto;
+  border: 2px solid white;
+}
+
+hr {
+  border-color: white;
+  margin: 0;
+}
+
+#hidden_fields {
+  display: none;
+}
+
+.social-container {
+  margin-top: 15px;
+}
+
+.event-container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.inline-w label, .inline-w input {
+  float: none; /* if you had floats before? otherwise inline-block will behave differently */
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+}
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
